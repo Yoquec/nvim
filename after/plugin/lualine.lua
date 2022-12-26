@@ -53,6 +53,7 @@ local icons = {
     vimrc = "",
     viminfo = "",
     gitignore = "",
+    conf = "",
     c = "",
     cc = "",
     clj = "",
