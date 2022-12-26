@@ -43,7 +43,7 @@ vim.keymap.set('n', '<leader>t', vim.cmd.NERDTreeToggle)
 vim.keymap.set('n', '<leader><C-f>', vim.cmd.NERDTreeFind)
 
 -- "prettier" remap
-vim.keymap.set('n', '<leader>t', vim.cmd.LspZeroFormat)
+vim.keymap.set('n', '<leader>p', vim.cmd.LspZeroFormat)
 
 --  Add mapping for Goyo
 vim.keymap.set('n', '<Leader>gy', vim.cmd.Goyo)
