@@ -5,6 +5,10 @@ vim.opt.termguicolors = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- fold method
+vim.opt.foldmethod = "indent"
+-- hacky way of undolding buffer at open time
+vim.opt.foldlevel = 99
 
 vim.opt.laststatus = 0
 vim.opt.showmode = false

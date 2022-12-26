@@ -92,6 +92,7 @@ local icons = {
     zsh = "",
     yaml = "",
     text = "",
+    i3config = "",
     packer = "",
 }
 
