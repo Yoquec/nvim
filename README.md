@@ -25,5 +25,5 @@ Restart neovim, and you will be good to go! 🎉
 ## Dependencies 🏗
 - neovim > 0.5
 - [packer.nvim](https://github.com/wbthomason/packer.nvim)
-- a [patched font](nerdfonts.com)
+- a [patched font](https://nerdfonts.com)
 
