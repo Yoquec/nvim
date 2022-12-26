@@ -1,0 +1,20 @@
+snippet pandocslides "Metadata for making slides in pandoc using beamer"
+	---
+	title: 
+	- ${1:TITLE}
+	author:
+	- Alvaro Viejo Alonso
+	theme:
+	- Madrid
+	---
+
+snippet bold "Create bold text"
+	**${1:text}**
+
+snippet code "Create inline code"
+	\`${1:text}\`
+
+snippet codeblock "Create a code block"
+	\`\`\`${1:lang}
+	${2:code}
+	\`\`\`
