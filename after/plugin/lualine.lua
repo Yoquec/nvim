@@ -90,6 +90,7 @@ local icons = {
     sh = "",
     bash = "",
     zsh = "",
+    r = "ﱨ",
     yaml = "",
     text = "",
     i3config = "",

@@ -24,8 +24,10 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':tsupdate' })
     use { 'nvim-treesitter/playground' }
 
-    use { 'junegunn/goyo.vim' }
-    use { 'junegunn/limelight.vim' }
+    use {
+        'junegunn/goyo.vim',
+        requires = { { 'junegunn/limelight.vim' } },
+    }
 
     use {
         "folke/zen-mode.nvim",
@@ -49,7 +51,10 @@ return require('packer').startup(function(use)
         config = function() require('colorizer').setup() end
     })
 
-    use { "karoliskoncevicius/vim-sendtowindow" }
+    use { "karoliskoncevicius/vim-sendtowindow",
+        ft = { "python", "r", "rmd" }
+    }
+
     use { 'glepnir/dashboard-nvim' }
     use('mbbill/undotree')
     use { 'preservim/nerdtree' }
