@@ -102,6 +102,7 @@ local icons = {
     pdf = "",
     nix = "",
     yaml = "",
+    text = "",
 }
 
 local conditions = {
