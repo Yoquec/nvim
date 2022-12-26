@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
         config = function() require('colorizer').setup() end
     })
 
+    use { "karoliskoncevicius/vim-sendtowindow" }
     use { 'glepnir/dashboard-nvim' }
     use('mbbill/undotree')
     use { 'preservim/nerdtree' }
