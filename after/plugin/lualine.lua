@@ -165,7 +165,7 @@ ins_left_inact {
     function()
         return icons[vim.api.nvim_eval("&filetype")]
     end,
-    color = { fg = colors.bg, bg = colors.fg, gui = 'bold' },
+    color = { fg = colors.bg, bg = colors.fg },
     padding = { right = 1, left = 1 },
     cond = conditions.buffer_not_empty,
 }
