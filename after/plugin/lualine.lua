@@ -163,7 +163,13 @@ end
 -- inactive components
 ins_left_inact {
     function()
-        return icons[vim.api.nvim_eval("&filetype")]
+        icon = icons[vim.api.nvim_eval("&filetype")]
+        if icon
+        then
+            return icon
+        else
+            return ' '
+        end
     end,
     color = { fg = colors.bg, bg = colors.fg },
     padding = { right = 1, left = 1 },
@@ -188,7 +194,13 @@ ins_left {
 
 ins_left {
     function()
-        return icons[vim.api.nvim_eval("&filetype")]
+        icon = icons[vim.api.nvim_eval("&filetype")]
+        if icon
+        then
+            return icon
+        else
+            return ''
+        end
     end,
     color = { fg = colors.fg, gui = 'bold' },
     padding = { right = 0, left = 2 },
