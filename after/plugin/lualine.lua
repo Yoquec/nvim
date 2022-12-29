@@ -202,7 +202,7 @@ ins_left {
             return ''
         end
     end,
-    color = { fg = colors.fg, gui = 'bold' },
+    color = { fg = colors.fg},
     padding = { right = 0, left = 2 },
     cond = conditions.buffer_not_empty,
 }
