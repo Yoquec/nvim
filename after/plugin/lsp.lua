@@ -3,12 +3,12 @@ lsp.preset('recommended')
 
 lsp.setup()
 
-lsp.ensure_installed({
-	'eslint',
-	'sumneko_lua',
-	'rust_analyzer',
-	'python-lsp-server',
-})
+-- lsp.ensure_installed({
+-- 	'eslint',
+-- 	'sumneko_lua',
+-- 	'rust_analyzer',
+--     'pyright',
+-- })
 
 
 local cmp = require('cmp')
