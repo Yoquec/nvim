@@ -1,6 +1,9 @@
 -- termguicolors
 vim.opt.termguicolors = true
 
+-- case insensitive search
+vim.opt.ignorecase = true
+
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
