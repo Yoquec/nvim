@@ -11,6 +11,10 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
+-- better tabbing
+vim.keymap.set("v", "<Tab>", ">")
+vim.keymap.set("v", "<S-Tab>", "<")
+
 -- copy without refilling the buffer
 vim.keymap.set("v", "<leader>p", "\"+p")
 vim.keymap.set("n", "<leader>p", "\"+p")
