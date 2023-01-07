@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    use 'lewis6991/impatient.nvim'
+
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
@@ -27,13 +29,6 @@ return require('packer').startup(function(use)
     use {
         'junegunn/goyo.vim',
         requires = { { 'junegunn/limelight.vim' } },
-    }
-
-    use {
-        "folke/zen-mode.nvim",
-        config = function()
-            require("zen-mode").setup {}
-        end
     }
 
 
@@ -57,7 +52,6 @@ return require('packer').startup(function(use)
 
     use { 'glepnir/dashboard-nvim' }
     use('mbbill/undotree')
-    use { 'preservim/nerdtree' }
     use { 'tpope/vim-surround' }
     use { 'tpope/vim-commentary' }
 

@@ -37,3 +37,20 @@ autocmd! User GoyoEnter :exe "lua require('lualine').hide()" | exe "set wrap" | 
 vim.cmd([[
 autocmd! User GoyoLeave :exe "lua require('lualine').hide({unhide=true})" | exe "set nowrap" | exe "Limelight!"
 ]])
+
+-- ~~~~~~~~~~~~~~~~~~~~
+-- neovide
+-- ~~~~~~~~~~~~~~~~~~~~
+if vim.g.neovide then
+    -- set font and font size
+    local font_size = 11
+    vim.opt.guifont = "CaskaydiaCove NF:h"..font_size
+
+    function ResizeFont(delta)
+        font_size = font_size + delta
+        vim.opt.guifont = 'CaskaydiaCove NF:h' .. font_size
+    end
+
+    vim.keymap.set("n", "<expr><D-=>", ResizeFont(1))
+    vim.keymap.set("n", "<expr><D-->", ResizeFont(-1))
+end

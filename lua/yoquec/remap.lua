@@ -12,7 +12,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- copy without refilling the buffer
--- vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("v", "<leader>p", "\"+p")
+vim.keymap.set("n", "<leader>p", "\"+p")
 vim.keymap.set("v", "P", "\"_dP")
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
@@ -31,7 +32,7 @@ vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- tab navigation
 vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew)
-vim.keymap.set('n', '<leader>mc', vim.cmd.tabc)
+vim.keymap.set('n', '<leader>mw', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
 vim.keymap.set('n', '<leader>ml', vim.cmd.tabn)
 vim.keymap.set('n', '<leader>mh', vim.cmd.tabp)
@@ -43,7 +44,7 @@ vim.keymap.set('n', '<leader>t', vim.cmd.NERDTreeToggle)
 vim.keymap.set('n', '<leader><C-f>', vim.cmd.NERDTreeFind)
 
 -- "prettier" remap
-vim.keymap.set('n', '<leader>p', vim.cmd.LspZeroFormat)
+vim.keymap.set('n', '<leader>P', vim.cmd.LspZeroFormat)
 
 --  Add mapping for Goyo
 vim.keymap.set('n', '<Leader>gy', vim.cmd.Goyo)
