@@ -5,3 +5,20 @@ snippet "rmdheader" "Header metadata template for building documents in R markdo
 	output: pdf_document
 	---
 	\maketitle
+
+snippet bold "Create bold "
+	**${1:}**
+
+snippet code "Create inline code"
+	\`${1:}\`
+
+snippet codeblock "Create a code block"
+	\`\`\`${1:lang}
+	${2:code}
+	\`\`\`
+
+snippet f "Create an inline equation"
+	\$${1:}\$
+
+snippet ff "Create a block equation"
+	\$\$${1:}\$\$
