@@ -4,7 +4,7 @@ The aim of this repo is to be able to take my config files wherever I want and m
 
 ## Showcase 🤩
 
-![Showcase of my config](https://imgur.com/a/wx2EN0d)
+![Showcase of my config](https://i.imgur.com/A2gxVLq.png "My nvim config showcase")
 
 ## Installation 🧰
 >It is important to note that the config <mark>only works on UNIX-base systems</mark> and on <mark>neovim</mark> because of the folder structure.
