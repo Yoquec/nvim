@@ -91,6 +91,7 @@ local icons = {
     sh = "",
     bash = "",
     zsh = "",
+    tex = "",
     r = "ﱨ",
     yaml = "",
     toml = "",
