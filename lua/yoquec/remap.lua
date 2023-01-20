@@ -42,10 +42,10 @@ vim.keymap.set('n', '<leader>ml', vim.cmd.tabn)
 vim.keymap.set('n', '<leader>mh', vim.cmd.tabp)
 
 -- NERDTree remaps
-vim.keymap.set('n', '<leader>n', vim.cmd.NERDTreeFocus)
-vim.keymap.set('n', '<leader><C-n>', vim.cmd.NERDTree)
-vim.keymap.set('n', '<leader>t', vim.cmd.NERDTreeToggle)
-vim.keymap.set('n', '<leader><C-f>', vim.cmd.NERDTreeFind)
+-- vim.keymap.set('n', '<leader>n', vim.cmd.NERDTreeFocus)
+-- vim.keymap.set('n', '<leader><C-n>', vim.cmd.NERDTree)
+-- vim.keymap.set('n', '<leader>t', vim.cmd.NERDTreeToggle)
+-- vim.keymap.set('n', '<leader><C-f>', vim.cmd.NERDTreeFind)
 
 -- "prettier" remap
 vim.keymap.set('n', '<leader>P', vim.cmd.LspZeroFormat)
