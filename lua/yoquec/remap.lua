@@ -18,6 +18,8 @@ vim.keymap.set("v", "<S-Tab>", "<")
 -- copy without refilling the buffer
 vim.keymap.set("v", "<leader>p", "\"+p")
 vim.keymap.set("n", "<leader>p", "\"+p")
+vim.keymap.set("v", "<leader>P", "\"+P")
+vim.keymap.set("n", "<leader>P", "\"+P")
 vim.keymap.set("v", "P", "\"_dP")
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
@@ -41,14 +43,11 @@ vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
 vim.keymap.set('n', '<leader>ml', vim.cmd.tabn)
 vim.keymap.set('n', '<leader>mh', vim.cmd.tabp)
 
--- NERDTree remaps
--- vim.keymap.set('n', '<leader>n', vim.cmd.NERDTreeFocus)
--- vim.keymap.set('n', '<leader><C-n>', vim.cmd.NERDTree)
--- vim.keymap.set('n', '<leader>t', vim.cmd.NERDTreeToggle)
--- vim.keymap.set('n', '<leader><C-f>', vim.cmd.NERDTreeFind)
-
--- "prettier" remap
-vim.keymap.set('n', '<leader>P', vim.cmd.LspZeroFormat)
+-- default nvim lsp formatting (if lspZero gets attached,
+-- LspZeroFormat will be used instead)
+vim.keymap.set({'n', 'v'}, '<leader><leader>p', vim.lsp.buf.format)
+-- "prettier" (additional formatting remaps)
+vim.keymap.set('n', '<leader><leader>P', vim.cmd.Format)
 
 --  Add mapping for Goyo
 vim.keymap.set('n', '<Leader>gy', vim.cmd.Goyo)

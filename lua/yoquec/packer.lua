@@ -84,6 +84,9 @@ return require('packer').startup(function(use)
             -- snippets
             { 'l3mon4d3/luasnip' },
             { 'rafamadriz/friendly-snippets' },
+
+            -- format
+           { 'mhartington/formatter.nvim' },
         }
     }
 
