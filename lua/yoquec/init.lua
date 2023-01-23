@@ -8,23 +8,34 @@ require("yoquec.packer")
 -- r markdown
 -- ~~~~~~~~~~~~~~~~~~~~
 vim.cmd([[
-autocmd Filetype rmd map <Leader>rm :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+autocmd Filetype rmd map <Leader>rm :call<space>jobstart(['bash', '-c', 'echo<space>"require(rmarkdown);<space>render(\"'..expand("%")..'\")"<space>\|<space>R<space>--vanilla'])<enter>
 ]])
 
--- vim.cmd([[
--- autocmd Filetype rmd :exe "Goyo"
--- ]])
+-- Open the document in zathura document (after rendering to pdf)
+vim.cmd([[
+autocmd Filetype rmd map <Leader>ot :call<space>jobstart(['zathura', expand("%:r")..".pdf"])<enter>
+]])
+
 
 -- ~~~~~~~~~~~~~~~~~~~~
 -- markdown
 -- ~~~~~~~~~~~~~~~~~~~~
+
+-- Async create slides with beamer
 vim.cmd([[
-autocmd Filetype markdown map <Leader>ms :!slides<space>%<enter>
+autocmd Filetype markdown map <Leader>ms :call<space>jobstart(['bash',<space>'-c',<space>'slides<space>'..expand("%")])<enter>
 ]])
 
--- vim.cmd([[
--- autocmd Filetype markdown :exe "Goyo"
--- ]])
+-- Async render md documents
+vim.cmd([[
+autocmd Filetype markdown map <Leader>md :call<space>jobstart(['bash',<space>'-c',<space>'pandoc<space>--pdf-engine=xelatex<space>'..expand("%:p")..'<space>-o<space>'..expand("%:p:r")..'.pdf'])<enter>
+]])
+
+-- Open the document in zathura document (after rendering to pdf)
+vim.cmd([[
+autocmd Filetype markdown map <Leader>ot :call<space>jobstart(['zathura', expand("%:r")..".pdf"])<enter>
+]])
+
 
 -- ~~~~~~~~~~~~~~~~~~~~
 -- goyo
