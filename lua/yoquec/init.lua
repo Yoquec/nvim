@@ -13,7 +13,7 @@ autocmd Filetype rmd map <Leader>rm :call<space>jobstart(['bash', '-c', 'echo<sp
 
 -- Open the document in zathura document (after rendering to pdf)
 vim.cmd([[
-autocmd Filetype rmd map <Leader>ot :call<space>jobstart(['zathura', expand("%:r")..".pdf"])<enter>
+autocmd Filetype rmd map <Leader>op :call<space>jobstart(['zathura', expand("%:r")..".pdf"])<enter>
 ]])
 
 
@@ -23,17 +23,17 @@ autocmd Filetype rmd map <Leader>ot :call<space>jobstart(['zathura', expand("%:r
 
 -- Async create slides with beamer
 vim.cmd([[
-autocmd Filetype markdown map <Leader>ms :call<space>jobstart(['bash',<space>'-c',<space>'slides<space>'..expand("%")])<enter>
+autocmd Filetype markdown map <Leader>ms :call<space>jobstart(['bash',<space>'-c',<space>'pandoc<space>--pdf-engine=xelatex<space>'..expand("%:p")..'<space>-t<space>beamer<space>-o<space>'..expand("%:r")..'.pdf'])<enter>
 ]])
 
 -- Async render md documents
 vim.cmd([[
-autocmd Filetype markdown map <Leader>md :call<space>jobstart(['bash',<space>'-c',<space>'pandoc<space>--pdf-engine=xelatex<space>'..expand("%:p")..'<space>-o<space>'..expand("%:p:r")..'.pdf'])<enter>
+autocmd Filetype markdown map <Leader>rm :call<space>jobstart(['bash',<space>'-c',<space>'pandoc<space>--pdf-engine=xelatex<space>'..expand("%:p")..'<space>-o<space>'..expand("%:p:r")..'.pdf'])<enter>
 ]])
 
 -- Open the document in zathura document (after rendering to pdf)
 vim.cmd([[
-autocmd Filetype markdown map <Leader>ot :call<space>jobstart(['zathura', expand("%:r")..".pdf"])<enter>
+autocmd Filetype markdown map <Leader>op :call<space>jobstart(['zathura', expand("%:r")..".pdf"])<enter>
 ]])
 
 
