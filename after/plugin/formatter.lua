@@ -17,5 +17,8 @@ require("formatter").setup {
       rmd = {
           require("formatter.filetypes.markdown").prettier
       },
+      python = {
+          require("formatter.filetypes.python").yapf
+      },
     }
   }
