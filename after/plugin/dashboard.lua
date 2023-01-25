@@ -23,17 +23,9 @@ require("dashboard").setup {
             " [ TIP: To exit Neovim, just power off your computer. ] ",
             "",
         },
-        center = {
-            {
-                icon = '',
-                icon_hl = 'group',
-                desc = 'description',
-                desc_hl = 'group',
-                key = 'shortcut key in dashboard buffer not keymap !!',
-                key_hl = 'group',
-                action = '',
-            },
-        },
+        packages = { enable = true }, -- show how many plugins neovim loaded
+        project = { desc = 'Recent Projects', desc_hl = 'DashboardRecentProject', limit = 8, action = 'Telescope find_files cwd=' }, -- limit how many projects list, action when you press key or enter it will run this action.
+        mru = { limit = 8 }, -- how many files in list
         footer = {},
     }
 }
