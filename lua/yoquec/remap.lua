@@ -2,9 +2,6 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<C-s>", vim.cmd.w)
 
--- view files (netrw)
-vim.keymap.set("n", "<leader>vf", vim.cmd.Ex)
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -21,10 +18,10 @@ vim.keymap.set("n", "<leader>p", "\"+p")
 vim.keymap.set("v", "<leader>P", "\"+P")
 vim.keymap.set("n", "<leader>P", "\"+P")
 vim.keymap.set("v", "P", "\"_dP")
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+-- next greatest rema ever : asbjornHaland
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- word replace
@@ -35,6 +32,9 @@ vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
+
+vim.keymap.set('n', '<C-w>s', '<C-w>s<C-w>j')
+vim.keymap.set('n', '<C-w>v', '<C-w>v<C-w>l')
 
 -- tab navigation
 vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew)
@@ -48,7 +48,7 @@ vim.keymap.set('n', '<M-C-l>', vim.cmd.tabn)
 
 -- default nvim lsp formatting (if lspZero gets attached,
 -- LspZeroFormat will be used instead)
-vim.keymap.set({'n', 'v'}, '<leader><leader>p', vim.lsp.buf.format)
+vim.keymap.set({ 'n', 'v' }, '<leader><leader>p', vim.lsp.buf.format)
 -- "prettier" (additional formatting remaps)
 vim.keymap.set('n', '<leader><leader>P', vim.cmd.Format)
 
@@ -68,3 +68,8 @@ vim.keymap.set('n', '<S-TAB>', ':bprevious<CR>')
 
 -- neovim terminal can exit to normal mode with <esc> now
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
+
+-- "integrate" vifm within vim
+vim.keymap.set('n', '<leader>vf',
+    ':split | execute "wincmd j" | execute \'terminal vifm .\' | execute "normal i"<CR>', 
+    { silent = true })
