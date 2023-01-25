@@ -69,6 +69,9 @@ vim.keymap.set('n', '<S-TAB>', ':bprevious<CR>')
 -- neovim terminal can exit to normal mode with <esc> now
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 
+-- Open a terminal in a separate buffer
+vim.keymap.set('n', '<leader>ot', ':execute "tabnew" | execute "terminal" <CR>')
+
 -- "integrate" vifm within vim
 vim.keymap.set('n', '<leader>vf',
     ':split | execute "wincmd j" | execute \'terminal vifm .\' | execute "normal i"<CR>', 
