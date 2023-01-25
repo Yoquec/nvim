@@ -42,7 +42,7 @@ local function getStateColor()
         rm = colors.cyan,
         ['r?'] = colors.cyan,
         ['!'] = colors.red,
-        t = colors.red,
+        t = colors.violet,
     }
     return { bg = mode_color[vim.fn.mode()], fg = colors.bg, gui = 'bold' }
 end
