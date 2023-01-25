@@ -50,7 +50,10 @@ return require('packer').startup(function(use)
         ft = { "python", "r", "rmd" }
     }
 
-    use { 'glepnir/dashboard-nvim' }
+    use {
+        'glepnir/dashboard-nvim',
+        event = 'VimEnter',
+    }
     use('mbbill/undotree')
     use { 'tpope/vim-surround' }
     use { 'tpope/vim-commentary' }
@@ -86,7 +89,7 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
 
             -- format
-           { 'mhartington/formatter.nvim' },
+            { 'mhartington/formatter.nvim' },
         }
     }
 
