@@ -28,6 +28,7 @@ require("formatter").setup {
                 return {
                     exe = "ktlint",
                     args = {
+                        "-l none",
                         "-F",
                         "--stdin"
                     },
