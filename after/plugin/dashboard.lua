@@ -1,6 +1,7 @@
 require("dashboard").setup {
-    config = {
-        header = {
+  theme = 'doom',
+  config = {
+    header = {
             "=================     ===============     ===============   ========  ========",
             "\\\\ . . . . . . .\\\\\\   //. . . . . . .\\\\   //. . . . . . .\\\\  \\\\. . .\\\\// . . //",
             "||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\\/ . . .||",
@@ -22,10 +23,60 @@ require("dashboard").setup {
             "",
             " [ TIP: To exit Neovim, just power off your computer. ] ",
             "",
-        },
-        packages = { enable = true }, -- show how many plugins neovim loaded
-        project = { desc = 'Recent Projects', desc_hl = 'DashboardRecentProject', limit = 8, action = 'Telescope find_files cwd=' }, -- limit how many projects list, action when you press key or enter it will run this action.
-        mru = { limit = 8 }, -- how many files in list
-        footer = {},
-    }
+    },
+    center = {
+      {
+          icon = "  ",
+          desc = "Find recent files                        ",
+          action = "Telescope oldfiles",
+          key = "o",
+          keymap = "SPC f r",
+          icon_hi = 'DashboardShortcut',
+          desc_hi = "GruvboxBlue",
+          key_hi = 'type',
+      },
+      {
+          icon = "  ",
+          desc = "Find files                                 ",
+          action = "Telescope find_files find_command=rg,--hidden,--files",
+          key = "f",
+          keymap = "<C-p>",
+          icon_hi = 'Structure',
+          desc_hi = "GruvboxBlue",
+          key_hi = 'type',
+      },
+      {
+          icon = "  ",
+          desc = "File browser                             ",
+          action = "Telescope file_browser",
+          key = "b";
+          keymap = "SPC f f",
+          icon_hi = 'type',
+          desc_hi = "GruvboxBlue",
+          key_hi = 'type',
+  },
+  {
+          icon = "  ",
+          desc = "Find Git files                                 ",
+          action = "Telescope git_files",
+          key = "g",
+          keymap = "<C-p>",
+          icon_hi = 'keyword',
+          desc_hi = "GruvboxBlue",
+          key_hi = 'type',
+      },
+      {
+          icon = "💬 ",
+          desc = "Find word                                ",
+          action = "Telescope live_grep",
+          key = "w",
+          keymap = "SPC f g",
+          icon_hi = 'Icon',
+          desc_hi = "GruvboxBlue",
+          key_hi = 'type',
+      },
+    },
+    footer = {" 👑 Veni, vidi, vici "}  --your footer
+  }
 }
+
