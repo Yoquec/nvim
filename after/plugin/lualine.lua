@@ -47,57 +47,14 @@ local function getStateColor()
     return { bg = mode_color[vim.fn.mode()], fg = colors.bg, gui = 'bold' }
 end
 
-local icons = {
-    fi = "",
-    ex = "",
+local backup_icons = {
     vimrc = "",
     viminfo = "",
-    gitignore = "",
     conf = "",
-    c = "",
-    cc = "",
-    rust = "",
-    clj = "",
-    coffee = "",
-    cpp = "",
-    css = "",
-    dart = "",
-    erl = "",
-    exs = "",
-    fs = "",
-    go = "",
-    h = "",
-    hh = "",
-    hpp = "",
-    hs = "",
-    html = "",
-    java = "",
-    jl = "",
-    js = "",
-    json = "",
-    lua = "",
-    md = "",
-    rmd = "(r)",
-    markdown = "",
-    php = "",
-    pl = "",
-    pro = "",
-    py = "",
-    python = "",
-    rb = "",
-    rs = "",
-    scala = "",
-    ts = "",
-    vim = "",
     sh = "",
     bash = "",
     zsh = "",
-    tex = "",
     snippets = "",
-    r = "ﱨ",
-    yaml = "",
-    toml = "",
-    text = "",
     i3config = "",
     packer = "",
 }
@@ -168,13 +125,18 @@ end
 -- inactive components
 ins_left_inact {
     function()
-        icon = icons[vim.api.nvim_eval("&filetype")]
-        if icon
-        then
-            return icon
-        else
-            return ' '
-        end
+        local ft = vim.api.nvim_eval("&filetype")
+        local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
+        if icon == nil then
+            icon = backup_icons[ft]
+            if icon
+                then
+                    return icon
+                else
+                    return ' '
+                end
+            end
+        return icon
     end,
     color = { fg = colors.bg, bg = colors.fg },
     padding = { right = 1, left = 1 },
@@ -199,15 +161,20 @@ ins_left {
 
 ins_left {
     function()
-        icon = icons[vim.api.nvim_eval("&filetype")]
-        if icon
-        then
-            return icon
-        else
-            return ''
+        local ft = vim.api.nvim_eval("&filetype")
+        local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
+        if icon == nil then
+            icon = backup_icons[ft]
         end
+        return icon
     end,
-    color = { fg = colors.fg},
+    color = function()
+        local icon, color = require("nvim-web-devicons").get_icon_color_by_filetype(vim.api.nvim_eval("&filetype"))
+        if color == nil then
+            color = colors.fg
+        end
+        return { fg = color }
+    end,
     padding = { right = 0, left = 2 },
     cond = conditions.buffer_not_empty,
 }
