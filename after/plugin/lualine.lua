@@ -55,6 +55,7 @@ local backup_icons = {
     bash = "",
     zsh = "",
     snippets = "",
+    help = "ﬤ",
     i3config = "",
     packer = "",
 }
