@@ -93,17 +93,7 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- whichkey needs a lot of configuration to be useful
-    -- use {
-    --     "folke/which-key.nvim",
-    --     config = function() require("which-key").setup {} end
-    -- }
-
     -- firenvim
     use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
-
-    --webicons
-    use { 'ryanoasis/vim-devicons' }
-
 
 end)
