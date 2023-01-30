@@ -127,17 +127,17 @@ end
 ins_left_inact {
     function()
         local ft = vim.api.nvim_eval("&filetype")
-        local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
-        if icon == nil then
-            icon = backup_icons[ft]
-            if icon
-                then
-                    return icon
-                else
-                    return ' '
-                end
+        if ft == '' then
+            return ""
+        else
+            local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
+            if icon then
+                return icon
+            else
+                local icon_bkp = backup_icons[ft]
+                return icon_bkp
             end
-        return icon
+        end
     end,
     color = { fg = colors.bg, bg = colors.fg },
     padding = { right = 1, left = 1 },
@@ -163,11 +163,17 @@ ins_left {
 ins_left {
     function()
         local ft = vim.api.nvim_eval("&filetype")
-        local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
-        if icon == nil then
-            icon = backup_icons[ft]
+        if ft == '' then
+            return ""
+        else
+            local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
+            if icon then
+                return icon
+            else
+                local icon_bkp = backup_icons[ft]
+                return icon_bkp
+            end
         end
-        return icon
     end,
     color = function()
         local icon, color = require("nvim-web-devicons").get_icon_color_by_filetype(vim.api.nvim_eval("&filetype"))
