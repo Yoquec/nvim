@@ -60,6 +60,25 @@ local backup_icons = {
     packer = "",
 }
 
+local function getIcon()
+    local ft = vim.api.nvim_eval("&filetype")
+    if ft == '' then
+        return ""
+    else
+        local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
+        if icon then
+            return icon
+        else
+            local icon_bkp = backup_icons[ft]
+            if icon_bkp then
+                return icon_bkp
+            else
+                return ""
+            end
+        end
+    end
+end
+
 local conditions = {
     buffer_not_empty = function()
         return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
@@ -125,20 +144,7 @@ end
 
 -- inactive components
 ins_left_inact {
-    function()
-        local ft = vim.api.nvim_eval("&filetype")
-        if ft == '' then
-            return ""
-        else
-            local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
-            if icon then
-                return icon
-            else
-                local icon_bkp = backup_icons[ft]
-                return icon_bkp
-            end
-        end
-    end,
+    getIcon,
     color = { fg = colors.bg, bg = colors.fg },
     padding = { right = 1, left = 1 },
     cond = conditions.buffer_not_empty,
@@ -161,20 +167,7 @@ ins_left {
 
 
 ins_left {
-    function()
-        local ft = vim.api.nvim_eval("&filetype")
-        if ft == '' then
-            return ""
-        else
-            local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
-            if icon then
-                return icon
-            else
-                local icon_bkp = backup_icons[ft]
-                return icon_bkp
-            end
-        end
-    end,
+    getIcon,
     color = function()
         local icon, color = require("nvim-web-devicons").get_icon_color_by_filetype(vim.api.nvim_eval("&filetype"))
         if color == nil then
