@@ -73,6 +73,10 @@ vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 vim.keymap.set('n', '<leader>ot', ':execute "tabnew" | execute "terminal" <CR>')
 
 -- "integrate" vifm within vim
-vim.keymap.set('n', '<leader>vf',
+vim.keymap.set('n', '<leader><leader>vf',
     ':split | execute "wincmd j" | execute \'terminal vifm .\' | execute "normal i"<CR>', 
+    { silent = true })
+
+vim.keymap.set('n', '<leader><leader>lf',
+    ':split | execute "wincmd j" | execute \'terminal lf .\' | execute "normal i"<CR>', 
     { silent = true })
