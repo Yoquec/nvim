@@ -10,6 +10,7 @@ local function RenderRmd_onExit(chain_id, data, name)
     print("📄 Document rendered!")
 end
 
+
 local function RenderSlides_onExit()
     print("🎞 Slides rendered!")
 end
@@ -34,14 +35,10 @@ local function RenderRmdDebug()
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
     print([[Rendering rmarkdown pdf (debug mode) ]] .. icon .. [[...]])
 
-    local result = vim.fn.system([[bash -c 'echo "require(rmarkdown); render(\"]] .. filename .. [[\")" | R --vanilla']])
 
-    if vim.api.nvim_get_vvar("shell_error") ~= 0 then
-        print([[ERROR ❌]])
-        print(result)
-    else
-        print([[Everything went OK! ✅]])
-    end
+    vim.cmd(
+        [[!echo "require(rmarkdown); render(']] .. filename .. [[')" | R --vanilla]]
+    )
 end
 
 
@@ -58,6 +55,18 @@ local function RenderMd()
 end
 
 
+local function RenderMdDebug()
+    local fullfilename = vim.fn.expand("%:p")
+    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
+    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
+    print([[Creating pdf document (debug mode) ]] .. icon .. [[...]])
+
+    vim.cmd(
+        [[!pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -o ]] .. output_fullfilename
+    )
+end
+
+
 local function RenderSlides()
     local fullfilename = vim.fn.expand("%:p")
     local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
@@ -67,6 +76,18 @@ local function RenderSlides()
     vim.fn.jobstart(
         [[bash -c 'pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -t beamer -o ]] .. output_fullfilename .. [[']],
         { on_exit = RenderSlides_onExit }
+    )
+end
+
+
+local function RenderSlidesDebug()
+    local fullfilename = vim.fn.expand("%:p")
+    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
+    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("ppt")
+    print([[Creating slides (debug mode) ]] .. icon .. [[...]])
+
+    vim.cmd(
+        [[!pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -t beamer -o ]] .. output_fullfilename
     )
 end
 
@@ -87,7 +108,7 @@ end
 
 
 local function ExitGoyo()
-    require('lualine').hide({unhide=true})
+    require('lualine').hide({ unhide = true })
     vim.opt.wrap = false
     vim.cmd([[Limelight!]])
 end
@@ -137,12 +158,30 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+-- Render md documents (debug mode)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function(args)
+        vim.keymap.set('n', '<Leader>rd',
+            RenderMdDebug, { buffer = args.buf })
+    end
+})
+
 -- Async create slides with beamer
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function(args)
         vim.keymap.set('n', '<Leader>rs',
             RenderSlides, { buffer = args.buf })
+    end
+})
+
+-- create slides with beamer (debug mode)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function(args)
+        vim.keymap.set('n', '<Leader><Leader>rd',
+            RenderSlidesDebug, { buffer = args.buf })
     end
 })
 
@@ -159,13 +198,13 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ~~~~~~~~~~~~~~~~~~~~
 -- Enable limelight automatically
 vim.api.nvim_create_autocmd("User", {
-  pattern = "GoyoEnter",
-  callback = EnterGoyo,
+    pattern = "GoyoEnter",
+    callback = EnterGoyo,
 })
 
 vim.api.nvim_create_autocmd("User", {
-  pattern = "GoyoLeave",
-  callback = ExitGoyo,
+    pattern = "GoyoLeave",
+    callback = ExitGoyo,
 })
 
 
@@ -179,9 +218,7 @@ vim.api.nvim_create_autocmd("User", {
 
 --     function ResizeFont(delta)
 --         font_size = font_size + delta
---         vim.opt.guifont = 'CaskaydiaCove NF:h' .. font_size
---     end
-
+--         vim.opt.guifont = 'CaskaydiaCove NF:h' .. font_sRenderSlidesDebug
 --     vim.keymap.set("n", "<expr><D-=>", ResizeFont(1))
 --     vim.keymap.set("n", "<expr><D-->", ResizeFont(-1))
 -- end
