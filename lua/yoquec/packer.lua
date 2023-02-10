@@ -50,6 +50,10 @@ return require('packer').startup(function(use)
         ft = { "python", "r", "rmd" }
     }
 
+    use { "jalvesaq/Nvim-R",
+        ft = { "r", "rmd" }
+    }
+
     use {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
