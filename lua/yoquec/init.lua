@@ -22,11 +22,12 @@ end
 local function RenderRmd()
     local filename = vim.fn.expand("%")
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
-    print([[Rendering rmarkdown pdf ]] .. icon .. [[...]])
 
     vim.fn.jobstart(
         [[bash -c 'echo "require(rmarkdown); render(\"]] .. filename .. [[\")" | R --vanilla']],
         { on_exit = RenderRmd_onExit })
+
+    print([[Rendering rmarkdown pdf ]] .. icon .. [[...]])
 end
 
 
@@ -46,12 +47,13 @@ local function RenderMd()
     local fullfilename = vim.fn.expand("%:p")
     local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
-    print([[Creating pdf document ]] .. icon .. [[...]])
 
     vim.fn.jobstart(
         [[bash -c 'pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -o ]] .. output_fullfilename .. [[']],
         { on_exit = RenderRmd_onExit }
     )
+
+    print([[Creating pdf document ]] .. icon .. [[...]])
 end
 
 
@@ -64,6 +66,7 @@ local function RenderMdDebug()
     vim.cmd(
         [[!pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -o ]] .. output_fullfilename
     )
+
 end
 
 
@@ -71,12 +74,13 @@ local function RenderSlides()
     local fullfilename = vim.fn.expand("%:p")
     local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("ppt")
-    print([[Creating slides ]] .. icon .. [[...]])
 
     vim.fn.jobstart(
         [[bash -c 'pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -t beamer -o ]] .. output_fullfilename .. [[']],
         { on_exit = RenderSlides_onExit }
     )
+
+    print([[Creating slides ]] .. icon .. [[...]])
 end
 
 
@@ -89,14 +93,14 @@ local function RenderSlidesDebug()
     vim.cmd(
         [[!pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -t beamer -o ]] .. output_fullfilename
     )
+
 end
 
 
 local function OpenPDF()
     local pdf_filename = vim.fn.expand("%:r") .. [[.pdf]]
-    print([[🔎 Zathura opened]])
-
     vim.fn.jobstart([[bash -c "zathura ]] .. pdf_filename .. [["]])
+    print([[🔎 Zathura opened]])
 end
 
 
@@ -113,34 +117,25 @@ local function ExitGoyo()
     vim.cmd([[Limelight!]])
 end
 
+
 -- //////////////////
 -- autocommands
 -- //////////////////
 --
 -- r markdown
 -- ~~~~~~~~~~~~~~~~~~~~
--- async r document creation
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "rmd",
     callback = function(args)
+        -- async r document creation
         vim.keymap.set('n', '<Leader>rm',
             RenderRmd, { buffer = args.buf })
-    end
-})
 
--- r document creation (debug mode)
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "rmd",
-    callback = function(args)
+        -- r document creation (debug mode)
         vim.keymap.set('n', '<Leader>rd',
             RenderRmdDebug, { buffer = args.buf })
-    end
-})
 
--- open the rendered document with zathura
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "rmd",
-    callback = function(args)
+        -- open the rendered document with zathura
         vim.keymap.set('n', '<Leader>op',
             OpenPDF, { buffer = args.buf })
     end
@@ -149,50 +144,31 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- markdown
 -- ~~~~~~~~~~~~~~~~~~~~
--- Async render md documents
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function(args)
+        -- Async render md documents
         vim.keymap.set('n', '<Leader>rm',
             RenderMd, { buffer = args.buf })
-    end
-})
 
--- Render md documents (debug mode)
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function(args)
+        -- Render md documents (debug mode)
         vim.keymap.set('n', '<Leader>rd',
             RenderMdDebug, { buffer = args.buf })
-    end
-})
 
--- Async create slides with beamer
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function(args)
+        -- Async create slides with beamer
         vim.keymap.set('n', '<Leader>rs',
             RenderSlides, { buffer = args.buf })
-    end
-})
 
--- create slides with beamer (debug mode)
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function(args)
+        -- create slides with beamer (debug mode)
         vim.keymap.set('n', '<Leader><Leader>rd',
             RenderSlidesDebug, { buffer = args.buf })
-    end
-})
 
--- Open the zathura document viewer for the rendered file
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function(args)
+        -- Open the zathura document viewer for the rendered file
         vim.keymap.set('n', '<Leader>op',
             OpenPDF, { buffer = args.buf })
     end
 })
+
 -- ~~~~~~~~~~~~~~~~~~~~
 -- goyo
 -- ~~~~~~~~~~~~~~~~~~~~
