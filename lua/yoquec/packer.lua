@@ -1,7 +1,7 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd [[packadd packer./vim]]
 
 return require('packer').startup(function(use)
     -- packer can manage itself
@@ -50,14 +50,11 @@ return require('packer').startup(function(use)
         ft = { "python", "r", "rmd" }
     }
 
-    use { "jalvesaq/Nvim-R",
-        ft = { "r", "rmd" }
-    }
-
     use {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
     }
+
     use('mbbill/undotree')
     use { 'tpope/vim-surround' }
     use { 'tpope/vim-commentary' }
