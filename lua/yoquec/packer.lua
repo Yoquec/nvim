@@ -51,7 +51,7 @@ return require('packer').startup(function(use)
     }
 
     use { "jalvesaq/Nvim-R",
-        ft = { "r", "rmd" }
+        ft = { "r" }
     }
 
     use {
