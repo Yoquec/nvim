@@ -51,7 +51,7 @@ vim.keymap.set('n', '<M-C-l>', vim.cmd.tabn)
 -- LspZeroFormat will be used instead)
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>p', vim.lsp.buf.format)
 -- "prettier" (additional formatting remaps)
-vim.keymap.set('n', '<leader><leader>P', vim.cmd.Format)
+vim.keymap.set({ 'n', 'v' }, '<leader><leader>P', vim.cmd.Format)
 
 --  Add mapping for Goyo
 vim.keymap.set('n', '<Leader>gy', vim.cmd.Goyo)
@@ -78,6 +78,13 @@ vim.keymap.set('n', '<leader><leader>vf',
     ':split | execute "wincmd j" | execute \'terminal vifm .\' | execute "normal i"<CR>',
     { silent = true })
 
+-- "integrate" lf within vim
 vim.keymap.set('n', '<leader><leader>lf',
     ':split | execute "wincmd j" | execute \'terminal lf .\' | execute "normal i"<CR>',
     { silent = true })
+
+-- change working directory to the current file's directory
+vim.keymap.set('n', '<leader>cw', function()
+    vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
+    print("Changed working directory 🗺️!")
+end)
