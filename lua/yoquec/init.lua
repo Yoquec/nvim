@@ -76,7 +76,7 @@ local function RenderSlides()
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("ppt")
 
     vim.fn.jobstart(
-        [[bash -c 'pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -t beamer -o ]] .. output_fullfilename .. [[']],
+        [[bash -c 'pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -t beamer -o "]] .. output_fullfilename .. [["']],
         { on_exit = RenderSlides_onExit }
     )
 
@@ -91,7 +91,7 @@ local function RenderSlidesDebug()
     print([[Creating slides (debug mode) ]] .. icon .. [[...]])
 
     vim.cmd(
-        [[!pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -t beamer -o ]] .. output_fullfilename
+        [[!pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -t beamer -o "]] .. output_fullfilename .. [["]]
     )
 
 end
