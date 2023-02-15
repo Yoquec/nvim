@@ -49,7 +49,7 @@ local function RenderMd()
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
 
     vim.fn.jobstart(
-        [[bash -c 'pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -o ]] .. output_fullfilename .. [[']],
+        [[bash -c 'pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -o "]] .. output_fullfilename .. [["']],
         { on_exit = RenderRmd_onExit }
     )
 
@@ -64,7 +64,7 @@ local function RenderMdDebug()
     print([[Creating pdf document (debug mode) ]] .. icon .. [[...]])
 
     vim.cmd(
-        [[!pandoc --pdf-engine=xelatex ]] .. fullfilename .. [[ -o ]] .. output_fullfilename
+        [[!pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -o "]] .. output_fullfilename .. [["]]
     )
 
 end
@@ -99,7 +99,7 @@ end
 
 local function OpenPDF()
     local pdf_filename = vim.fn.expand("%:r") .. [[.pdf]]
-    vim.fn.jobstart([[bash -c "zathura ]] .. pdf_filename .. [["]])
+    vim.fn.jobstart([[bash -c 'zathura "]] .. pdf_filename .. [["']])
     print([[🔎 Zathura opened]])
 end
 

@@ -6,6 +6,8 @@ snippet pandocslides "Metadata for making slides in pandoc using beamer"
 	- Alvaro Viejo Alonso
 	theme:
 	- Madrid
+	header-includes: |
+    	\usepackage{twemojis}
 	---
 
 snippet bold "Create bold text"
@@ -24,3 +26,7 @@ snippet f "Create an inline equation"
 
 snippet ff "Create a block equation"
 	\$\$${1:}\$\$
+
+
+snippet emoji "Insert a twemoji"
+	\twemoji{${1:emoji-name}}
