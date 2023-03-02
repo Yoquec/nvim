@@ -44,6 +44,6 @@ function ToggleVirtualText()
 end
 
 -- set the keymaps
-vim.keymap.set("n", "<leader>b", ToggleBar)
-vim.keymap.set("n", "<leader>t", ToggleTabBar)
-vim.keymap.set("n", "<leader>v", ToggleVirtualText)
+vim.keymap.set("n", "<leader>tb", ToggleBar)
+vim.keymap.set("n", "<leader>tt", ToggleTabBar)
+vim.keymap.set("n", "<leader>tv", ToggleVirtualText)

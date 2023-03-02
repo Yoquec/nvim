@@ -34,8 +34,12 @@ vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
+-- Move when windows split
 vim.keymap.set('n', '<C-w>s', '<C-w>s<C-w>j')
 vim.keymap.set('n', '<C-w>v', '<C-w>v<C-w>l')
+
+-- Set the emacs alternative for moving through windows
+vim.keymap.set('n', '<Leader>w', '<C-w>')
 
 -- tab navigation
 vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew)
@@ -88,3 +92,4 @@ vim.keymap.set('n', '<leader>cw', function()
     vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
     print("Changed working directory 🗺️!")
 end)
+
