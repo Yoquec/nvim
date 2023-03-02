@@ -18,7 +18,7 @@ require("formatter").setup {
             require("formatter.filetypes.markdown").prettier
         },
         python = {
-            require("formatter.filetypes.python").yapf
+            require("formatter.filetypes.python").black
         },
         sh = {
             require("formatter.filetypes.sh").shfmt
