@@ -107,6 +107,12 @@ return require('packer').startup(function(use)
             end
         }
 
+        use {
+            "ggandor/flit.nvim",
+            requires = { { "ggandor/leap.nvim" } }
+        }
+
+
         use({
             'norcalli/nvim-colorizer.lua',
             config = function() require('colorizer').setup() end
