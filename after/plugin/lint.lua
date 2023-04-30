@@ -3,16 +3,6 @@ require('lint').linters_by_ft = {
   markdown = {'markdownlint',},
 }
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "python",
-    callback = function()
-        require("lint").try_lint()
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        require("lint").try_lint()
-    end,
-})
+vim.keymap.set('n', '<leader><leader>l',  function ()
+    require('lint').try_lint()
+end)
