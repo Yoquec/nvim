@@ -151,6 +151,12 @@ return require('packer').startup(function(use)
             }
         }
 
-        -- firenvim
-        -- use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+        use {
+            "folke/trouble.nvim",
+            requires = "nvim-tree/nvim-web-devicons",
+            config = function()
+                require("trouble").setup {}
+            end
+        }
+
     end)
