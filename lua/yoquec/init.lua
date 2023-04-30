@@ -182,19 +182,3 @@ vim.api.nvim_create_autocmd("User", {
     pattern = "GoyoLeave",
     callback = ExitGoyo,
 })
-
-
--- ~~~~~~~~~~~~~~~~~~~~
--- neovide
--- ~~~~~~~~~~~~~~~~~~~~
--- if vim.g.neovide then
---     -- set font and font size
---     local font_size = 11
---     vim.opt.guifont = "CaskaydiaCove NF:h" .. font_size
-
---     function ResizeFont(delta)
---         font_size = font_size + delta
---         vim.opt.guifont = 'CaskaydiaCove NF:h' .. font_sRenderSlidesDebug
---     vim.keymap.set("n", "<expr><D-=>", ResizeFont(1))
---     vim.keymap.set("n", "<expr><D-->", ResizeFont(-1))
--- end
