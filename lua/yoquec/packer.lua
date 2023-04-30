@@ -25,6 +25,9 @@ return require('packer').startup(function(use)
         use { 'nvim-tree/nvim-web-devicons' }
 
 
+        -- linter (for python) and lsp
+        use 'mfussenegger/nvim-lint'
+
         use {
             'vonheikemen/lsp-zero.nvim',
             requires = {
