@@ -21,23 +21,11 @@ require("formatter").setup {
             require("formatter.filetypes.markdown").prettier
         },
         python = {
-            require("formatter.filetypes.python").black
+            require("formatter.filetypes.python").black,
+            require("formatter.filetypes.python").isort
         },
         sh = {
             require("formatter.filetypes.sh").shfmt
-        },
-        kotlin = {
-            function()
-                return {
-                    exe = "ktlint",
-                    args = {
-                        "-l none",
-                        "-F",
-                        "--stdin"
-                    },
-                    stdin = true
-                }
-            end
         },
     }
 }
