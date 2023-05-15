@@ -20,6 +20,9 @@ require("formatter").setup {
         rmd = {
             require("formatter.filetypes.markdown").prettier
         },
+        Rmd = {
+            require("formatter.filetypes.markdown").prettier
+        },
         python = {
             require("formatter.filetypes.python").black,
             require("formatter.filetypes.python").isort
