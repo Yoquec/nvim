@@ -115,10 +115,11 @@ return require('packer').startup(function(use)
             end
         }
 
-        use {
-            "ggandor/flit.nvim",
-            requires = { { "ggandor/leap.nvim" } }
-        }
+        -- DEPRECATED IN FAVOR OF ; and , built in vim commands
+        -- use {
+        --     "ggandor/flit.nvim",
+        --     requires = { { "ggandor/leap.nvim" } }
+        -- }
 
 
         use({
