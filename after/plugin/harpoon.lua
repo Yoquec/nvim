@@ -2,7 +2,7 @@ local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
 -- harpoon remaps
-vim.keymap.set("n", "<C-a>", function ()
+vim.keymap.set("n", "<leader>a", function ()
    mark.add_file()
    print("👉 file added to harpoon")
 end)
