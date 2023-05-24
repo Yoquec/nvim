@@ -50,6 +50,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "<leader>K", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>J", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader><leader>p", vim.cmd.LspZeroFormat)
 
     -- Vim diagnostics
