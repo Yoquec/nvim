@@ -21,18 +21,24 @@ vim.keymap.set("n", "<leader>P", "\"+P")
 vim.keymap.set("v", "P", "\"_dP")
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- next greatest rema ever : asbjornHaland
+-- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- word replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- quickfix navigation
+vim.keymap.set("n", "<C-J>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-K>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz")
+
 -- Better window navigation
-vim.keymap.set('n', '<C-h>', '<C-w>h')
-vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
+-- vim.keymap.set('n', '<C-h>', '<C-w>h')
+-- vim.keymap.set('n', '<C-j>', '<C-w>j')
+-- vim.keymap.set('n', '<C-k>', '<C-w>k')
+-- vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- Move when windows split
 vim.keymap.set('n', '<C-w>s', '<C-w>s<C-w>j')
@@ -42,6 +48,8 @@ vim.keymap.set('n', '<C-w>v', '<C-w>v<C-w>l')
 vim.keymap.set('n', '<Leader>w', '<C-w>')
 
 -- tab navigation
+vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
+vim.keymap.set('n', '<C-w>', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew)
 vim.keymap.set('n', '<leader>mw', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
