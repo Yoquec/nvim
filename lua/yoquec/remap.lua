@@ -33,11 +33,14 @@ vim.keymap.set('n', '<C-w>s', '<C-w>s<C-w>j')
 vim.keymap.set('n', '<C-w>v', '<C-w>v<C-w>l')
 
 -- Set the emacs alternative for moving through windows
-vim.keymap.set('n', '<Leader>w', '<C-w>')
+vim.keymap.set('n', '<Leader>wl', '<cmd>wincmd l<CR>')
+vim.keymap.set('n', '<Leader>wh', '<cmd>wincmd h<CR>')
+vim.keymap.set('n', '<Leader>wj', '<cmd>wincmd j<CR>')
+vim.keymap.set('n', '<Leader>wk', '<cmd>wincmd k<CR>')
 
 -- tab navigation
-vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
-vim.keymap.set('n', '<C-w>', vim.cmd.tabc)
+-- vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
+-- vim.keymap.set('n', '<C-w>', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew)
 vim.keymap.set('n', '<leader>mw', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
