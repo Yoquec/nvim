@@ -1,4 +1,11 @@
 # My Own Neovim config (Now using Lua 🤯)
+
+<p align="center">
+   <a href="https://github.com/yoquec/nvim/stargazers"><img src="https://img.shields.io/github/stars/yoquec/nvim?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+  <a href="https://github.com/Yoquec/nvim/commits/main"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/yoquec/nvim?color=98c379&style=for-the-badge"></a>
+  <img alt="Neovim Version" src="https://img.shields.io/badge/NEOVIM-> v0.8.0-E5C07B?style=for-the-badge&logo=neovim">
+</p>
+
 This is my personal neovim config that I use in a day-to-day basis.
 The aim of this repo is to be able to take my config files wherever I want and maybe inspire others to build their own configs.
 
@@ -24,7 +31,7 @@ Restart neovim, and you will be good to go! 🎉
 
 
 ## Dependencies 🏗
-- neovim > 0.5
+- neovim > 0.8
 - [packer.nvim](https://github.com/wbthomason/packer.nvim)
 - a [patched font](https://nerdfonts.com)
 
