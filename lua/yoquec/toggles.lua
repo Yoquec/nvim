@@ -11,7 +11,6 @@ function ToggleBar()
         vim.opt.laststatus = 0
         vim.opt.showmode = true
     end
-
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~
@@ -25,7 +24,6 @@ function ToggleTabBar()
     else
         vim.opt.showtabline = 0
     end
-
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~
@@ -56,6 +54,11 @@ function ToggleLimelight()
         vim.cmd([[Limelight 0.4]])
         limelight_active = true
     end
+end
+
+function DeactivateLimelight()
+    vim.cmd([[Limelight!]])
+    limelight_active = false
 end
 
 -- set the keymaps
