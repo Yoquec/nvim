@@ -91,4 +91,3 @@ vim.keymap.set('n', '<leader>cw', function()
     vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
     print("Changed working directory 🗺️!")
 end)
-

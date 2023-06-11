@@ -43,7 +43,23 @@ function ToggleVirtualText()
     end
 end
 
+-- ~~~~~~~~~~~~~~~~~~~~
+-- virtual text
+-- ~~~~~~~~~~~~~~~~~~~~
+local limelight_active = false
+
+function ToggleLimelight()
+    if limelight_active then
+        vim.cmd([[Limelight!]])
+        limelight_active = false
+    else
+        vim.cmd([[Limelight 0.4]])
+        limelight_active = true
+    end
+end
+
 -- set the keymaps
 vim.keymap.set("n", "<leader>tb", ToggleBar)
 vim.keymap.set("n", "<leader>tt", ToggleTabBar)
 vim.keymap.set("n", "<leader>tv", ToggleVirtualText)
+vim.keymap.set('n', '<leader>tl', ToggleLimelight)

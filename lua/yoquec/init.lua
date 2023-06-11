@@ -107,14 +107,14 @@ end
 local function EnterGoyo()
     require('lualine').hide()
     vim.opt.wrap = true
-    vim.cmd([[Limelight 0.4]])
+    ToggleLimelight()
 end
 
 
 local function ExitGoyo()
     require('lualine').hide({ unhide = true })
     vim.opt.wrap = false
-    vim.cmd([[Limelight!]])
+    ToggleLimelight()
 end
 
 
