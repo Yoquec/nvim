@@ -7,7 +7,7 @@ local lualine = require('lualine')
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-    bg       = '#1d2021',
+    bg       = '#fffff00',
     fg       = '#d5c4a1',
     yellow   = '#fabd2f',
     cyan     = '#8ec07c',
@@ -44,7 +44,7 @@ local function getStateColor()
         ['!'] = colors.red,
         t = colors.violet,
     }
-    return { bg = mode_color[vim.fn.mode()], fg = colors.bg, gui = 'bold' }
+    return { fg = mode_color[vim.fn.mode()], bg = colors.bg, gui = 'bold' }
 end
 
 local backup_icons = {
