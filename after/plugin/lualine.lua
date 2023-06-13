@@ -17,7 +17,7 @@ local colors = {
     violet   = '#a9a1e1',
     magenta  = '#c678dd',
     blue     = '#51afef',
-    red      = '#ec5f67',
+    red      = '#e46876',
 }
 
 local function getStateColor()
@@ -65,7 +65,7 @@ local function getIcon()
     if ft == '' then
         return ""
     else
-        local icon, name = require("nvim-web-devicons").get_icon_by_filetype(ft)
+        local icon, _ = require("nvim-web-devicons").get_icon_by_filetype(ft)
         if icon then
             return icon
         else
@@ -145,15 +145,15 @@ end
 -- inactive components
 ins_left_inact {
     getIcon,
-    color = { fg = colors.bg, bg = colors.fg },
-    padding = { right = 1, left = 1 },
+    color = { fg = colors.fg, bg = colors.bg },
+    padding = { right = 1, left = 10 },
     cond = conditions.buffer_not_empty,
 }
 
 ins_left_inact {
     'filename',
     cond = conditions.buffer_not_empty,
-    color = { bg = colors.fg, fg = colors.bg, gui = 'bold' },
+    color = { fg = colors.fg, bg = colors.bg, gui = 'bold' },
     padding = { right = 1, left = 0 },
 }
 
@@ -169,7 +169,7 @@ ins_left {
 ins_left {
     getIcon,
     color = function()
-        local icon, color = require("nvim-web-devicons").get_icon_color_by_filetype(vim.api.nvim_eval("&filetype"))
+        local _, color = require("nvim-web-devicons").get_icon_color_by_filetype(vim.api.nvim_eval("&filetype"))
         if color == nil then
             color = colors.fg
         end
@@ -186,37 +186,27 @@ ins_left {
 }
 
 
-ins_left {
+-- Add components to right sections
+ins_right {
     'diagnostics',
     sources = { 'nvim_diagnostic' },
-    symbols = { error = ' ', warn = ' ', info = ' ' },
+    symbols = { error = '● ', warn = '● ', info = '● ' },
     diagnostics_color = {
-        color_error = { fg = colors.red },
-        color_warn = { fg = colors.yellow },
-        color_info = { fg = colors.cyan },
+        error = { fg = colors.red },
+        warn = { fg = colors.yellow },
+        info = { fg = colors.cyan },
     },
 }
 
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
--- ins_left {
---   function()
---     return '%='
---   end,
--- }
-
-
--- Add components to right sections
-
 ins_right {
     'branch',
-    icon = '',
-    color = { fg = colors.white, gui = 'bold' },
+    icon = '',
+    color = { fg = colors.fg, gui = 'bold' },
 }
 
 ins_right {
     'diff',
-    symbols = { added = ' ', modified = ' ', removed = ' ' },
+    symbols = { added = ' ', modified = '~ ', removed = '- ' },
     diff_color = {
         added = { fg = colors.green },
         modified = { fg = colors.orange },
