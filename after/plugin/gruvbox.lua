@@ -15,7 +15,7 @@ require("gruvbox").setup({
 	invert_signs = false,
 	invert_tabline = false,
 	invert_intend_guides = false,
-	inverse = true, -- invert background for search, diffs, statuslines and errors
+	inverse = false, -- invert background for search, diffs, statuslines and errors
 	contrast = "hard", -- can be "hard", "soft" or empty string
 	overrides = {},
 	dim_inactive = true,
@@ -23,10 +23,10 @@ require("gruvbox").setup({
 
 	-- colors override
 	palette_overrides = {
-		  dark0_hard = "#1d2021",
-		  dark0 = "#1d2021",
-		  dark0_soft = "#1d2021",
-		  dark1 = "#1d2021",
+		  dark0_hard = "#181616",
+		  dark0 = "#181616",
+		  dark0_soft = "#181616",
+		  dark1 = "#181616",
 		  dark2 = "#282828",
 		  dark3 = "#665c54",
 		  dark4 = "#7c6f64",
@@ -62,4 +62,9 @@ require("gruvbox").setup({
 	}
 })
 
-vim.cmd("colorscheme gruvbox")
+-- set the colorscheme
+vim.cmd.colorscheme("gruvbox")
+
+-- set transparency
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "Normalkloat", { bg = "none" })
