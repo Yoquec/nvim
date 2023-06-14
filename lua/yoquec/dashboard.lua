@@ -34,8 +34,8 @@ require("dashboard").setup {
                 key = "o",
                 keymap = "SPC f r",
                 icon_hl = 'DashboardShortcut',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
+                desc_hl = "GruvboxPurple",
+                key_hl = 'GruvboxRed',
             },
             {
                 icon = "🔎  ",
@@ -44,8 +44,8 @@ require("dashboard").setup {
                 key = "f",
                 keymap = "SPC f f",
                 icon_hl = 'Structure',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
+                desc_hl = "GruvboxPurple",
+                key_hl = 'GruvboxRed',
             },
             {
                 icon = "📂  ",
@@ -54,8 +54,8 @@ require("dashboard").setup {
                 key = "b",
                 keymap = "SPC v f",
                 icon_hl = 'type',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
+                desc_hl = "GruvboxPurple",
+                key_hl = 'GruvboxRed',
             },
             {
                 icon = "📚  ",
@@ -64,8 +64,8 @@ require("dashboard").setup {
                 key = "g",
                 keymap = "SPC g f",
                 icon_hl = 'keyword',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
+                desc_hl = "GruvboxPurple",
+                key_hl = 'GruvboxRed',
             },
             {
                 icon = "💬  ",
@@ -74,8 +74,8 @@ require("dashboard").setup {
                 key = "w",
                 keymap = "SPC f g",
                 icon_hl = 'Icon',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
+                desc_hl = "GruvboxPurple",
+                key_hl = 'GruvboxRed',
             },
         }
     }

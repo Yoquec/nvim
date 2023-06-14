@@ -1,4 +1,4 @@
-local bg = "#181616"
+local bg = "#041216"
 
 require("gruvbox").setup({
 	-- options
@@ -38,13 +38,13 @@ require("gruvbox").setup({
 		  light2 = "#d5c4a1",
 		  light3 = "#bdae93",
 		  light4 = "#a89984",
-		  bright_red = "#fb4934",
-		  bright_green = "#b8bb26",
-		  bright_yellow = "#fabd2f",
-		  bright_blue = "#83a598",
-		  bright_purple = "#d3869b",
-		  bright_aqua = "#8ec07c",
-		  bright_orange = "#fe8019",
+		  bright_red = "#e16876",
+		  bright_green = "#b8b622",
+		  bright_yellow = "#e6c381",
+		  bright_blue = "#7eb3c1",
+		  bright_purple = "#908aa5",
+		  bright_aqua = "#81a883",
+		  bright_orange = "#f7ba2f",
 		  neutral_red = "#cc241d",
 		  neutral_green = "#98971a",
 		  neutral_yellow = "#d79921",
