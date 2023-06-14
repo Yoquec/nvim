@@ -1,3 +1,4 @@
+local bg = "#181616"
 
 require("gruvbox").setup({
 	-- options
@@ -23,11 +24,11 @@ require("gruvbox").setup({
 
 	-- colors override
 	palette_overrides = {
-		  dark0_hard = "#181616",
-		  dark0 = "#181616",
-		  dark0_soft = "#181616",
-		  dark1 = "#181616",
-		  dark2 = "#1d2021",
+		  dark0_hard = bg,
+		  dark0 = bg,
+		  dark0_soft = bg,
+		  dark1 = bg,
+		  dark2 = bg,
 		  dark3 = "#665c54",
 		  dark4 = "#7c6f64",
 		  light0_hard = "#f9f5d7",
@@ -64,7 +65,3 @@ require("gruvbox").setup({
 
 -- set the colorscheme
 vim.cmd.colorscheme("gruvbox")
-
--- set transparency
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
