@@ -123,6 +123,11 @@ return require('packer').startup(function(use)
     --     "ggandor/flit.nvim",
     --     requires = { { "ggandor/leap.nvim" } }
     -- }
+
+    use {
+        "ray-x/lsp_signature.nvim",
+    }
+
     use { 'lewis6991/gitsigns.nvim' }
 
 
