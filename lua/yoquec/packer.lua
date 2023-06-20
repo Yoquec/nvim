@@ -85,8 +85,7 @@ return require('packer').startup(function(use)
     -- Plugins that I have for pure whim
     -- ------------------------------------
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        'nvim-lualine/lualine.nvim'
     }
 
 
