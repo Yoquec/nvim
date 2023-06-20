@@ -10,7 +10,9 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
 
-    use 'lewis6991/impatient.nvim'
+    -- As of Neovim 0.9, this plugin is no longer required. Instead run:
+    -- vim.loader.enable()
+    -- use 'lewis6991/impatient.nvim'
 
 
     use {
@@ -111,7 +113,7 @@ return require('packer').startup(function(use)
 
     use {
         'phaazon/hop.nvim',
-        branch = 'v2',     -- optional but strongly recommended
+        branch = 'v2', -- optional but strongly recommended
         config = function()
             -- you can configure hop the way you like here; see :h hop-config
             require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
@@ -139,6 +141,9 @@ return require('packer').startup(function(use)
 
     use {
         'glepnir/dashboard-nvim',
+        config = function ()
+            require("yoquec.dashboard")
+        end,
         event = 'VimEnter',
     }
 
@@ -156,7 +161,7 @@ return require('packer').startup(function(use)
         branch = "v2.x",
         requires = {
             "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",     -- not strictly required, but recommended
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
         }
     }
