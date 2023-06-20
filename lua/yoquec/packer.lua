@@ -109,22 +109,6 @@ return require('packer').startup(function(use)
         requires = { { 'junegunn/limelight.vim' } },
     }
 
-
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v2', -- optional but strongly recommended
-        config = function()
-            -- you can configure hop the way you like here; see :h hop-config
-            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-        end
-    }
-
-    -- DEPRECATED IN FAVOR OF ; and , built in vim commands
-    -- use {
-    --     "ggandor/flit.nvim",
-    --     requires = { { "ggandor/leap.nvim" } }
-    -- }
-
     use {
         "ray-x/lsp_signature.nvim",
     }
