@@ -2,7 +2,7 @@
 vim.opt.termguicolors = true
 
 -- set fat cursor always
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 
 -- case insensitive search
 vim.opt.ignorecase = true
