@@ -27,6 +27,9 @@ require("formatter").setup {
             require("formatter.filetypes.python").black,
             require("formatter.filetypes.python").isort
         },
+        sql = {
+            require("formatter.filetypes.sql").pgformat
+        },
         sh = {
             require("formatter.filetypes.sh").shfmt
         },
