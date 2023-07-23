@@ -109,9 +109,10 @@ return require('packer').startup(function(use)
         requires = { { 'junegunn/limelight.vim' } },
     }
 
-    use {
-        "ray-x/lsp_signature.nvim",
-    }
+    -- Removed due to buggy behaviour
+    -- use {
+    --     "ray-x/lsp_signature.nvim",
+    -- }
 
     use { 'lewis6991/gitsigns.nvim' }
 
