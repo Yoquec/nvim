@@ -10,32 +10,11 @@ snippet pandocslides "Metadata for making slides in pandoc using beamer"
     	\usepackage{twemojis}
 	---
 
-
-snippet bold "Create bold text"
-	**${1:}**
-
-
-snippet code "Create inline code"
-	\`${1:}\`
-
-
-snippet codeblock "Create a code block"
-	\`\`\`${1:lang}
-	${2:code}
-	\`\`\`
-
-
 snippet f "Create an inline equation"
-	\$${1:}\$
-
-
+	\$${1:}\$ $0
 snippet ff "Create a block equation"
-	\$\$${1:}\$\$
-
-
+	\$\$${1:}\$\$ $0
 snippet emoji "Insert a twemoji"
-	\twemoji{${1:emoji-name}}
-
-
+	\twemoji{${1:emoji-name}} $0
 snippet femoji "Insert a twemoji inside an inline block"
-	$\twemoji{${1:emoji-name}}$
+	$\twemoji{${1:emoji-name}}$ $0
