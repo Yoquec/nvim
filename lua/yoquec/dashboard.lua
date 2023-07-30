@@ -28,7 +28,7 @@ require("dashboard").setup {
         },
         center = {
             {
-                icon = "  ",
+                icon = "⏰  ",
                 desc = "Find recent files",
                 action = "Telescope oldfiles",
                 key = "o",
@@ -38,7 +38,7 @@ require("dashboard").setup {
                 key_hl = 'type',
             },
             {
-                icon = "  ",
+                icon = "🔎  ",
                 desc = "Find files",
                 action = "Telescope find_files find_command=rg,--hidden,--files",
                 key = "f",
@@ -58,7 +58,7 @@ require("dashboard").setup {
                 key_hl = 'type',
             },
             {
-                icon = "  ",
+                icon = "󰊢  ",
                 desc = "Find Git files",
                 action = "Telescope git_files",
                 key = "g",
