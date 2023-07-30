@@ -85,8 +85,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "<leader>va", vim.lsp.buf.code_action, opts)
 
-    -- vim signature
-    require'lsp_signature'.on_attach(cfg, bufnr)
 end)
 
 vim.diagnostic.config({
