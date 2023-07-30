@@ -1,4 +1,6 @@
 local lsp = require('lsp-zero')
+local luasnip = require('luasnip')
+
 lsp.preset('recommended')
 
 -- Fix Undefined global 'vim'
@@ -18,13 +20,28 @@ lsp.ensure_installed({
 
 
 local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_select = { behavior = cmp.SelectBehavior.Replace }
 local cmp_mappings = lsp.defaults.cmp_mappings({
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
         ['<cr>'] = cmp.mapping.confirm({ select = true }),
-        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
+
+        ['<Tab>'] = cmp.mapping(function (fallback)
+            if luasnip.jumpable(1) then
+                luasnip.jump(1)
+            else
+                fallback()
+            end
+        end, {'i', 's'}),
+
+        ['<S-Tab>'] = cmp.mapping(function (fallback)
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, {'i', 's'})
     })
 
 
@@ -78,13 +95,3 @@ vim.diagnostic.config({
 
 -- setup the lsp
 lsp.setup()
-
--- enable the supertab
-local cmp_action = require('lsp-zero').cmp_action()
-cmp.setup({
-  mapping = {
-    ['<Tab>'] = cmp_action.luasnip_supertab(),
-    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-  }
-})
-
