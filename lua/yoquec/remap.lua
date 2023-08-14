@@ -5,6 +5,8 @@ vim.keymap.set("n", "<C-s>", vim.cmd.w)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "H", "<gv")
+vim.keymap.set("v", "L", ">gv")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -39,8 +41,6 @@ vim.keymap.set('n', '<Leader>wj', '<cmd>wincmd j<CR>')
 vim.keymap.set('n', '<Leader>wk', '<cmd>wincmd k<CR>')
 
 -- tab navigation
--- vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
--- vim.keymap.set('n', '<C-w>', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew)
 vim.keymap.set('n', '<leader>mw', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
@@ -91,3 +91,11 @@ vim.keymap.set('n', '<leader>cw', function()
     vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
     print("Changed working directory 🗺️!")
 end)
+
+-- clean diagnostics
+vim.keymap.set('n', '<leader>cd', function()
+    vim.diagnostics.reset()
+end)
+
+-- clear hightlight search
+vim.keymap.set('n', '<CR>', vim.cmd.noh)
