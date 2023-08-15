@@ -65,11 +65,6 @@ vim.keymap.set('n', '<M-k>', ':resize +2<CR>')
 vim.keymap.set('n', '<M-h>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<M-l>', ':vertical resize +2<CR>')
 
--- TAB in general mode will move to text buffer
-vim.keymap.set('n', '<TAB>', ':bnext<CR>')
--- SHIFT-TAB will go back
-vim.keymap.set('n', '<S-TAB>', ':bprevious<CR>')
-
 -- neovim terminal can exit to normal mode with <esc> now
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 
