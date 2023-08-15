@@ -98,10 +98,7 @@ return require('packer').startup(function(use)
     use { 'nvim-treesitter/playground' }
 
 
-    use {
-        'junegunn/goyo.vim',
-        requires = { { 'junegunn/limelight.vim' } },
-    }
+    use { 'junegunn/goyo.vim' }
 
     use { 'lewis6991/gitsigns.nvim' }
 
