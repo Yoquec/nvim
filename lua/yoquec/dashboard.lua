@@ -48,7 +48,7 @@ require("dashboard").setup {
                 key_hl = 'type',
             },
             {
-                icon = "  ",
+                icon = "📂  ",
                 desc = "File browser",
                 action = "Telescope file_browser",
                 key = "b";
@@ -58,7 +58,7 @@ require("dashboard").setup {
                 key_hl = 'type',
             },
             {
-                icon = "󰊢  ",
+                icon = "📚  ",
                 desc = "Find Git files",
                 action = "Telescope git_files",
                 key = "g",
@@ -68,7 +68,7 @@ require("dashboard").setup {
                 key_hl = 'type',
             },
             {
-                icon = "💬 ",
+                icon = "💬  ",
                 desc = "Find word",
                 action = "Telescope live_grep",
                 key = "w",
