@@ -1,4 +1,5 @@
 local fb_actions = require("telescope").extensions.file_browser.actions
+local telescope_actions = require("telescope.actions")
 
 require("telescope").setup {
     extensions = {
@@ -6,7 +7,10 @@ require("telescope").setup {
             theme = "ivy",
             mappings = {
                 ["n"] = {
-                    ['%'] = fb_actions.create
+                    ['%'] = fb_actions.create,
+                    D = fb_actions.remove,
+                    ['<C-n>'] = telescope_actions.move_selection_next,
+                    ['<C-p>'] = telescope_actions.move_selection_previous,
                 },
             },
             path = "%:p:h",
