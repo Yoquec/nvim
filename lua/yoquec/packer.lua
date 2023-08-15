@@ -9,17 +9,10 @@ return require('packer').startup(function(use)
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
-
-    -- As of Neovim 0.9, this plugin is no longer required. Instead run:
-    -- vim.loader.enable()
-    -- use 'lewis6991/impatient.nvim'
-
-
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-
 
     use { "nvim-telescope/telescope-file-browser.nvim" }
 
@@ -88,6 +81,7 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim'
     }
 
+    use { 'vimwiki/vimwiki' }
 
     use({
         'ellisonleao/gruvbox.nvim',
@@ -109,11 +103,6 @@ return require('packer').startup(function(use)
         requires = { { 'junegunn/limelight.vim' } },
     }
 
-    -- Removed due to buggy behaviour
-    -- use {
-    --     "ray-x/lsp_signature.nvim",
-    -- }
-
     use { 'lewis6991/gitsigns.nvim' }
 
 
@@ -125,7 +114,7 @@ return require('packer').startup(function(use)
 
     use {
         'glepnir/dashboard-nvim',
-        config = function ()
+        config = function()
             require("yoquec.dashboard")
         end,
         event = 'VimEnter',
