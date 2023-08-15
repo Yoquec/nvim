@@ -180,8 +180,18 @@ vim.api.nvim_create_autocmd("User", {
     callback = ExitGoyo,
 })
 
+
 -- ~~~~~~~~~~~~~~~~~~~~
 -- vimwiki setup
 -- ~~~~~~~~~~~~~~~~~~~~
 vim.cmd("let g:vimwiki_list = [{'path': '~/Nextcloud/Personal/wiki', 'syntax': 'markdown', 'ext': '.wiki'}]")
 vim.cmd("let g:vimwiki_global_ext = 0")
+
+-- Disable render html mappings to move between panes with <leader>w*
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "vimwiki",
+  callback = function ()
+    vim.cmd("nunmap <buffer> <leader>wh")
+    vim.cmd("nunmap <buffer> <leader>whh")
+  end
+})
