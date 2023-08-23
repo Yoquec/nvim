@@ -94,3 +94,9 @@ end)
 
 -- clear hightlight search
 vim.keymap.set('n', '<CR>', vim.cmd.noh)
+
+-- Alternative to vim wiki enter wiki
+vim.keymap.set('n', '<leader>ww', function ()
+    vim.cmd.e("$WIKI_HOME/index.md")
+    vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
+end)

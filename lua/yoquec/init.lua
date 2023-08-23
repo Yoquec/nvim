@@ -163,6 +163,23 @@ vim.api.nvim_create_autocmd("FileType", {
         -- Open the zathura document viewer for the rendered file
         vim.keymap.set('n', '<Leader>op',
             OpenPDF, { buffer = args.buf })
+
+        -- Move through links such as in vimwiki
+        vim.keymap.set('n', '<Tab>', function ()
+            enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+            vim.api.nvim_feedkeys("/\\[.*\\](.*)" .. enter, 'm', false)
+            vim.api.nvim_feedkeys(":noh" .. enter, 'm', false)
+        end, { buffer = args.buf })
+
+        vim.keymap.set('n', '<S-Tab>', function ()
+            enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+            vim.api.nvim_feedkeys("?\\[.*\\](.*)" .. enter, 'm', false)
+            vim.api.nvim_feedkeys(":noh" .. enter, 'm', false)
+        end, { buffer = args.buf })
+
+        -- Enter links vimwiki style
+        vim.keymap.set('n', '<Enter>',
+            'vibgf', { buffer = args.buf })
     end
 })
 
