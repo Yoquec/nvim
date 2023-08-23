@@ -81,8 +81,6 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim'
     }
 
-    use { 'vimwiki/vimwiki' }
-
     use({
         'ellisonleao/gruvbox.nvim',
         as = 'gruvbox',
