@@ -42,7 +42,7 @@ require("dashboard").setup {
                 desc = "Find files",
                 action = "Telescope find_files find_command=rg,--hidden,--files",
                 key = "f",
-                keymap = "SPC f f ",
+                keymap = "SPC f f",
                 icon_hl = 'Structure',
                 desc_hl = "GruvboxBlue",
                 key_hl = 'type',
@@ -51,7 +51,7 @@ require("dashboard").setup {
                 icon = "📂  ",
                 desc = "File browser",
                 action = "Telescope file_browser",
-                key = "b";
+                key = "b",
                 keymap = "SPC v f",
                 icon_hl = 'type',
                 desc_hl = "GruvboxBlue",
@@ -77,12 +77,6 @@ require("dashboard").setup {
                 desc_hl = "GruvboxBlue",
                 key_hl = 'type',
             },
-        },
-        footer = {"",
-        "",
-        " 👑 Veni, vidi, vici ",
+        }
     }
-
-  }
 }
-
