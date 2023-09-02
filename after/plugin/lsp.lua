@@ -59,12 +59,14 @@ lsp.on_attach(function(client, bufnr)
 
     -- Cool lsp stuff
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader><leader>p", vim.cmd.LspZeroFormat)
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set("n", "<leader>vr", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<leader>vs", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "<leader>va", vim.lsp.buf.code_action, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
 
@@ -72,8 +74,13 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>K", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>J", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-    vim.keymap.set("n", "<leader>va", vim.lsp.buf.code_action, opts)
 end)
+
+-- set up emmet inside markdown
+require('lspconfig').emmet_language_server.setup({
+    filetypes = { "astro", "markdown", "css", "eruby", "html", "javascriptreact", "less", "sass", "scss",
+        "svelte", "pug", "typescriptreact", "vue" },
+})
 
 vim.diagnostic.config({
     virtual_text = true,
