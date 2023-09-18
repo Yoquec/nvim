@@ -206,6 +206,13 @@ vim.api.nvim_create_autocmd("FileType", {
         -- Enter links vimwiki style
         vim.keymap.set('n', '<Enter>',
             'vibgf', { buffer = args.buf })
+
+        -- Enter weekly notepad
+        vim.keymap.set('n', '<leader>wg', function()
+            local filename = vim.api.nvim_command_output("!goprod")
+            filename = string.sub(filename, 12, string.len(filename) - 1)
+            vim.cmd.e(filename)
+        end, { buffer = args.buf })
     end
 })
 
