@@ -165,13 +165,13 @@ vim.api.nvim_create_autocmd("FileType", {
             OpenPDF, { buffer = args.buf })
 
         -- Move through links such as in vimwiki
-        vim.keymap.set('n', '<Tab>', function ()
+        vim.keymap.set('n', '<Tab>', function()
             enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
             vim.api.nvim_feedkeys("/\\[.*\\](.*)" .. enter, 'm', false)
             vim.api.nvim_feedkeys(":noh" .. enter, 'm', false)
         end, { buffer = args.buf })
 
-        vim.keymap.set('n', '<S-Tab>', function ()
+        vim.keymap.set('n', '<S-Tab>', function()
             enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
             vim.api.nvim_feedkeys("?\\[.*\\](.*)" .. enter, 'm', false)
             vim.api.nvim_feedkeys(":noh" .. enter, 'm', false)
@@ -180,6 +180,13 @@ vim.api.nvim_create_autocmd("FileType", {
         -- Enter links vimwiki style
         vim.keymap.set('n', '<Enter>',
             'vibgf', { buffer = args.buf })
+
+        -- Enter weekly notepad
+        vim.keymap.set('n', '<leader>wg', function()
+            local filename = vim.api.nvim_command_output("!goprod")
+            filename = string.sub(filename, 12, string.len(filename) - 1)
+            vim.cmd.e(filename)
+        end, { buffer = args.buf })
     end
 })
 
