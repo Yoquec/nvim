@@ -55,7 +55,25 @@ lsp_zero.set_sign_icons({
 })
 
 require('lspconfig').ltex.setup({
-    filetypes = { 'rmd', 'bib', 'gitcommit', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex', 'pandoc' },
+    filetypes = { 'rmd', 'rmarkdown', 'bib', 'gitcommit', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex', 'pandoc' },
+    get_language_id = function(_, filetype)
+        local language_id_mapping = {
+            bib = 'bibtex',
+            plaintex = 'tex',
+            rnoweb = 'sweave',
+            rst = 'restructuredtext',
+            tex = 'latex',
+            xhtml = 'xhtml',
+            pandoc = 'markdown',
+            rmd = "rmarkdown"
+        }
+        local language_id = language_id_mapping[filetype]
+        if language_id then
+            return language_id
+        else
+            return filetype
+        end
+    end,
 })
 
 vim.diagnostic.config({
