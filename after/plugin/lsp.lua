@@ -54,6 +54,10 @@ lsp_zero.set_sign_icons({
     info = '●',
 })
 
+require('lspconfig').ltex.setup({
+    filetypes = { 'rmd', 'bib', 'gitcommit', 'markdown', 'org', 'plaintex', 'rst', 'rnoweb', 'tex', 'pandoc' },
+})
+
 vim.diagnostic.config({
     virtual_text = true
 })

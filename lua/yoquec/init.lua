@@ -135,6 +135,12 @@ vim.api.nvim_create_autocmd("FileType", {
         -- open the rendered document with zathura
         vim.keymap.set('n', '<Leader>op',
             OpenPDF, { buffer = args.buf })
+
+        -- Format the documet with prettier 
+        vim.keymap.set('n', '<Leader><leader>P', function ()
+            local filename = vim.fn.expand("%")
+            vim.api.nvim_command([[!prettier "]] .. filename .. [[" --parser markdown --write]])
+        end, { buffer = args.buf })
     end
 })
 
