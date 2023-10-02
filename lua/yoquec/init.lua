@@ -49,11 +49,24 @@ local function RenderMd()
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
 
     vim.fn.jobstart(
-        [[bash -c 'pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -o "]] .. output_fullfilename .. [["']],
+        [[bash -c 'documenter "]] .. fullfilename .. [[" "]] .. output_fullfilename .. [["']],
         { on_exit = RenderRmd_onExit }
     )
 
     print([[Creating pdf document ]] .. icon .. [[...]])
+end
+
+local function RenderMdPandoc()
+    local fullfilename = vim.fn.expand("%:p")
+    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
+    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
+
+    vim.fn.jobstart(
+        [[bash -c 'pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -o "]] .. output_fullfilename .. [["']],
+        { on_exit = RenderRmd_onExit }
+    )
+
+    print([[Creating pdf document with Pandoc ]] .. icon .. [[...]])
 end
 
 
@@ -62,6 +75,17 @@ local function RenderMdDebug()
     local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
     print([[Creating pdf document (debug mode) ]] .. icon .. [[...]])
+
+    vim.cmd(
+        [[!documenter "]] .. fullfilename .. [[" "]] .. output_fullfilename .. [["]]
+    )
+end
+
+local function RenderMdPandocDebug()
+    local fullfilename = vim.fn.expand("%:p")
+    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
+    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
+    print([[Creating pdf document with Pandoc (debug mode) ]] .. icon .. [[...]])
 
     vim.cmd(
         [[!pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -o "]] .. output_fullfilename .. [["]]
@@ -148,9 +172,15 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set('n', '<Leader>rm',
             RenderMd, { buffer = args.buf })
 
+        vim.keymap.set('n', '<Leader><Leader>rm',
+            RenderMdPandoc, { buffer = args.buf })
+
         -- Render md documents (debug mode)
         vim.keymap.set('n', '<Leader>rd',
             RenderMdDebug, { buffer = args.buf })
+
+        vim.keymap.set('n', '<Leader><Leader>rd',
+            RenderMdPandocDebug, { buffer = args.buf })
 
         -- Async create slides with beamer
         vim.keymap.set('n', '<Leader>rs',
