@@ -20,7 +20,6 @@ return require('packer').startup(function(use)
 
     use { 'nvim-tree/nvim-web-devicons' }
 
-
     -- linter (for python) and lsp
     use 'mfussenegger/nvim-lint'
 
@@ -49,7 +48,6 @@ return require('packer').startup(function(use)
         }
     }
 
-
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
@@ -59,19 +57,15 @@ return require('packer').startup(function(use)
 
     use { 'nvim-treesitter/nvim-treesitter-context' }
 
-
     use { "karoliskoncevicius/vim-sendtowindow",
         ft = { "python", "r", "rmd" }
     }
-
 
     use { "jalvesaq/Nvim-R",
         ft = { "r" }
     }
 
-
     use('mbbill/undotree')
-
 
     use { 'tpope/vim-commentary' }
 
@@ -86,26 +80,21 @@ return require('packer').startup(function(use)
         as = 'gruvbox',
     })
 
-
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
 
-
     use { 'nvim-treesitter/playground' }
-
 
     use { 'junegunn/goyo.vim' }
 
     use { 'lewis6991/gitsigns.nvim' }
 
-
     use({
         'norcalli/nvim-colorizer.lua',
         config = function() require('colorizer').setup() end
     })
-
 
     use {
         'glepnir/dashboard-nvim',
@@ -115,23 +104,11 @@ return require('packer').startup(function(use)
         event = 'VimEnter',
     }
 
-
     use { 'tpope/vim-surround' }
-
 
     use {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
-    }
-
-    use {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-        }
     }
 
     use {
