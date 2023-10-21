@@ -22,6 +22,10 @@ require("formatter").setup {
         },
         markdown = {
             require("formatter.filetypes.markdown").prettier
+
+        },
+        rust = {
+            require("formatter.filetypes.rust").rustfmt
         },
         rmd = {
             require("formatter.filetypes.markdown").prettier
