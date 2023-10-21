@@ -1,6 +1,7 @@
 local fb_actions = require("telescope").extensions.file_browser.actions
 local telescope_actions = require("telescope.actions")
 
+-- Set up telescope file viewer
 require("telescope").setup {
     extensions = {
         file_browser = {
