@@ -4,7 +4,7 @@ local luasnip = require('luasnip')
 
 lsp.preset('recommended')
 
-lsp.setup_servers({'tsserver', 'rust_analyzer', 'pyright'})
+lsp.setup_servers({'rust_analyzer', 'pyright'})
 
 local cmp_select = { behavior = cmp.SelectBehavior.Replace }
 local cmp_mappings = lsp.defaults.cmp_mappings({
