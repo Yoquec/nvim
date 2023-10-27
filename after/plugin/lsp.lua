@@ -4,10 +4,7 @@ local luasnip = require('luasnip')
 
 lsp.preset('recommended')
 
-lsp.ensure_installed({
-    'rust_analyzer', 'pyright'
-})
-
+lsp.setup_servers({'tsserver', 'rust_analyzer', 'pyright'})
 
 local cmp_select = { behavior = cmp.SelectBehavior.Replace }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -33,7 +30,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     end, { 'i', 's' })
 })
 
-lsp.setup_nvim_cmp({
+lsp.setup({
     -- Don't select the first option in the menu
     -- https://stackoverflow.com/questions/74688630/make-nvim-cmp-not-autoselect-the-1st-option
     preselect = 'none',
