@@ -20,11 +20,13 @@ return require('packer').startup(function(use)
 
     use { 'nvim-tree/nvim-web-devicons' }
 
-    -- linter (for python) and lsp
-    use 'mfussenegger/nvim-lint'
+    use { 'mfussenegger/nvim-lint' }
+
+    use { 'mhartington/formatter.nvim' }
 
     use {
         'vonheikemen/lsp-zero.nvim',
+        branch = "v3.x",
         requires = {
             -- lsp support
             { 'neovim/nvim-lspconfig' },
@@ -33,18 +35,15 @@ return require('packer').startup(function(use)
 
             -- autocompletion
             { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
             { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
 
             -- snippets
             { 'l3mon4d3/luasnip' },
             { 'rafamadriz/friendly-snippets' },
-
-            -- format
-            { 'mhartington/formatter.nvim' },
         }
     }
 
