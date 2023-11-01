@@ -17,12 +17,14 @@ require("formatter").setup {
         html = {
             require("formatter.filetypes.html").prettier
         },
+        htmldjango = {
+            require("formatter.filetypes.html").prettier
+        },
         css = {
             require("formatter.filetypes.css").prettier
         },
         markdown = {
             require("formatter.filetypes.markdown").prettier
-
         },
         rust = {
             require("formatter.filetypes.rust").rustfmt
