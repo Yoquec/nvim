@@ -84,6 +84,8 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
 
+    use { "tpope/vim-repeat" }
+
     use { 'nvim-treesitter/playground' }
 
     use { 'junegunn/goyo.vim' }
