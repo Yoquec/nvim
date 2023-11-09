@@ -3,21 +3,21 @@
 -- modified by Yoquec
 -- Credit: glepnir
 local lualine = require('lualine')
+local k_colors = require("kanagawa.colors").setup()
 
 -- Color table for highlights
--- stylua: ignore
 local colors = {
-    bg       = '#fffff00',
-    fg       = '#d5c4a1',
-    yellow   = '#fabd2f',
-    cyan     = '#8ec07c',
-    darkblue = '#008080',
-    green    = '#b8bb26',
-    orange   = '#FF8800',
-    violet   = '#a9a1e1',
-    magenta  = '#c678dd',
-    blue     = '#51afef',
-    red      = '#e46876',
+    bg       = k_colors.theme.bg,
+    fg       = k_colors.palette.oldWhite,
+    yellow   = k_colors.palette.carpYellow,
+    cyan     = k_colors.palette.lotusCyan,
+    darkblue = k_colors.palette.lotusBlue3,
+    green    = k_colors.palette.springGreen,
+    orange   = k_colors.palette.dragonOrange,
+    violet   = k_colors.palette.oniViolet,
+    magenta  = k_colors.palette.lotusViolet2,
+    blue     =  k_colors.palette.dragonAqua,
+    red      = k_colors.palette.dragonRed,
 }
 
 local function getStateColor()

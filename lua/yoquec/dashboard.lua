@@ -1,3 +1,5 @@
+local k_colors = require("kanagawa.colors").setup()
+
 require("dashboard").setup {
     theme = 'doom',
     config = {
@@ -33,9 +35,6 @@ require("dashboard").setup {
                 action = "Telescope oldfiles",
                 key = "o",
                 keymap = "SPC f r",
-                icon_hl = 'DashboardShortcut',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
             },
             {
                 icon = "🔎  ",
@@ -43,9 +42,6 @@ require("dashboard").setup {
                 action = "Telescope find_files find_command=rg,--hidden,--files",
                 key = "f",
                 keymap = "SPC f f",
-                icon_hl = 'Structure',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
             },
             {
                 icon = "📂  ",
@@ -53,9 +49,6 @@ require("dashboard").setup {
                 action = "Telescope file_browser",
                 key = "b",
                 keymap = "SPC v f",
-                icon_hl = 'type',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
             },
             {
                 icon = "📚  ",
@@ -63,9 +56,6 @@ require("dashboard").setup {
                 action = "Telescope git_files",
                 key = "g",
                 keymap = "SPC g f",
-                icon_hl = 'keyword',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
             },
             {
                 icon = "💬  ",
@@ -73,10 +63,14 @@ require("dashboard").setup {
                 action = "Telescope live_grep",
                 key = "w",
                 keymap = "SPC f g",
-                icon_hl = 'Icon',
-                desc_hl = "GruvboxBlue",
-                key_hl = 'type',
             },
         }
     }
 }
+
+-- Change dashboard highlight groups
+vim.api.nvim_set_hl(0, "DashboardHeader", {fg = k_colors.palette.dragonGreen})
+vim.api.nvim_set_hl(0, "DashboardDesc", {fg = k_colors.palette.dragonViolet})
+vim.api.nvim_set_hl(0, "DashboardShortCut", {fg = k_colors.palette.dragonYellow})
+vim.api.nvim_set_hl(0, "DashboardKey", {fg = k_colors.palette.dragonRed})
+

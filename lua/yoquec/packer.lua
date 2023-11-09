@@ -41,11 +41,16 @@ return require('packer').startup(function(use)
             { 'hrsh7th/cmp-path' },
             { 'saadparwaiz1/cmp_luasnip' },
 
-            -- snippets
-            { 'l3mon4d3/luasnip' },
-            { 'rafamadriz/friendly-snippets' },
         }
     }
+
+    use({
+        "L3MON4D3/LuaSnip",
+        tag = "v2.*",
+        requires = {
+            "rafamadriz/friendly-snippets",
+        },
+    })
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -74,10 +79,7 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim'
     }
 
-    use({
-        'ellisonleao/gruvbox.nvim',
-        as = 'gruvbox',
-    })
+    use "rebelot/kanagawa.nvim"
 
     use {
         "windwp/nvim-autopairs",
