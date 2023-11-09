@@ -1,0 +1,126 @@
+snippet fpydoc "Documentation template for a Python function"
+    def ${1:func}(${2:arg}: ${3:type}) -> ${4:return_type}:
+       """${5:Short description of the function}
+
+        ${6:Long description of the function}
+
+        Args:
+            ${2:param}: ${7:Parameter description}
+
+        Returns:
+            ${8:Return description}
+
+        Raises:
+            ${9:Exception}: ${10: Exception description}
+        """
+
+		$0
+snippet mpydoc "Documentation template for a Python class method"
+    def ${1:method}(self, ${2:arg}: ${3:type}) -> ${4:return_type}:
+       """${5:Short description of the function}
+
+        ${6:Long description of the function}
+
+        Args:
+            ${2:param}: ${7:Parameter description}
+
+        Returns:
+            ${8:Return description}
+
+        Raises:
+            ${9:Exception}: ${10: Exception description}
+        """
+
+		$0
+snippet cpydoc "Documentation template for a Python class"
+    class ${1:ClassName}(object):
+        """${2:Short description of the class}
+
+        ${3:...}
+
+        Attributes:
+            ${4:param}: ${5:Parameter description}
+        """
+
+        def __init__(self, ${6:param}: ${7:type}) -> None:
+            """${8:Constructor description}
+
+            Args
+                ${9:param}:
+				    ${10:Parameters description}
+            """
+
+            $0
+snippet fpydocnp "Documentation template for a Python function (numpy style)"
+    def ${1:func}(${2:arg}: ${3:type}) -> ${4:type}:
+        """${5:Short description of the function}
+
+        ${6:Long description of the function}
+
+        Parameters
+        ----------
+        ${2:param} : ${3:type}
+            ${7:Parameter description}
+
+        Returns
+        -------
+        ${4:return_type}
+            ${8:Return description}
+        	
+        Raises
+        ------
+        ${10:Exception}
+            ${11:Exception description}
+        """
+
+        $0
+snippet mpydocnp "Documentation template for a Python class method (numpy style)"
+    def ${1:method}(self, ${2:arg}: ${3:type}) -> ${4:type}:
+        """${5:Short description of the function}
+
+        ${6:Long description of the function}
+
+        Parameters
+        ----------
+        ${2:param} : ${3:type}
+            ${7:Parameter description}
+
+        Returns
+        -------
+        ${4:return_type}
+            ${8:Return description}
+        	
+        Raises
+        ------
+        ${10:Exception}
+            ${11:Exception description}
+        """
+
+        $0
+snippet cpydocnp "Documentation template for a Python class (numpy style)"
+    class ${1:ClassName}(object):
+        """${2:Short description of the class}
+
+        ${3:...}
+
+        Parameters
+        ----------
+        ${4:param} : ${5:param_type}
+        	${6:Parameter description}
+
+        Methods
+        -------
+        ${7:method}(${8:method_arg}: ${9:type}): ${10:return_type}
+        	${11:Method description}
+
+        """
+
+        def __init__(self, ${12:param}: ${13:type}) -> None:
+            """
+            Parameters
+            ----------
+            ${12:param} : ${13:type}
+            	${14:Parameters description}
+            """
+
+            $0
