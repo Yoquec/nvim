@@ -1,3 +1,5 @@
+local k_colors = require("kanagawa.colors").setup({theme="lotus"})
+
 require("kanagawa").setup({
     transparent = true,
     terminalColors = true,
@@ -5,7 +7,9 @@ require("kanagawa").setup({
         theme = {
             all = {
                 ui = {
-                    bg_gutter = "none"
+                    bg_gutter = "none",
+                    bg_visual = k_colors.palette.springViolet2,
+                    nontext = k_colors.palette.lotusViolet3
                 }
             }
         }
