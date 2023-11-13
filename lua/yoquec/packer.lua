@@ -79,7 +79,7 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim'
     }
 
-    use "rebelot/kanagawa.nvim"
+    use "ellisonleao/gruvbox.nvim"
 
     use {
         "windwp/nvim-autopairs",

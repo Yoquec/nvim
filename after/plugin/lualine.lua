@@ -3,22 +3,25 @@
 -- modified by Yoquec
 -- Credit: glepnir
 local lualine = require('lualine')
-local k_colors = require("kanagawa.colors").setup()
+local palette = require('yoquec.colors').get_base_colors()
 
 -- Color table for highlights
 local colors = {
-    bg       = k_colors.theme.bg,
-    fg       = k_colors.palette.oldWhite,
-    yellow   = k_colors.palette.carpYellow,
-    cyan     = k_colors.palette.lotusCyan,
-    darkblue = k_colors.palette.lotusBlue3,
-    green    = k_colors.palette.springGreen,
-    orange   = k_colors.palette.dragonOrange,
-    violet   = k_colors.palette.oniViolet,
-    magenta  = k_colors.palette.lotusViolet2,
-    blue     =  k_colors.palette.dragonAqua,
-    red      = k_colors.palette.dragonRed,
+    bg       = palette.bg,
+    fg       = palette.fg1,
+    black    = palette.bg1,
+    yellow   = palette.yellow,
+    cyan     = palette.neutral_aqua,
+    darkblue = palette.neutral_blue,
+    green    = palette.green,
+    orange   = palette.orange,
+    violet   = palette.purple,
+    magenta  = palette.neutral_purple,
+    blue     = palette.blue,
+    red      = palette.red,
+    accent   = palette.accent
 }
+
 
 local function getStateColor()
     -- auto change color according to neovims mode
@@ -145,17 +148,18 @@ end
 -- inactive components
 ins_left_inact {
     getIcon,
-    color = { fg = colors.fg, bg = colors.bg },
-    padding = { right = 1, left = 10 },
+    color = { fg = colors.black, bg = colors.accent },
+    padding = { right = 1, left = 1 },
     cond = conditions.buffer_not_empty,
 }
 
 ins_left_inact {
     'filename',
     cond = conditions.buffer_not_empty,
-    color = { fg = colors.fg, bg = colors.bg, gui = 'bold' },
+    color = { fg = colors.black, bg = colors.accent, gui = 'bold' },
     padding = { right = 1, left = 0 },
 }
+
 
 -- active left components
 ins_left {

@@ -1,5 +1,3 @@
-local k_colors = require("kanagawa.colors").setup()
-
 require("dashboard").setup {
     theme = 'doom',
     config = {
@@ -67,10 +65,3 @@ require("dashboard").setup {
         }
     }
 }
-
--- Change dashboard highlight groups
-vim.api.nvim_set_hl(0, "DashboardHeader", {fg = k_colors.palette.dragonGreen})
-vim.api.nvim_set_hl(0, "DashboardDesc", {fg = k_colors.palette.dragonViolet})
-vim.api.nvim_set_hl(0, "DashboardShortCut", {fg = k_colors.palette.dragonYellow})
-vim.api.nvim_set_hl(0, "DashboardKey", {fg = k_colors.palette.dragonRed})
-
