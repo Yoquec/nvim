@@ -36,15 +36,21 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-y>'] = cmp.mapping.confirm({ select = false }),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
         ['<Tab>'] = cmp_action.luasnip_jump_forward(),
         ['<S-Tab>'] = cmp_action.luasnip_jump_backward(),
         ['<C-Space>'] = cmp.mapping.complete(),
-    })
+    }),
+    -- Don't select the first option in the menu
+    -- https://stackoverflow.com/questions/74688630/make-nvim-cmp-not-autoselect-the-1st-option
+    preselect = 'none',
+    completion = {
+        completeopt = 'menu,menuone,noinsert,noselect'
+    },
 })
 
 lsp_zero.set_sign_icons({
