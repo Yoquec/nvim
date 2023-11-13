@@ -79,7 +79,9 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim'
     }
 
-    use "ellisonleao/gruvbox.nvim"
+    use { "tpope/vim-fugitive" }
+
+    use { "ellisonleao/gruvbox.nvim" }
 
     use {
         "windwp/nvim-autopairs",
