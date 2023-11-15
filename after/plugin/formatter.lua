@@ -29,6 +29,11 @@ require("formatter").setup {
         rust = {
             require("formatter.filetypes.rust").rustfmt
         },
+        go = {
+            require("formatter.filetypes.go").gofumpt,
+            require("formatter.filetypes.go").goimports,
+            require("formatter.filetypes.go").golines
+        },
         rmd = {
             require("formatter.filetypes.markdown").prettier
         },
