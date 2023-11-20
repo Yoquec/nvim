@@ -93,7 +93,7 @@ vim.keymap.set('n', '<leader>cd', function()
 end)
 
 -- clear hightlight search
-vim.keymap.set('n', '<CR>', vim.cmd.noh)
+vim.keymap.set('n', '<BS>', vim.cmd.noh)
 
 -- Alternative to vim wiki enter wiki
 vim.keymap.set('n', '<leader>ww', function ()
