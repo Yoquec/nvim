@@ -8,12 +8,13 @@ require("gruvbox").setup({
     italic = {
         strings = true,
         emphasis = true,
-        comments = true,
+        comments = false,
         operators = false,
         folds = false,
     },
     strikethrough = true,
     contrast = "soft",
+    invert_selection = true,
     palette_overrides = palette,
     overrides = {
         -- Remove background color to match terminal
