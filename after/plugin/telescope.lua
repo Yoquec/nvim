@@ -23,15 +23,15 @@ require("telescope").load_extension "file_browser"
 
 local builtin = require('telescope.builtin')
 
--- FILE browsing
+-- File browsing
 vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {})
+vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
 
--- OPEN buffers
+-- Open buffers
 vim.keymap.set('n', '<leader>bi', builtin.buffers, {})
 
--- GREPS
+-- Greps
 vim.keymap.set('n', '<leader>fp', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fs', function()
     builtin.grep_string({ search = vim.fn.input("Grep search > ") })
