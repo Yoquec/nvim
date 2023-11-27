@@ -17,7 +17,16 @@ require('mason-lspconfig').setup({
                     "css",
                     "html",
                     "javascriptreact",
-                    "typescriptreact"
+                    "typescriptreact",
+                    "htmldjango"
+                }
+            })
+        end,
+        html = function ()
+            require("lspconfig").html.setup({
+                filetypes = {
+                    "html",
+                    "htmldjango"
                 }
             })
         end
