@@ -79,8 +79,6 @@ lsp_zero.on_attach(function(client, bufnr)
     -- Cool LSP stuff
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
     vim.keymap.set('n', '<leader><leader>p', vim.cmd.LspZeroFormat, opts)
     vim.keymap.set('n', '<leader>vw', vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set('n', '<leader>vr', vim.lsp.buf.rename, opts)
@@ -91,6 +89,6 @@ lsp_zero.on_attach(function(client, bufnr)
 
     -- Vim diagnostic
     vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '<leader>K', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', '<leader>J', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end)
