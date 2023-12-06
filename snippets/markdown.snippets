@@ -3,7 +3,7 @@ snippet pandocslides "Metadata for making slides in pandoc using beamer"
 	title: 
 	- ${1:TITLE}
 	author:
-	- Alvaro Viejo Alonso
+	- ${2:Alvaro Viejo Alonso}
 	theme:
 	- Madrid
 	header-includes: |
@@ -19,3 +19,17 @@ snippet femoji "Insert a twemoji inside an inline block"
 	$\twemoji{${1:emoji-name}}$ $0
 snippet box "Insert a checkbox ☑"
 	- [${1: }] $0
+snippet pandocdoc "Metadata for making a document in latex using pandoc."
+	---
+	title: 
+	- ${1:TITLE}
+	author:
+	- ${2:Alvaro Viejo Alonso}
+	numbersections:
+	- ${3:true}
+	geometry:
+	- "left=${4:3}cm,right=${4:3}cm,top=${5:2}cm,bottom=${5:2}cm"
+	header-includes: |
+    	\usepackage{twemojis}
+	---
+	$0
