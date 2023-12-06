@@ -22,12 +22,37 @@ require('mason-lspconfig').setup({
                 }
             })
         end,
-        html = function ()
+        html = function()
             require("lspconfig").html.setup({
                 filetypes = {
                     "html",
                     "htmldjango"
                 }
+            })
+        end,
+        ltex = function()
+            require('lspconfig').ltex.setup({
+                filetypes = { 'rmd', 'rmarkdown', 'bib', 'gitcommit', 'markdown', 'tex', 'pandoc' },
+                settings = {
+                    ltex = {
+                        language = "auto"
+                    }
+                },
+                get_language_id = function(_, filetype)
+                    local language_id_mapping = {
+                        bib = 'bibtex',
+                        plaintex = 'tex',
+                        tex = 'latex',
+                        pandoc = 'markdown',
+                        rmd = "rmarkdown"
+                    }
+                    local language_id = language_id_mapping[filetype]
+                    if language_id then
+                        return language_id
+                    else
+                        return filetype
+                    end
+                end,
             })
         end
     }
