@@ -44,9 +44,9 @@ require("dashboard").setup {
             {
                 icon = "📂  ",
                 desc = "File browser",
-                action = "Telescope file_browser",
+                action = "Ex",
                 key = "b",
-                keymap = "SPC v f",
+                keymap = "SPC f v",
             },
             {
                 icon = "📚  ",
