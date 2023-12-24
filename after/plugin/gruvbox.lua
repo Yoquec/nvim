@@ -24,6 +24,7 @@ require("gruvbox").setup({
         LineNr = { fg = palette.accent, bold = true },
         LineNrAbove = { fg = palette.bg4, bold = false },
         LineNrBelow = { fg = palette.bg4, bold = false },
+        TreesitterContextLineNumber = { fg = palette.bg4, bold = false },
 
         -- Tabline
         TabLine = { bg = palette.bg },
