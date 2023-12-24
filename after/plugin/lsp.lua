@@ -4,7 +4,6 @@ local cmp_action = require('lsp-zero').cmp_action()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'rust_analyzer', 'pyright' },
     handlers = {
         lsp_zero.default_setup,
         lua_ls = function()
