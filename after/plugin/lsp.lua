@@ -102,11 +102,11 @@ lsp_zero.on_attach(function(client, bufnr)
 
     -- Cool LSP stuff
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
     vim.keymap.set('n', '<leader><leader>p', vim.cmd.LspZeroFormat, opts)
     vim.keymap.set('n', '<leader>vw', vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set('n', '<leader>vr', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<leader>vs', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>va', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
