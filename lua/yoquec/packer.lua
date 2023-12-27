@@ -18,8 +18,6 @@ return require('packer').startup(function(use)
 
     use { 'nvim-tree/nvim-web-devicons' }
 
-    use { 'mfussenegger/nvim-lint' }
-
     use { 'mhartington/formatter.nvim' }
 
     use {
@@ -98,14 +96,6 @@ return require('packer').startup(function(use)
         'norcalli/nvim-colorizer.lua',
         config = function() require('colorizer').setup() end
     })
-
-    use {
-        'glepnir/dashboard-nvim',
-        config = function()
-            require("yoquec.dashboard")
-        end,
-        event = 'VimEnter',
-    }
 
     use { 'tpope/vim-surround' }
 
