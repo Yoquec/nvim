@@ -1,5 +1,6 @@
 return {
     'lewis6991/gitsigns.nvim',
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
         signs = {
             add = { text = '+' },
@@ -36,8 +37,8 @@ return {
             vim.keymap.set('n', '<leader>hB', [[<cmd>Gitsigns blame_line<CR>]], opts)
             vim.keymap.set('n', '<leader>vb', [[<cmd>Gitsigns blame_line<CR>]], opts)
             vim.keymap.set('n', '<leader>hc', [[<cmd>Gitsigns toggle_current_line_blame<CR>]], opts)
-            vim.keymap.set('n', '<leader>hCc', [[<cmd>Git commit<CR>]], opts)
-            vim.keymap.set('n', '<leader>hCa', [[<cmd>Git commit --amend<CR>]], opts)
+            vim.keymap.set('n', '<leader>hCc', [[<cmd>G commit<CR>]], opts)
+            vim.keymap.set('n', '<leader>hCa', [[<cmd>G commit --amend<CR>]], opts)
             vim.keymap.set('n', '<leader>hd', [[<cmd>Gitsigns diffthis<CR>]], opts)
             vim.keymap.set('n', '<leader>hD', [[<cmd>lua require"gitsigns".diffthis("~")<CR>]], opts)
             vim.keymap.set('n', '<leader>td', [[<cmd>Gitsigns toggle_deleted<CR>]], opts)
