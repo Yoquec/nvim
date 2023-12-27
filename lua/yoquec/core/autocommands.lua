@@ -1,24 +1,13 @@
-require("yoquec.remap")
-require("yoquec.set")
-require("yoquec.toggles")
-require("yoquec.packer")
 
--- -------------------------------
--- autocommand function callbacks
--- -------------------------------
 local function RenderRmd_onExit(chain_id, data, name)
     print("📄 Document rendered!")
 end
-
 
 local function RenderSlides_onExit()
     print("🎞 Slides rendered!")
 end
 
 
--- ----------------------
--- autocommand functions
--- ----------------------
 local function RenderRmd()
     local filename = vim.fn.expand("%")
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
@@ -30,7 +19,6 @@ local function RenderRmd()
     print([[Rendering rmarkdown pdf ]] .. icon .. [[...]])
 end
 
-
 local function RenderRmdDebug()
     local filename = vim.fn.expand("%")
     local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
@@ -41,7 +29,6 @@ local function RenderRmdDebug()
         [[!echo "require(rmarkdown); render(']] .. filename .. [[')" | R --vanilla]]
     )
 end
-
 
 local function RenderMd()
     local fullfilename = vim.fn.expand("%:p")
@@ -127,24 +114,9 @@ local function OpenPDF()
 end
 
 
-local function EnterGoyo()
-    require('lualine').hide()
-    vim.opt.wrap = true
-end
 
 
-local function ExitGoyo()
-    require('lualine').hide({ unhide = true })
-    vim.opt.wrap = false
-end
-
-
--- //////////////////
--- autocommands
--- //////////////////
---
--- r markdown
--- ~~~~~~~~~~~~~~~~~~~~
+-- Rmarkdown
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "rmd",
     callback = function(args)
@@ -162,9 +134,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
-
--- markdown
--- ~~~~~~~~~~~~~~~~~~~~
+-- Markdown
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function(args)
@@ -213,10 +183,17 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
--- ~~~~~~~~~~~~~~~~~~~~
--- goyo
--- ~~~~~~~~~~~~~~~~~~~~
--- Enable limelight automatically
+-- Goyo
+local function EnterGoyo()
+    require('lualine').hide()
+    vim.opt.wrap = true
+end
+
+local function ExitGoyo()
+    require('lualine').hide({ unhide = true })
+    vim.opt.wrap = false
+end
+
 vim.api.nvim_create_autocmd("User", {
     pattern = "GoyoEnter",
     callback = EnterGoyo,
