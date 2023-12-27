@@ -94,6 +94,7 @@ return {
                 ['<Tab>'] = cmp_action.luasnip_jump_forward(),
                 ['<S-Tab>'] = cmp_action.luasnip_jump_backward(),
                 ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-y>'] = vim.NIL,
             }),
             -- Don't select the first option in the menu
             -- https://stackoverflow.com/questions/74688630/make-nvim-cmp-not-autoselect-the-1st-option
