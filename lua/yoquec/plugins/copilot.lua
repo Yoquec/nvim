@@ -20,5 +20,8 @@ return {
             javascript = true,
             ["*"] = false,
         },
+    },
+    keys = {
+        { "<C-l>", [[<cmd>lua require("copilot.suggestion").accept_word()<cr>]], mode = "i" }
     }
 }
