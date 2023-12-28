@@ -22,6 +22,9 @@ return {
                 css = {
                     require("formatter.filetypes.css").prettier
                 },
+                cs = {
+                    require("formatter.filetypes.cs").csharpier
+                },
                 markdown = {
                     require("formatter.filetypes.markdown").prettier
                 },
