@@ -77,7 +77,7 @@ return {
 
                 -- other highlight groups
                 ["@text.strong.markdown_inline"] = { fg = palette.blue, bold = true },
-                ["@text.quote.markdown"] = { fg = palette.fg3 },
+                ["@text.quote.markdown"] = { fg = palette.fg3, italic = true },
 
 
             },
