@@ -62,22 +62,23 @@ return {
 
                 -- Markdown
                 -- colored headings
-                ["@text.title.1.marker.markdown"] = { fg = palette.red, bold = true },
-                ["@text.title.1.markdown"] = { fg = palette.red, bold = true },
-                ["@text.title.2.marker.markdown"] = { fg = palette.orange, bold = true },
-                ["@text.title.2.markdown"] = { fg = palette.orange, bold = true },
-                ["@text.title.3.marker.markdown"] = { fg = palette.yellow, bold = true },
-                ["@text.title.3.markdown"] = { fg = palette.yellow, bold = true },
-                ["@text.title.4.marker.markdown"] = { fg = palette.green, bold = true },
-                ["@text.title.4.markdown"] = { fg = palette.green, bold = true },
-                ["@text.title.5.marker.markdown"] = { fg = palette.blue, bold = true },
-                ["@text.title.5.markdown"] = { fg = palette.blue, bold = true },
-                ["@text.title.6.marker.markdown"] = { fg = palette.purple, bold = true },
-                ["@text.title.6.markdown"] = { fg = palette.purple, bold = true },
+                ["@markup.heading.1.marker.markdown"] = { fg = palette.red, bold = true },
+                ["@markup.heading.1.markdown"] = { fg = palette.red, bold = true },
+                ["@markup.heading.2.marker.markdown"] = { fg = palette.orange, bold = true },
+                ["@markup.heading.2.markdown"] = { fg = palette.orange, bold = true },
+                ["@markup.heading.3.marker.markdown"] = { fg = palette.yellow, bold = true },
+                ["@markup.heading.3.markdown"] = { fg = palette.yellow, bold = true },
+                ["@markup.heading.4.marker.markdown"] = { fg = palette.green, bold = true },
+                ["@markup.heading.4.markdown"] = { fg = palette.green, bold = true },
+                ["@markup.heading.5.marker.markdown"] = { fg = palette.blue, bold = true },
+                ["@markup.heading.5.markdown"] = { fg = palette.blue, bold = true },
+                ["@markup.heading.6.marker.markdown"] = { fg = palette.purple, bold = true },
+                ["@markup.heading.6.markdown"] = { fg = palette.purple, bold = true },
 
                 -- other highlight groups
-                ["@text.strong.markdown_inline"] = { fg = palette.blue, bold = true },
-                ["@text.quote.markdown"] = { fg = palette.fg3, italic = true },
+                ["@markup.strong.markdown_inline"] = { fg = palette.blue, bold = true },
+                ["@markup.italic.markdown_inline"] = { italic = true },
+                ["@markup.quote.markdown"] = { fg = palette.fg3, italic = true },
 
 
             },
