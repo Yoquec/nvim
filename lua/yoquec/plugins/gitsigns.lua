@@ -22,8 +22,8 @@ return {
             local opts = { buffer = bufnr, remap = false }
 
             -- Navigation
-            vim.keymap.set('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk'", { expr = true }, opts)
-            vim.keymap.set('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk'", { expr = true }, opts)
+            vim.keymap.set('n', ']c', [[<cmd>Gitsigns next_hunk]], opts)
+            vim.keymap.set('n', '[c', [[<cmd>Gitsigns prev_hunk]], opts)
 
             -- Actions
             vim.keymap.set('n', '<leader>hs', [[<cmd>Gitsigns stage_hunk<CR>]], opts)
