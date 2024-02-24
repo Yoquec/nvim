@@ -189,13 +189,13 @@ vim.api.nvim_create_autocmd("FileType", {
 
         -- Move through links such as in vimwiki
         vim.keymap.set('n', '<Tab>', function()
-            enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+            local enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
             vim.api.nvim_feedkeys("/\\[.*\\](.*)" .. enter, 'm', false)
             vim.api.nvim_feedkeys(":noh" .. enter, 'm', false)
         end, { buffer = args.buf })
 
         vim.keymap.set('n', '<S-Tab>', function()
-            enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+            local enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
             vim.api.nvim_feedkeys("?\\[.*\\](.*)" .. enter, 'm', false)
             vim.api.nvim_feedkeys(":noh" .. enter, 'm', false)
         end, { buffer = args.buf })
