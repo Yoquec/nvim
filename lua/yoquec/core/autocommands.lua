@@ -1,177 +1,195 @@
-
-local function RenderRmd_onExit(chain_id, data, name)
+-- ----------
+-- callbacks
+-- ----------
+local function doc_exit_cb(_, _, _)
     print("📄 Document rendered!")
 end
 
-local function RenderSlides_onExit()
-    print("🎞 Slides rendered!")
+local function slides_exit_cb(_, _, _)
+    print("📊 Slides rendered!")
+end
+
+local function html_doc_exit_cb(_, _, _)
+    print("🌐 Document (html) rendered!")
+end
+
+-- ----------
+-- openers
+-- ----------
+local function open_pdf()
+    local pdf_filename = vim.fn.expand("%:r") .. [[.pdf]]
+    vim.fn.jobstart([[bash -c 'zathura "]] .. pdf_filename .. [["']])
+    print([[🔎 PDF opened]])
+end
+
+local function open_html()
+    local html_filename = vim.fn.expand("%:r") .. [[.html]]
+    vim.fn.jobstart([[bash -c 'surf -a @ -S "]] .. html_filename .. [["']])
+    print([[🌐 HTML opened]])
 end
 
 
-local function RenderRmd()
+-- ----------
+-- renderers
+-- ----------
+-- rmarkdown
+local function render_rmd_pdf()
     local filename = vim.fn.expand("%")
-    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
 
     vim.fn.jobstart(
         [[bash -c 'echo "require(rmarkdown); render(\"]] .. filename .. [[\")" | R --vanilla']],
-        { on_exit = RenderRmd_onExit })
+        { on_exit = doc_exit_cb })
 
+    local icon, _ = require('nvim-web-devicons').get_icon_by_filetype("pdf")
     print([[Rendering rmarkdown pdf ]] .. icon .. [[...]])
 end
 
-local function RenderRmdDebug()
+local function render_rmd_pdf_debug()
     local filename = vim.fn.expand("%")
-    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
-    print([[Rendering rmarkdown pdf (debug mode) ]] .. icon .. [[...]])
-
-
     vim.cmd(
         [[!echo "require(rmarkdown); render(']] .. filename .. [[')" | R --vanilla]]
     )
 end
 
-local function RenderMd()
-    local fullfilename = vim.fn.expand("%:p")
-    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
-    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
+-- documenter markdown
+local function render_md_documenter_pdf()
+    local file_path = vim.fn.expand("%:p")
+    local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
 
     vim.fn.jobstart(
-        [[bash -c 'documenter "]] .. fullfilename .. [[" "]] .. output_fullfilename .. [["']],
-        { on_exit = RenderRmd_onExit }
+        [[bash -c 'go-documenter -t pdf -o "]] .. output_path .. [[" "]] .. file_path .. [["']],
+        { on_exit = doc_exit_cb }
     )
 
-    print([[Creating pdf document ]] .. icon .. [[...]])
+    local icon, _ = require('nvim-web-devicons').get_icon_by_filetype("pdf")
+    print([[Creating pdf document with Documenter ]] .. icon .. [[...]])
 end
 
-local function RenderMdPandoc()
-    local fullfilename = vim.fn.expand("%:p")
-    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
-    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
+local function render_md_documenter_pdf_debug()
+    local file_path = vim.fn.expand("%:p")
+    local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
+    vim.cmd(
+        [[!go-documenter -t pdf -o "]] .. output_path .. [[" "]] .. file_path .. [["]]
+    )
+end
+
+local function render_md_documenter_html()
+    local file_path = vim.fn.expand("%:p")
+    local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
 
     vim.fn.jobstart(
-        [[bash -c 'pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -o "]] .. output_fullfilename .. [["']],
-        { on_exit = RenderRmd_onExit }
+        [[bash -c 'go-documenter -t html -o "]] .. output_path .. [[" "]] .. file_path .. [["']],
+        { on_exit = html_doc_exit_cb }
     )
 
+    local icon, _ = require('nvim-web-devicons').get_icon_by_filetype("pdf")
+    print([[Creating pdf document with Documenter ]] .. icon .. [[...]])
+end
+
+local function render_md_documenter_html_debug()
+    local file_path = vim.fn.expand("%:p")
+    local output_path = vim.fn.expand("%:p:r") .. [[.html]]
+    vim.cmd(
+        [[!go-documenter -t html -o "]] .. output_path .. [[" "]] .. file_path .. [["]]
+    )
+end
+
+-- pandoc + xelatex markdown
+local function render_md_pandoc_doc()
+    local file_path = vim.fn.expand("%:p")
+    local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
+
+    vim.fn.jobstart(
+        [[bash -c 'pandoc --pdf-engine=xelatex "]] .. file_path .. [[" -o "]] .. output_path .. [["']],
+        { on_exit = doc_exit_cb }
+    )
+
+    local icon, _ = require('nvim-web-devicons').get_icon_by_filetype("pdf")
     print([[Creating pdf document with Pandoc ]] .. icon .. [[...]])
 end
 
-
-local function RenderMdDebug()
-    local fullfilename = vim.fn.expand("%:p")
-    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
-    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
-    print([[Creating pdf document (debug mode) ]] .. icon .. [[...]])
-
+local function render_md_pandoc_doc_debug()
+    local file_path = vim.fn.expand("%:p")
+    local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
     vim.cmd(
-        [[!documenter "]] .. fullfilename .. [[" "]] .. output_fullfilename .. [["]]
+        [[!pandoc --pdf-engine=xelatex "]] .. file_path .. [[" -o "]] .. output_path .. [["]]
     )
 end
 
-local function RenderMdPandocDebug()
+local function render_md_pandoc_slides()
     local fullfilename = vim.fn.expand("%:p")
     local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
-    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("pdf")
-    print([[Creating pdf document with Pandoc (debug mode) ]] .. icon .. [[...]])
-
-    vim.cmd(
-        [[!pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -o "]] .. output_fullfilename .. [["]]
-    )
-end
-
-
-local function RenderSlides()
-    local fullfilename = vim.fn.expand("%:p")
-    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
-    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("ppt")
+    local icon, _ = require('nvim-web-devicons').get_icon_by_filetype("ppt")
 
     vim.fn.jobstart(
         [[bash -c 'pandoc --pdf-engine=xelatex "]] ..
         fullfilename .. [[" -t beamer -o "]] .. output_fullfilename .. [["']],
-        { on_exit = RenderSlides_onExit }
+        { on_exit = slides_exit_cb }
     )
 
     print([[Creating slides ]] .. icon .. [[...]])
 end
 
-
-local function RenderSlidesDebug()
-    local fullfilename = vim.fn.expand("%:p")
-    local output_fullfilename = vim.fn.expand("%:p:r") .. [[.pdf]]
-    local icon, icon_name = require('nvim-web-devicons').get_icon_by_filetype("ppt")
-    print([[Creating slides (debug mode) ]] .. icon .. [[...]])
-
+local function render_md_pandoc_slides_debug()
+    local file_path = vim.fn.expand("%:p")
+    local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
     vim.cmd(
-        [[!pandoc --pdf-engine=xelatex "]] .. fullfilename .. [[" -t beamer -o "]] .. output_fullfilename .. [["]]
+        [[!pandoc --pdf-engine=xelatex "]] .. file_path .. [[" -t beamer -o "]] .. output_path .. [["]]
     )
 end
 
 
-local function OpenPDF()
-    local pdf_filename = vim.fn.expand("%:r") .. [[.pdf]]
-    vim.fn.jobstart([[bash -c 'zathura "]] .. pdf_filename .. [["']])
-    print([[🔎 Zathura opened]])
-end
-
-
-
-
--- Rmarkdown
+-- ----------
+-- keymaps
+-- ----------
+-- rmarkdown
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "rmd",
     callback = function(args)
-        -- async r document creation
-        vim.keymap.set('n', '<Leader>rm',
-            RenderRmd, { buffer = args.buf })
-
-        -- r document creation (debug mode)
-        vim.keymap.set('n', '<Leader>rd',
-            RenderRmdDebug, { buffer = args.buf })
-
-        -- open the rendered document with zathura
-        vim.keymap.set('n', '<Leader>op',
-            OpenPDF, { buffer = args.buf })
+        -- renderers
+        vim.keymap.set('n', '<leader>rr',
+            render_rmd_pdf, { buffer = args.buf })
+        vim.keymap.set('n', '<leader><leader>rr',
+            render_rmd_pdf_debug, { buffer = args.buf })
+        -- readers
+        vim.keymap.set('n', '<leader>op',
+            open_pdf, { buffer = args.buf })
     end
 })
 
--- Markdown
+-- markdown
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function(args)
-        -- Async render md documents
-        vim.keymap.set('n', '<Leader>rm',
-            RenderMd, { buffer = args.buf })
-
-        vim.keymap.set('n', '<Leader><Leader>rm',
-            RenderMdPandoc, { buffer = args.buf })
-
-        -- Render md documents (debug mode)
-        vim.keymap.set('n', '<Leader>rd',
-            RenderMdDebug, { buffer = args.buf })
-
-        vim.keymap.set('n', '<Leader><Leader>rd',
-            RenderMdPandocDebug, { buffer = args.buf })
-
-        -- Async create slides with beamer
-        vim.keymap.set('n', '<Leader>rs',
-            RenderSlides, { buffer = args.buf })
-
-        -- create slides with beamer (debug mode)
-        vim.keymap.set('n', '<Leader><Leader>rd',
-            RenderSlidesDebug, { buffer = args.buf })
-
-        -- Open the zathura document viewer for the rendered file
-        vim.keymap.set('n', '<Leader>op',
-            OpenPDF, { buffer = args.buf })
+        -- renderers
+        vim.keymap.set('n', '<leader>rdp',
+            render_md_documenter_pdf, { buffer = args.buf })
+        vim.keymap.set('n', '<leader><leader>rdp',
+            render_md_documenter_pdf_debug, { buffer = args.buf })
+        vim.keymap.set('n', '<leader>rdh',
+            render_md_documenter_html, { buffer = args.buf })
+        vim.keymap.set('n', '<leader><leader>rdh',
+            render_md_documenter_html_debug, { buffer = args.buf })
+        vim.keymap.set('n', '<leader>rp',
+            render_md_pandoc_doc, { buffer = args.buf })
+        vim.keymap.set('n', '<leader><leader>rp',
+            render_md_pandoc_doc_debug, { buffer = args.buf })
+        vim.keymap.set('n', '<leader>rs',
+            render_md_pandoc_slides, { buffer = args.buf })
+        vim.keymap.set('n', '<leader><leader>rs',
+            render_md_pandoc_slides_debug, { buffer = args.buf })
+        -- readers
+        vim.keymap.set('n', '<leader>op',
+            open_pdf, { buffer = args.buf })
 
         -- Move through links such as in vimwiki
-        vim.keymap.set('n', '<Tab>', function ()
+        vim.keymap.set('n', '<Tab>', function()
             enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
             vim.api.nvim_feedkeys("/\\[.*\\](.*)" .. enter, 'm', false)
             vim.api.nvim_feedkeys(":noh" .. enter, 'm', false)
         end, { buffer = args.buf })
 
-        vim.keymap.set('n', '<S-Tab>', function ()
+        vim.keymap.set('n', '<S-Tab>', function()
             enter = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
             vim.api.nvim_feedkeys("?\\[.*\\](.*)" .. enter, 'm', false)
             vim.api.nvim_feedkeys(":noh" .. enter, 'm', false)
@@ -183,23 +201,21 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+-- ----------
 -- Goyo
-local function EnterGoyo()
-    require('lualine').hide()
-    vim.opt.wrap = true
-end
-
-local function ExitGoyo()
-    require('lualine').hide({ unhide = true })
-    vim.opt.wrap = false
-end
-
+-- ----------
 vim.api.nvim_create_autocmd("User", {
     pattern = "GoyoEnter",
-    callback = EnterGoyo,
+    callback = function()
+        require('lualine').hide()
+        vim.opt.wrap = true
+    end,
 })
 
 vim.api.nvim_create_autocmd("User", {
     pattern = "GoyoLeave",
-    callback = ExitGoyo,
+    callback = function()
+        require('lualine').hide({ unhide = true })
+        vim.opt.wrap = false
+    end,
 })
