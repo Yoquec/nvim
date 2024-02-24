@@ -75,7 +75,7 @@ end
 
 local function render_md_documenter_html()
     local file_path = vim.fn.expand("%:p")
-    local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
+    local output_path = vim.fn.expand("%:p:r") .. [[.html]]
 
     vim.fn.jobstart(
         [[bash -c 'go-documenter -t html -o "]] .. output_path .. [[" "]] .. file_path .. [["']],
