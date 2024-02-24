@@ -154,6 +154,11 @@ vim.api.nvim_create_autocmd("FileType", {
         -- readers
         vim.keymap.set('n', '<leader>op',
             open_pdf, { buffer = args.buf })
+        -- formatting with prettier 
+        vim.keymap.set('n', '<Leader><leader>P', function ()
+            local filename = vim.fn.expand("%")
+            vim.api.nvim_command([[!prettier "]] .. filename .. [[" --parser markdown --write]])
+        end, { buffer = args.buf })
     end
 })
 
