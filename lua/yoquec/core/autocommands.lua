@@ -186,6 +186,8 @@ vim.api.nvim_create_autocmd("FileType", {
         -- readers
         vim.keymap.set('n', '<leader>op',
             open_pdf, { buffer = args.buf })
+        vim.keymap.set('n', '<leader>oh',
+            open_html, { buffer = args.buf })
 
         -- Move through links such as in vimwiki
         vim.keymap.set('n', '<Tab>', function()
