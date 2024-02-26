@@ -83,7 +83,7 @@ local function render_md_documenter_html()
     )
 
     local icon, _ = require('nvim-web-devicons').get_icon_by_filetype("pdf")
-    print([[Creating pdf document with Documenter ]] .. icon .. [[...]])
+    print([[Creating HTML document with Documenter ]] .. icon .. [[...]])
 end
 
 local function render_md_documenter_html_debug()
