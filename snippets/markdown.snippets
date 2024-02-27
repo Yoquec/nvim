@@ -37,3 +37,9 @@ snippet pandocdoc "Metadata for making a document in latex using pandoc."
     	\usepackage{twemojis}
 	---
 	$0
+snippet youtube "Insert an embedded youtube video"
+	<center>
+		<iframe width="365" height="205" frameborder="0" allowfullscreen title="YouTube video player"
+			src="https://www.youtube-nocookie.com/embed/${1:videoID}"
+			allow="autoplay; encrypted-media; picture-in-picture; web-share" ></iframe>
+	</center>
