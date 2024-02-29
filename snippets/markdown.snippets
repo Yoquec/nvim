@@ -43,3 +43,18 @@ snippet youtube "Insert an embedded youtube video"
 			src="https://www.youtube-nocookie.com/embed/${1:videoID}"
 			allow="autoplay; encrypted-media; picture-in-picture; web-share" ></iframe>
 	</center>
+snippet mermaid "Insert mermaid diagram"
+	 <center>
+		 <pre class="mermaid">
+				%%{init: {
+					'theme':'${1:dark}',
+					'themeVariables': {
+						'fontSize': '${2:9px}'
+					}
+				}}%%
+				graph ${3:TD}
+				A[Client] --> B[Load Balancer]
+				B --> C[Server01]
+				B --> D[Server02]
+		 </pre>
+	 </center>
