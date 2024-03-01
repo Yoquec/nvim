@@ -1,13 +1,16 @@
+-- leaders
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-vim.keymap.set("n", "<C-s>", vim.cmd.w)
-
+-- line moving
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "H", "<gv")
 vim.keymap.set("v", "L", ">gv")
 
+-- vertical movements
+vim.keymap.set("n", "j", "jzz")
+vim.keymap.set("n", "k", "kzz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
@@ -23,22 +26,16 @@ vim.keymap.set("n", "<leader>P", "\"+P")
 vim.keymap.set("v", "P", "\"_dP")
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- next greatest remap ever : asbjornHaland
+-- global keyboard mapping
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
--- word replace
+-- word replace (no lsp)
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Move when windows split
 vim.keymap.set('n', '<C-w>s', '<C-w>s<C-w>j')
 vim.keymap.set('n', '<C-w>v', '<C-w>v<C-w>l')
-
--- Set the emacs alternative for moving through windows
-vim.keymap.set('n', '<Leader>wl', '<cmd>wincmd l<CR>')
-vim.keymap.set('n', '<Leader>wh', '<cmd>wincmd h<CR>')
-vim.keymap.set('n', '<Leader>wj', '<cmd>wincmd j<CR>')
-vim.keymap.set('n', '<Leader>wk', '<cmd>wincmd k<CR>')
 
 -- tab navigation
 vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew)
@@ -46,17 +43,17 @@ vim.keymap.set('n', '<leader>mw', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
 vim.keymap.set('n', '<leader>ml', vim.cmd.tabn)
 vim.keymap.set('n', '<leader>mh', vim.cmd.tabp)
+--
 -- alternative tab navigation
 vim.keymap.set('n', '<M-C-h>', vim.cmd.tabp)
 vim.keymap.set('n', '<M-C-l>', vim.cmd.tabn)
 
--- default nvim lsp formatting (if lspZero gets attached,
--- LspZeroFormat will be used instead)
+-- default nvim lsp formatting (if lspZero gets attached, LspZeroFormat will be used instead)
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>p', vim.lsp.buf.format)
--- "prettier" (additional formatting remaps)
+-- Format nvim format
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>P', vim.cmd.Format)
 
---  Add mapping for Goyo
+-- goyo
 vim.keymap.set('n', '<Leader>gy', vim.cmd.Goyo)
 
 -- Use alt + hjkl to resize windows
@@ -71,23 +68,13 @@ vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
 -- Open a terminal in a separate buffer
 vim.keymap.set('n', '<leader>ot', ':execute "tabnew" | execute "terminal" <CR>')
 
--- "integrate" vifm within vim
-vim.keymap.set('n', '<leader><leader>vf',
-    ':split | execute "wincmd j" | execute \'terminal vifm .\' | execute "normal i"<CR>',
-    { silent = true })
-
--- "integrate" lf within vim
-vim.keymap.set('n', '<leader><leader>lf',
-    ':split | execute "wincmd j" | execute \'terminal lf .\' | execute "normal i"<CR>',
-    { silent = true })
-
 -- change working directory to the current file's directory
 vim.keymap.set('n', '<leader>cw', function()
     vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
     print("Changed working directory 🗺️!")
 end)
 
--- clean diagnostics
+-- clear diagnostics
 vim.keymap.set('n', '<leader>cd', function()
     vim.diagnostics.reset()
 end)
@@ -95,7 +82,7 @@ end)
 -- clear hightlight search
 vim.keymap.set('n', '<BS>', vim.cmd.noh)
 
--- Alternative to vim wiki enter wiki
+-- enter wiki
 vim.keymap.set('n', '<leader>ww', function ()
     vim.cmd.e("$WIKI_HOME/index.md")
     vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
