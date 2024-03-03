@@ -24,7 +24,8 @@ end
 
 local function open_html()
     local html_filename = vim.fn.expand("%:r") .. [[.html]]
-    vim.fn.jobstart([[bash -c 'surf -a @ -S "]] .. html_filename .. [["']])
+    local style_file = "$HOME/.config/surf/styles/documenter.css"
+    vim.fn.jobstart([[bash -c 'surf -a @ -S -C "]] ..style_file .. [[" "]] .. html_filename .. [["']])
     print([[🌐 HTML opened]])
 end
 
