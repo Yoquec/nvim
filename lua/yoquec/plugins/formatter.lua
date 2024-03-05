@@ -52,6 +52,9 @@ return {
                 sh = {
                     require("formatter.filetypes.sh").shfmt
                 },
+                ocaml = {
+                    require("formatter.filetypes.ocaml").ocamlformat
+                },
             }
         }
     end
