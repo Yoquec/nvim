@@ -79,11 +79,11 @@ return {
         local cmp_select = { behavior = cmp.SelectBehavior.Replace }
         cmp.setup({
             sources = {
-                { name = 'path' },
-                { name = 'buffer' },
-                { name = 'nvim_lsp' },
-                { name = 'nvim_lua' },
-                { name = 'luasnip' },
+                { name = 'nvim_lsp', priority = 8 },
+                { name = 'luasnip', priority = 5 },
+                { name = 'path' , priority = 4},
+                { name = 'buffer', priority = 4 },
+                { name = 'nvim_lua', priority = 3 },
             },
             formatting = lsp_zero.cmp_format(),
             mapping = cmp.mapping.preset.insert({
