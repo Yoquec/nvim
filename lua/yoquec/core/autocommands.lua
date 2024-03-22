@@ -101,7 +101,7 @@ local function render_md_pandoc_doc()
     local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
 
     vim.fn.jobstart(
-        [[bash -c 'pandoc --pdf-engine=xelatex "]] .. file_path .. [[" -o "]] .. output_path .. [["']],
+        [[bash -c 'pandoc --pdf-engine=xelatex --citeproc "]] .. file_path .. [[" -o "]] .. output_path .. [["']],
         { on_exit = doc_exit_cb }
     )
 
@@ -113,7 +113,7 @@ local function render_md_pandoc_doc_debug()
     local file_path = vim.fn.expand("%:p")
     local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
     vim.cmd(
-        [[!pandoc --pdf-engine=xelatex "]] .. file_path .. [[" -o "]] .. output_path .. [["]]
+        [[!pandoc --pdf-engine=xelatex --citeproc "]] .. file_path .. [[" -o "]] .. output_path .. [["]]
     )
 end
 
