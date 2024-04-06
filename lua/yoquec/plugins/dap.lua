@@ -1,6 +1,6 @@
 return {
     'mfussenegger/nvim-dap',
-    event = { "BufReadPost", "BufNewFile" },
+    ft = {"go"},
     dependencies = {
         "leoluz/nvim-dap-go"
     },
