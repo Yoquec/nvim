@@ -22,7 +22,7 @@ return {
             palette_overrides = palette,
             overrides = {
                 -- Remove background color to match terminal
-                GruvboxBg0 = { fg = palette.bg },
+                GruvboxBg0 = { fg = "none" },
 
                 -- Hightlight current line number
                 LineNr = { fg = palette.accent, bold = true },
@@ -44,15 +44,6 @@ return {
                 DashboardShortCut = { fg = palette.neutral_yellow },
                 DashboardKey = { fg = palette.red },
                 DashboardFooter = { fg = palette.neutral_blue },
-
-                -- Modify telescope
-                TelescopeTitle = { fg = palette.accent, bold = true },
-                TelescopePromptNormal = { bg = palette.bg0 },
-                TelescopePromptBorder = { fg = palette.bg0, bg = palette.bg0 },
-                TelescopeResultsNormal = { fg = palette.fg2, bg = palette.bg0 },
-                TelescopeResultsBorder = { fg = palette.bg0, bg = palette.bg0 },
-                TelescopePreviewNormal = { bg = palette.bg0 },
-                TelescopePreviewBorder = { bg = palette.bg0, fg = palette.bg0 },
 
                 -- Python
                 ["@variable.python"] = { fg = palette.yellow },
