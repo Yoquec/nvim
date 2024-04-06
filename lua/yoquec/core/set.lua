@@ -1,9 +1,6 @@
 -- termguicolors
 vim.opt.termguicolors = true
 
--- set fat cursor always
--- vim.opt.guicursor = ""
-
 -- case insensitive search
 vim.opt.ignorecase = true
 
@@ -13,9 +10,11 @@ vim.opt.relativenumber = true
 
 -- fold method
 vim.opt.foldmethod = "indent"
+
 -- hacky way of undolding buffer at open time
 vim.opt.foldlevel = 99
 
+-- Remove showmode
 vim.opt.laststatus = 0
 vim.opt.showmode = false
 
@@ -33,8 +32,8 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- undotree save change buffer
--- TODO: move to the hard-drive when ZFS works again
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir/"
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undo"
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
