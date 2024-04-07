@@ -67,14 +67,18 @@ return {
                 ["@markup.heading.6.markdown"] = { fg = palette.purple, bold = true },
 
                 -- headlines
-                ["ColorColumn"] = { fg = "none", bg = "none"},
-                ["@headlines.heading.1"] = { bg = "#261B1B" },
-                ["@headlines.heading.2"] = { bg = "#261E1B" },
-                ["@headlines.heading.3"] = { bg = "#26251B" },
-                ["@headlines.heading.4"] = { bg = "#1D261B" },
-                ["@headlines.heading.5"] = { bg = "#1B2226" },
-                ["@headlines.heading.6"] = { bg = "#261B26" },
+                ["ColorColumn"] = { fg = "none", bg = "none" },
+                ["@headlines.heading.1"] = { bg = palette.bg_red },
+                ["@headlines.heading.2"] = { bg = palette.bg_orange },
+                ["@headlines.heading.3"] = { bg = palette.bg_yellow },
+                ["@headlines.heading.4"] = { bg = palette.bg_green },
+                ["@headlines.heading.5"] = { bg = palette.bg_blue },
+                ["@headlines.heading.6"] = { bg = palette.bg_purple },
 
+                -- dap
+                ["@dap.breakpoint"] = { fg = palette.red, bg = palette.bg_red },
+                ["@dap.logpoint"] = { fg = palette.blue, bg = palette.bg_blue },
+                ["@dap.stopped"] = { fg = palette.yellow, bg = palette.bg_yellow },
 
                 -- other highlight groups
                 ["@markup.strong.markdown_inline"] = { fg = palette.blue, bold = true },

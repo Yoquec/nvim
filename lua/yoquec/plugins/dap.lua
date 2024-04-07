@@ -16,6 +16,19 @@ return {
         vim.keymap.set("n", "<leader>dh", dap_ui.hover)
         vim.keymap.set("n", "<leader>dp", dap_ui.preview)
 
+        -- Signs
+        vim.fn.sign_define('DapBreakpoint',
+            { text = '', texthl = "@dap.breakpoint", linehl = "@dap.breakpoint", numhl = "@dap.breakpoint" })
+        vim.fn.sign_define('DapBreakpointCondition',
+            { text = 'ﳁ', texthl = "@dap.breakpoint", linehl = "@dap.breakpoint", numhl = "@dap.breakpoint" })
+        vim.fn.sign_define('DapBreakpointRejected',
+            { text = '', texthl = "@dap.breakpoint", linehl = "@dap.breakpoint", numhl = "@dap.breakpoint" })
+        vim.fn.sign_define('DapLogPoint',
+            { text = '', texthl = '@dap.logpoint', linehl = '@dap.logpoint', numhl = '@dap.logpoint' })
+        vim.fn.sign_define('DapStopped',
+            { text = '', texthl = '@dap.stopped', linehl = '@dap.stopped', numhl = '@dap.stopped' })
+
+
         -- Golang debug adapter
         require("dap-go").setup()
 
