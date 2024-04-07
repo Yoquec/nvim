@@ -9,8 +9,6 @@ vim.keymap.set("v", "H", "<gv")
 vim.keymap.set("v", "L", ">gv")
 
 -- vertical movements
-vim.keymap.set("n", "j", "jzz")
-vim.keymap.set("n", "k", "kzz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
@@ -43,18 +41,16 @@ vim.keymap.set('n', '<leader>mw', vim.cmd.tabc)
 vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
 vim.keymap.set('n', '<leader>ml', vim.cmd.tabn)
 vim.keymap.set('n', '<leader>mh', vim.cmd.tabp)
---
+
 -- alternative tab navigation
 vim.keymap.set('n', '<M-C-h>', vim.cmd.tabp)
 vim.keymap.set('n', '<M-C-l>', vim.cmd.tabn)
 
 -- default nvim lsp formatting (if lspZero gets attached, LspZeroFormat will be used instead)
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>p', vim.lsp.buf.format)
+--
 -- Format nvim format
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>P', vim.cmd.Format)
-
--- goyo
-vim.keymap.set('n', '<Leader>gy', vim.cmd.Goyo)
 
 -- Use alt + hjkl to resize windows
 vim.keymap.set('n', '<M-j>', ':resize -2<CR>')
