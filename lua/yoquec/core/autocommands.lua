@@ -208,22 +208,3 @@ vim.api.nvim_create_autocmd("FileType", {
             'vibgf', { buffer = args.buf })
     end
 })
-
--- ----------
--- Goyo
--- ----------
-vim.api.nvim_create_autocmd("User", {
-    pattern = "GoyoEnter",
-    callback = function()
-        require('lualine').hide()
-        vim.opt.wrap = true
-    end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "GoyoLeave",
-    callback = function()
-        require('lualine').hide({ unhide = true })
-        vim.opt.wrap = false
-    end,
-})
