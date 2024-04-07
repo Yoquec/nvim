@@ -66,6 +66,16 @@ return {
                 ["@markup.heading.6.marker.markdown"] = { fg = palette.purple, bold = true },
                 ["@markup.heading.6.markdown"] = { fg = palette.purple, bold = true },
 
+                -- headlines
+                ["ColorColumn"] = { fg = "none", bg = "none"},
+                ["@headlines.heading.1"] = { bg = "#261B1B" },
+                ["@headlines.heading.2"] = { bg = "#261E1B" },
+                ["@headlines.heading.3"] = { bg = "#26251B" },
+                ["@headlines.heading.4"] = { bg = "#1D261B" },
+                ["@headlines.heading.5"] = { bg = "#1B2226" },
+                ["@headlines.heading.6"] = { bg = "#261B26" },
+
+
                 -- other highlight groups
                 ["@markup.strong.markdown_inline"] = { fg = palette.blue, bold = true },
                 ["@markup.italic.markdown_inline"] = { italic = true },
