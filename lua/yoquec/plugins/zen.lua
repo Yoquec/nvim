@@ -5,7 +5,18 @@ return {
         { "<leader>gy", function()
             require("zen-mode").toggle({
                 window = {
-                    width = 90,
+                    width = function()
+                        local width = vim.fn.winwidth("%")
+
+                        if width < 140 then
+                            return 80
+                        elseif width < 120 then
+                            return 0.85
+                        else
+                            return 100
+                        end
+
+                    end,
                     height = 0.95,
                     options = {
                         signcolumn = "no",      -- disable signcolumn
