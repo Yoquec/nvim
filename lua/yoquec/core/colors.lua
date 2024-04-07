@@ -89,6 +89,7 @@ M.colors = {
     bg_yellow          = "#26251B",
     bg_green           = "#1D261B",
     bg_blue            = "#1B2226",
+    bg_aqua            = "#1B2626",
     bg_purple          = "#261B26",
 }
 
@@ -128,6 +129,7 @@ M.get_base_colors = function()
         bg_yellow = p.bg_yellow,
         bg_green = p.bg_green,
         bg_blue = p.bg_blue,
+        bg_aqua = p.bg_aqua,
         bg_purple = p.bg_purple,
         gray = p.gray,
         accent = p.accent,

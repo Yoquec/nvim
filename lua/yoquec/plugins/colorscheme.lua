@@ -74,16 +74,21 @@ return {
                 ["@headlines.heading.4"] = { bg = palette.bg_green },
                 ["@headlines.heading.5"] = { bg = palette.bg_blue },
                 ["@headlines.heading.6"] = { bg = palette.bg_purple },
+                ["@markup.strong.markdown_inline"] = { fg = palette.blue, bold = true },
+                ["@markup.italic.markdown_inline"] = { italic = true },
+                ["@markup.quote.markdown"] = { fg = palette.fg3, italic = true },
 
                 -- dap
                 ["@dap.breakpoint"] = { fg = palette.red, bg = palette.bg_red },
                 ["@dap.logpoint"] = { fg = palette.blue, bg = palette.bg_blue },
                 ["@dap.stopped"] = { fg = palette.yellow, bg = palette.bg_yellow },
 
-                -- other highlight groups
-                ["@markup.strong.markdown_inline"] = { fg = palette.blue, bold = true },
-                ["@markup.italic.markdown_inline"] = { italic = true },
-                ["@markup.quote.markdown"] = { fg = palette.fg3, italic = true },
+                -- diagnostics
+                DiagnosticVirtualTextError = { fg = palette.red, bg = palette.bg_red},
+                DiagnosticVirtualTextWarn = { fg = palette.yellow, bg = palette.bg_yellow},
+                DiagnosticVirtualTextInfo = { fg = palette.blue, bg = palette.bg_blue},
+                DiagnosticVirtualTextHint = { fg = palette.aqua, bg = palette.bg_aqua},
+
 
 
             },
