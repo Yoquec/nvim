@@ -21,7 +21,11 @@ return {
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero').cmp_action()
 
-        require('mason').setup({})
+        require('mason').setup({
+            ui = {
+                border = "rounded"
+            }
+        })
         require('mason-lspconfig').setup({
             handlers = {
                 lsp_zero.default_setup,
