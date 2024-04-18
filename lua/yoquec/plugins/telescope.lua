@@ -1,7 +1,7 @@
 return {
     'nvim-telescope/telescope.nvim',
     version = '0.1.x',
-    dependencies = { 'nvim-telescope/telescope-file-browser.nvim', 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-telescope/telescope-file-browser.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim' },
     config = function()
         local fb_actions = require("telescope").extensions.file_browser.actions
         local builtin = require('telescope.builtin')
@@ -21,10 +21,14 @@ return {
                         },
                     },
                 },
+                ["ui-select"] = {
+                    require("telescope.themes").get_dropdown({})
+                }
             },
         }
 
-        require("telescope").load_extension "file_browser"
+        require("telescope").load_extension("file_browser")
+        require("telescope").load_extension("ui-select")
 
         vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
         vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
