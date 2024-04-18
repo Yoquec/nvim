@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local opts = {
     ui = {
+        border = "rounded",
         icons = {
             cmd = "⌘",
             config = "🛠",
