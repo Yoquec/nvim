@@ -80,9 +80,9 @@ return {
         cmp.setup({
             sources = {
                 { name = 'nvim_lsp', priority = 8 },
-                { name = 'luasnip', priority = 5 },
-                { name = 'path' , priority = 4},
-                { name = 'buffer', priority = 4 },
+                { name = 'luasnip',  priority = 5 },
+                { name = 'path',     priority = 4 },
+                { name = 'buffer',   priority = 4 },
                 { name = 'nvim_lua', priority = 3 },
             },
             formatting = lsp_zero.cmp_format(),
@@ -104,6 +104,10 @@ return {
             completion = {
                 completeopt = 'menu,menuone,noinsert,noselect'
             },
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            }
         })
 
         lsp_zero.set_sign_icons({
