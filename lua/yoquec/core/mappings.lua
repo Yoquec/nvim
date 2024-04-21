@@ -38,21 +38,17 @@ vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
 vim.keymap.set('n', '<leader>ml', vim.cmd.tabn)
 vim.keymap.set('n', '<leader>mh', vim.cmd.tabp)
 
--- alternative tab navigation
-vim.keymap.set('n', '<M-C-h>', vim.cmd.tabp)
-vim.keymap.set('n', '<M-C-l>', vim.cmd.tabn)
-
 -- default nvim lsp formatting (if lspZero gets attached, LspZeroFormat will be used instead)
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>p', vim.lsp.buf.format)
---
+
 -- Format nvim format
 vim.keymap.set({ 'n', 'v' }, '<leader><leader>P', vim.cmd.Format)
 
 -- Use alt + hjkl to resize windows
-vim.keymap.set('n', '<M-j>', ':resize -2<CR>')
-vim.keymap.set('n', '<M-k>', ':resize +2<CR>')
-vim.keymap.set('n', '<M-h>', ':vertical resize -2<CR>')
-vim.keymap.set('n', '<M-l>', ':vertical resize +2<CR>')
+vim.keymap.set('n', '<A-C-j>', ':resize -2<CR>')
+vim.keymap.set('n', '<A-C-k>', ':resize +2<CR>')
+vim.keymap.set('n', '<A-C-h>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<A-C-l>', ':vertical resize +2<CR>')
 
 -- neovim terminal can exit to normal mode with <esc> now
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
