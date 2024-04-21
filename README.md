@@ -1,10 +1,10 @@
 # My Own Neovim config 🚀
 
-<center>
-    <a href="https://github.com/yoquec/nvim/stargazers"><img src="https://img.shields.io/github/stars/yoquec/nvim?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-    <a href="https://github.com/Yoquec/nvim/commits/main"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/yoquec/nvim?color=98c379&style=for-the-badge"></a>
-    <img alt="Neovim Version" src="https://img.shields.io/badge/NEOVIM-> v0.9.0-E5C07B?style=for-the-badge&logo=neovim">
-</center>
+<p align="center">
+    <a href="https://github.com/yoquec/nvim/stargazers"><img src="https://img.shields.io/github/stars/yoquec/nvim?colora=363a4f&colorb=b7bdf8&style=for-the-badge"></a>
+    <a href="https://github.com/yoquec/nvim/commits/main"><img alt="github last commit" src="https://img.shields.io/github/last-commit/yoquec/nvim?color=98c379&style=for-the-badge"></a>
+    <img alt="neovim version" src="https://img.shields.io/badge/neovim-> v0.9.0-e5c07b?style=for-the-badge&logo=neovim">
+</p>
 
 The neovim config I daily drive. The aim of this repo is to be able to take my config wherever I want and hopefully inspire others to build their own configs.
 
