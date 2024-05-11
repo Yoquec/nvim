@@ -90,6 +90,8 @@ return {
                 DiagnosticVirtualTextHint = { fg = palette.aqua, bg = palette.bg_aqua},
 
 
+                -- LspInfo
+                LspInfoBorder = { fg = palette.bg3 }
 
             },
             transparent_mode = true,

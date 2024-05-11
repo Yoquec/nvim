@@ -121,6 +121,10 @@ return {
             info = '●',
         })
 
+        require('lspconfig.ui.windows').default_options = {
+          border = "rounded"
+        }
+
         vim.diagnostic.config({
             virtual_text = true
         })
