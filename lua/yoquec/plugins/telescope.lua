@@ -1,13 +1,36 @@
 return {
     'nvim-telescope/telescope.nvim',
     version = '0.1.x',
-    dependencies = { 'nvim-telescope/telescope-file-browser.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-ui-select.nvim' },
+    dependencies = { 'nvim-telescope/telescope-file-browser.nvim', 'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-ui-select.nvim' },
     config = function()
         local fb_actions = require("telescope").extensions.file_browser.actions
         local builtin = require('telescope.builtin')
         local telescope_actions = require("telescope.actions")
 
         require("telescope").setup {
+            defaults = {
+                -- set the prompt at the top
+                layout_config = {
+                    horizontal = {
+                        prompt_position = "top"
+                    }
+                },
+            },
+            pickers = {
+                keymaps = {
+                    theme = "dropdown"
+                },
+                marks = {
+                    theme = "dropdown"
+                },
+                help_tags = {
+                    theme = "dropdown"
+                },
+                commands = {
+                    theme = "dropdown"
+                },
+            },
             extensions = {
                 file_browser = {
                     theme = "ivy",
@@ -37,5 +60,9 @@ return {
         vim.keymap.set('n', '<leader>fb', vim.cmd.Ex, {})
         vim.keymap.set('n', '<leader>bi', builtin.buffers, {})
         vim.keymap.set('n', '<leader>fp', builtin.live_grep, {})
+        vim.keymap.set('n', '<leader>fc', builtin.commands, {})
+        vim.keymap.set('n', '<leader>fm', builtin.marks, {})
+        vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+        vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
     end
 }
