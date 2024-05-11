@@ -70,8 +70,7 @@ M.components = {
         },
         --- table of foreground colors
         fg        = {
-            normal = "#B3B1AD",
-            idle = "#3E4B59"
+            normal = M.palette.light0,
         }
     },
 
