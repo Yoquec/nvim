@@ -20,6 +20,7 @@ return {
         local lsp_zero = require('lsp-zero')
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero').cmp_action()
+        local lspconfig = require('lspconfig')
 
         require('mason').setup({
             ui = {
@@ -30,10 +31,10 @@ return {
             handlers = {
                 lsp_zero.default_setup,
                 lua_ls = function()
-                    require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
+                    lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
                 end,
                 emmet_language_server = function()
-                    require('lspconfig').emmet_language_server.setup({
+                    lspconfig.emmet_language_server.setup({
                         filetypes = {
                             "markdown",
                             "css",
@@ -53,7 +54,7 @@ return {
                     })
                 end,
                 ltex = function()
-                    require('lspconfig').ltex.setup({
+                    lspconfig.ltex.setup({
                         filetypes = { 'rmd', 'rmarkdown', 'bib', 'gitcommit', 'markdown', 'tex', 'pandoc' },
                         settings = {
                             ltex = {
@@ -129,7 +130,7 @@ return {
             virtual_text = true
         })
 
-        lsp_zero.on_attach(function(client, bufnr)
+        lsp_zero.on_attach(function(_, bufnr)
             local opts = { buffer = bufnr, remap = false }
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
