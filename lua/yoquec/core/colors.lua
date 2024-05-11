@@ -90,7 +90,7 @@ M.components = {
     },
 
     diagnostics = {
-        error = "#cc241d",
+        error = M.palette.bright_red,
         warn  = M.palette.neutral_yellow,
         info  = M.palette.neutral_blue,
         hint  = M.palette.neutral_aqua
