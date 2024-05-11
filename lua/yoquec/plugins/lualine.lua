@@ -1,3 +1,10 @@
+local colors = require('yoquec.core.colors')
+local modes = colors.gen_lualine_theme()
+local components = colors.components
+
+local bg = components.ui.bg.normal
+local fg = components.ui.fg.normal
+
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- modified by Yoquec
@@ -7,7 +14,6 @@ return {
     'nvim-lualine/lualine.nvim',
     config = function()
         local lualine = require('lualine')
-        local palette = require('yoquec.core.colors').get_base_colors()
         local backup_icons = {
             vimrc = "",
             viminfo = "",
@@ -37,29 +43,7 @@ return {
 
         local function getStateColor()
             -- auto change color according to neovims mode
-            local mode_color = {
-                n = palette.red,
-                i = palette.green,
-                v = palette.blue,
-                [''] = palette.blue,
-                V = palette.blue,
-                c = palette.neutral_purple,
-                no = palette.red,
-                s = palette.orange,
-                S = palette.orange,
-                [''] = palette.orange,
-                ic = palette.yellow,
-                R = palette.purple,
-                Rv = palette.purple,
-                cv = palette.red,
-                ce = palette.red,
-                r = palette.neutral_aqua,
-                rm = palette.neutral_aqua,
-                ['r?'] = palette.neutral_aqua,
-                ['!'] = palette.red,
-                t = palette.purple,
-            }
-            return { fg = mode_color[vim.fn.mode()], bg = palette.bg, gui = 'bold' }
+            return { fg = modes[vim.fn.mode()], bg = bg, gui = 'bold' }
         end
 
         local function getIcon()
@@ -89,8 +73,8 @@ return {
                     -- We are going to use lualine_c an lualine_x as left and
                     -- right section. Both are highlighted by c theme .  So we
                     -- are just setting default looks o statusline
-                    normal = { c = { fg = palette.fg1, bg = palette.bg } },
-                    inactive = { c = { fg = palette.fg1, bg = palette.bg } },
+                    normal = { c = { fg = fg, bg = bg } },
+                    inactive = { c = { fg = fg, bg = bg } },
                 },
             },
             sections = {
@@ -110,9 +94,9 @@ return {
                         getIcon,
                         color = function()
                             local _, color = require("nvim-web-devicons").get_icon_color_by_filetype(vim.api.nvim_eval(
-                            "&filetype"))
+                                "&filetype"))
                             if color == nil then
-                                color = palette.fg1
+                                color = fg
                             end
                             return { fg = color }
                         end,
@@ -122,7 +106,7 @@ return {
                     {
                         'filename',
                         cond = conditions.buffer_not_empty,
-                        color = { fg = palette.fg1, gui = 'bold' },
+                        color = { fg = fg, gui = 'bold' },
                     }
                 },
                 -- Right of the line
@@ -130,25 +114,26 @@ return {
                     {
                         'diagnostics',
                         sources = { 'nvim_diagnostic' },
-                        symbols = { error = '● ', warn = '● ', info = '● ' },
+                        symbols = { error = '● ', warn = '● ', info = '● ', hint = '● ' },
                         diagnostics_color = {
-                            error = { fg = palette.red },
-                            warn = { fg = palette.yellow },
-                            info = { fg = palette.neutral_aqua },
+                            error = { fg = components.diagnostics.error },
+                            warn = { fg = components.diagnostics.warn },
+                            info = { fg = components.diagnostics.info },
+                            hint = { fg = components.diagnostics.hint },
                         },
                     },
                     {
                         'branch',
                         icon = '',
-                        color = { fg = palette.fg1, gui = 'bold' },
+                        color = { fg = fg, gui = 'bold' },
                     },
                     {
                         'diff',
                         symbols = { added = '+ ', modified = '~ ', removed = '- ' },
                         diff_color = {
-                            added = { fg = palette.green },
-                            modified = { fg = palette.orange },
-                            removed = { fg = palette.red },
+                            added = { fg = components.vcs.added },
+                            modified = { fg = components.vcs.modified },
+                            removed = { fg = components.vcs.removed },
                         },
                         cond = conditions.hide_in_width,
                     },
@@ -158,7 +143,7 @@ return {
                     },
                     {
                         'progress',
-                        color = { fg = palette.fg1, gui = 'bold' },
+                        color = { fg = fg, gui = 'bold' },
                         padding = { right = 2, left = 1 },
                     },
                     {
@@ -184,14 +169,14 @@ return {
                 lualine_c = {
                     {
                         getIcon,
-                        color = { fg = palette.bg1, bg = palette.accent },
+                        color = { fg = components.ui.bg.dark, bg = components.ui.accent },
                         padding = { right = 1, left = 1 },
                         cond = conditions.buffer_not_empty,
                     },
                     {
                         'filename',
                         cond = conditions.buffer_not_empty,
-                        color = { fg = palette.bg1, bg = palette.accent, gui = 'bold' },
+                        color = { fg = components.ui.bg.dark, bg = components.ui.accent, gui = 'bold' },
                         padding = { right = 1, left = 0 },
                     },
                 },
