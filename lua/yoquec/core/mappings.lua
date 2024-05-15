@@ -68,7 +68,7 @@ local keys = {
     { 'n',          '<C-w>v',      '<C-w>v<C-w>l' },
 
     -- tab navigation
-    { 'n',          '<leader>vot', vim.cmd.tabnew,                                        "Open a tab" },
+    { 'n',          '<leader>mt', vim.cmd.tabnew,                                        "Open a tab" },
     { 'n',          '<leader>mn',  vim.cmd.tabn },
     { 'n',          '<leader>mp',  vim.cmd.tabp },
 
@@ -79,11 +79,11 @@ local keys = {
     { 'n',          '<A-C-l>',     ':vertical resize +2<CR>' },
 
     { 'n',          '<leader>ot',  ':execute "tabnew" | execute "terminal" <CR>',         "Open a terminal in a separate tab" },
-    { 'n',          '<leader>vcd', notify_setwd,                                          "Change working directory" },
+    { 'n',          '<leader>cd', notify_setwd,                                          "Change working directory" },
     { 'n',          '<leader>vrd', vim.diagnostic.reset,                                  "Clear diagnostics" },
     { 'n',          '<BS>',        vim.cmd.noh,                                           "Clear highlight search" },
     { 'n',          '<leader>ww',  enter_wiki,                                            "Enter vim wiki" },
-    { "n",          "<leader>vtt", toggle_tab_bar,                                        "Toggles the tab bar" },
+    { "n",          "<leader>tt", toggle_tab_bar,                                        "Toggles the tab bar" },
 
     { 't',          '<esc>',       '<c-\\><c-n>',                                         "Exit normal mode form the terminal" },
 }

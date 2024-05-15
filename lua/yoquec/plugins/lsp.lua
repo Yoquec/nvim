@@ -148,20 +148,20 @@ return {
             vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
             vim.keymap.set('n', 'gr', telescope.lsp_references, opts)
-            vim.keymap.set( { 'n', 'v' }, '<leader>vlf', vim.lsp.buf.format )
-            vim.keymap.set('n', '<leader>vlw', vim.lsp.buf.workspace_symbol, opts)
-            vim.keymap.set('n', '<leader>vlr', vim.lsp.buf.rename, opts)
-            vim.keymap.set('n', '<leader>vla', vim.lsp.buf.code_action, opts)
+            vim.keymap.set( { 'n', 'v' }, '<leader>lf', vim.lsp.buf.format )
+            vim.keymap.set('n', '<leader>lw', vim.lsp.buf.workspace_symbol, opts)
+            vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, opts)
+            vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, opts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
             -- diagnostics
-            vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
+            vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, opts)
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
             -- toggle virtual_text
-            vim.keymap.set("n", "<leader>vtv", toggle_virtual_text)
+            vim.keymap.set("n", "<leader>tv", toggle_virtual_text)
         end)
     end
 }

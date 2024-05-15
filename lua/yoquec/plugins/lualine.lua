@@ -78,7 +78,7 @@ return {
     'nvim-lualine/lualine.nvim',
     config = function()
         local lualine = require('lualine')
-        vim.keymap.set("n", "<leader>vlt", toggle_bar, { desc = "Toggle lualine" });
+        vim.keymap.set("n", "<leader>tl", toggle_bar, { desc = "Toggle lualine" });
         lualine.setup({
             options = {
                 component_separators = '',

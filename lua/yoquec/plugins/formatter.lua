@@ -1,7 +1,7 @@
 return {
     'mhartington/formatter.nvim',
     event = "VeryLazy",
-    keys = { { "<leader>vf", [[<cmd>Format<CR>]], { "n", "v" } } },
+    keys = { { "<leader><leader>f", [[<cmd>Format<CR>]], { "n", "v" } } },
     config = function()
         require("formatter").setup {
             filetype = {
