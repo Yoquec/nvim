@@ -18,5 +18,5 @@ return {
             indent = { enable = true }
         })
     end,
-    keys = { { 'n', '<leader>tc', vim.cmd.TSContextToggle, "Toggles treesitter context" } }
+    keys = { {'<leader>tc', [[<cmd>vim.cmd.TSContextToggle<CR>]], desc = "Toggles treesitter context" } }
 }
