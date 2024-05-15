@@ -52,24 +52,24 @@ M.palette = {
 --- colors for different editor components
 M.components = {
     ui          = {
-        accent    = "#fabd2f",
-        border    = M.palette.dark3,
-        panel     = {
+        accent = "#fabd2f",
+        border = M.palette.dark3,
+        panel  = {
             bg     = "#0D1016",
             shadow = "#00010A",
             border = "#000000",
         },
-        gutter    = {
+        gutter = {
             bg = "none",
             line_number = M.palette.dark4
         },
         --- table of backgound colors
-        bg        = {
+        bg     = {
             normal = "none",
             dark = M.palette.dark0_hard
         },
         --- table of foreground colors
-        fg        = {
+        fg     = {
             normal = M.palette.light0,
         }
     },
@@ -81,7 +81,6 @@ M.components = {
         string   = "#8ec07c",
         regexp   = "#427b58",
         markup   = "#fb4934",
-        keyword  = "#FF8F40",
         special  = "#b57614",
         comment  = "#626A73",
         constant = "#f2e5bc",
@@ -96,10 +95,11 @@ M.components = {
     },
 
     vcs         = {
-        added    = "#91B362",
-        modified = "#6994BF",
-        removed  = "#D96C75",
-        bg       = {
+        added     = "#91B362",
+        modified  = "#6994BF",
+        removed   = "#D96C75",
+        untracked = "#FF8F40",
+        bg        = {
             added   = "#1D2214",
             removed = "#2D2220",
         }

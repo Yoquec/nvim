@@ -79,6 +79,12 @@ return {
         DiagnosticVirtualTextHint = { fg = components.diagnostics.hint, bg = components.highlights.bg.aqua },
 
         -- LspInfo
-        LspInfoBorder = { fg = components.ui.border }
+        LspInfoBorder = { fg = components.ui.border },
+
+        -- gitsigns colors
+        GitSignsAdd = { fg = components.vcs.added },
+        GitSignsChange = { fg = components.vcs.modified },
+        GitSignsDelete = { fg = components.vcs.removed },
+        GitSignsUntracked = { fg = components.vcs.untracked },
     }
 }
