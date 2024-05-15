@@ -8,6 +8,8 @@ return {
         local builtin = require('telescope.builtin')
         local telescope_actions = require("telescope.actions")
 
+        local apply_dropdown_theme = { theme = "dropdown" };
+
         require("telescope").setup {
             defaults = {
                 -- set the prompt at the top
@@ -18,18 +20,11 @@ return {
                 },
             },
             pickers = {
-                keymaps = {
-                    theme = "dropdown"
-                },
-                marks = {
-                    theme = "dropdown"
-                },
-                help_tags = {
-                    theme = "dropdown"
-                },
-                commands = {
-                    theme = "dropdown"
-                },
+                keymaps = apply_dropdown_theme,
+                marks = apply_dropdown_theme,
+                help_tags = apply_dropdown_theme,
+                commands = apply_dropdown_theme,
+                builtin = apply_dropdown_theme,
             },
             extensions = {
                 file_browser = {
@@ -56,13 +51,14 @@ return {
         vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
         vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
         vim.keymap.set('n', '<leader>fo', builtin.oldfiles, {})
-        vim.keymap.set('n', '<leader>fv', [[<cmd>Telescope file_browser<cr>]], {})
-        vim.keymap.set('n', '<leader>fb', vim.cmd.Ex, {})
-        vim.keymap.set('n', '<leader>bi', builtin.buffers, {})
+        vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
         vim.keymap.set('n', '<leader>fp', builtin.live_grep, {})
         vim.keymap.set('n', '<leader>fc', builtin.commands, {})
         vim.keymap.set('n', '<leader>fM', builtin.marks, {})
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
+        vim.keymap.set('n', '<Leader>fi', builtin.builtin, {})
+        vim.keymap.set('n', '<leader>fv', [[<cmd>Telescope file_browser<cr>]], {})
+        vim.keymap.set('n', "<Leader>ft", vim.cmd.TodoTelescope, {})
     end
 }

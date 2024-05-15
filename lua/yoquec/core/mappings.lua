@@ -2,76 +2,90 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
--- line moving
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "H", "<gv")
-vim.keymap.set("v", "L", ">gv")
-
--- vertical movements
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
--- copy without refilling the buffer
-vim.keymap.set("v", "<leader>p", "\"+p")
-vim.keymap.set("n", "<leader>p", "\"+p")
-vim.keymap.set("v", "<leader>P", "\"+P")
-vim.keymap.set("n", "<leader>P", "\"+P")
-vim.keymap.set("v", "P", "\"_dP")
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-
--- global keyboard mapping
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-
--- word replace (no lsp)
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- Move when windows split
-vim.keymap.set('n', '<C-w>s', '<C-w>s<C-w>j')
-vim.keymap.set('n', '<C-w>v', '<C-w>v<C-w>l')
-
--- tab navigation
-vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew)
-vim.keymap.set('n', '<leader>mw', vim.cmd.tabc)
-vim.keymap.set('n', '<leader>mo', vim.cmd.tabl)
-vim.keymap.set('n', '<leader>ml', vim.cmd.tabn)
-vim.keymap.set('n', '<leader>mh', vim.cmd.tabp)
-
--- default nvim lsp formatting (if lspZero gets attached, LspZeroFormat will be used instead)
-vim.keymap.set({ 'n', 'v' }, '<leader><leader>p', vim.lsp.buf.format)
-
--- Format nvim format
-vim.keymap.set({ 'n', 'v' }, '<leader><leader>P', vim.cmd.Format)
-
--- Use alt + hjkl to resize windows
-vim.keymap.set('n', '<A-C-j>', ':resize -2<CR>')
-vim.keymap.set('n', '<A-C-k>', ':resize +2<CR>')
-vim.keymap.set('n', '<A-C-h>', ':vertical resize -2<CR>')
-vim.keymap.set('n', '<A-C-l>', ':vertical resize +2<CR>')
-
--- neovim terminal can exit to normal mode with <esc> now
-vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
-
--- Open a terminal in a separate buffer
-vim.keymap.set('n', '<leader>ot', ':execute "tabnew" | execute "terminal" <CR>')
-
--- change working directory to the current file's directory
-vim.keymap.set('n', '<leader>cw', function()
+--- set working directory notifying the user
+local function notify_setwd()
     vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
     print("Changed working directory 🗺️!")
-end)
+end
 
--- clear diagnostics
-vim.keymap.set('n', '<leader>cd', function()
-    vim.diagnostics.reset()
-end)
-
--- clear hightlight search
-vim.keymap.set('n', '<BS>', vim.cmd.noh)
-
--- enter wiki
-vim.keymap.set('n', '<leader>ww', function ()
+--- open wiki dashboard
+local function enter_wiki()
     vim.cmd.e("$WIKI_HOME/index.md")
     vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
-end)
+end
+
+--- toggle the tab bar
+local function toggle_tab_bar()
+    local barstatus = vim.api.nvim_eval("&showtabline")
+
+    if (barstatus < 2) then
+        vim.opt.showtabline = 2
+    else
+        vim.opt.showtabline = 0
+    end
+end
+
+--- sets keymaps in the same way Lazy.nvim does
+--- @param keymaps table
+--- @return nil
+local function set_keymaps(keymaps)
+    for _, map in ipairs(keymaps) do
+        if map[4] == nil then
+            vim.keymap.set(map[1], map[2], map[3])
+        else
+            vim.keymap.set(map[1], map[2], map[3], { desc = map[4] })
+        end
+    end
+end
+
+local keys = {
+    -- move selected lines
+    { "v",          "J",           ":m '>+1<CR>gv=gv" },
+    { "v",          "K",           ":m '<-2<CR>gv=gv" },
+    { "v",          "H",           "<gv" },
+    { "v",          "L",           ">gv" },
+
+    { "n",          "<C-d>",       "<C-d>zz" },
+    { "n",          "<C-u>",       "<C-u>zz" },
+
+    -- copy to additional registers
+    { "v",          "<leader>p",   "\"+p" },
+    { "n",          "<leader>p",   "\"+p" },
+    { "v",          "<leader>P",   "\"+P" },
+    { "n",          "<leader>P",   "\"+P" },
+    { "v",          "P",           "\"_dP" },
+    { { "n", "v" }, "<leader>d",   [["_d]] },
+
+    -- global keyboard mapping
+    { { "n", "v" }, "<leader>y",   [["+y]] },
+    { "n",          "<leader>Y",   [["+Y]] },
+
+    -- word replace (no lsp)
+    { "n",          "<leader>s",   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]] },
+
+    -- Move when windows split
+    { 'n',          '<C-w>s',      '<C-w>s<C-w>j' },
+    { 'n',          '<C-w>v',      '<C-w>v<C-w>l' },
+
+    -- tab navigation
+    { 'n',          '<leader>vot', vim.cmd.tabnew,                                        "Open a tab" },
+    { 'n',          '<leader>mn',  vim.cmd.tabn },
+    { 'n',          '<leader>mp',  vim.cmd.tabp },
+
+    -- window resizing
+    { 'n',          '<A-C-j>',     ':resize -2<CR>' },
+    { 'n',          '<A-C-k>',     ':resize +2<CR>' },
+    { 'n',          '<A-C-h>',     ':vertical resize -2<CR>' },
+    { 'n',          '<A-C-l>',     ':vertical resize +2<CR>' },
+
+    { 'n',          '<leader>ot',  ':execute "tabnew" | execute "terminal" <CR>',         "Open a terminal in a separate tab" },
+    { 'n',          '<leader>vsw', notify_setwd,                                          "Change working directory" },
+    { 'n',          '<leader>vcd', vim.diagnostic.reset,                                  "Clear diagnostics" },
+    { 'n',          '<BS>',        vim.cmd.noh,                                           "Clear highlight search" },
+    { 'n',          '<leader>ww',  enter_wiki,                                            "Enter vim wiki" },
+    { "n",          "<leader>vtt", toggle_tab_bar,                                        "Toggles the tab bar" },
+
+    { 't',          '<esc>',       '<c-\\><c-n>',                                         "Exit normal mode form the terminal" },
+}
+
+set_keymaps(keys)

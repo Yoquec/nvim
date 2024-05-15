@@ -1,3 +1,15 @@
+local virtual_text_active = true
+
+local function toggle_virtual_text()
+    if virtual_text_active then
+        vim.diagnostic.config({ virtual_text = false })
+        virtual_text_active = false
+    else
+        vim.diagnostic.config({ virtual_text = true })
+        virtual_text_active = true
+    end
+end
+
 return {
     'vonheikemen/lsp-zero.nvim',
     branch = "v3.x",
@@ -21,6 +33,7 @@ return {
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero').cmp_action()
         local lspconfig = require('lspconfig')
+        local telescope = require("telescope.builtin")
 
         require('mason').setup({
             ui = {
@@ -101,7 +114,6 @@ return {
                 ['<A-n>'] = cmp_action.luasnip_jump_forward(),
                 ['<A-p>'] = cmp_action.luasnip_jump_backward(),
                 ['<C-Space>'] = cmp.mapping.complete(),
-                ['<C-y>'] = vim.NIL,
             }),
             -- Don't select the first option in the menu
             -- https://stackoverflow.com/questions/74688630/make-nvim-cmp-not-autoselect-the-1st-option
@@ -135,18 +147,21 @@ return {
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
-            vim.keymap.set('n', '<leader><leader>p', vim.cmd.LspZeroFormat, opts)
-            vim.keymap.set('n', '<leader>vw', vim.lsp.buf.workspace_symbol, opts)
-            vim.keymap.set('n', '<leader>vr', vim.lsp.buf.rename, opts)
-            vim.keymap.set('n', '<leader>va', vim.lsp.buf.code_action, opts)
+            vim.keymap.set('n', 'gr', telescope.lsp_references, opts)
+            vim.keymap.set( { 'n', 'v' }, '<leader>vlf', vim.lsp.buf.format )
+            vim.keymap.set('n', '<leader>vlw', vim.lsp.buf.workspace_symbol, opts)
+            vim.keymap.set('n', '<leader>vlr', vim.lsp.buf.rename, opts)
+            vim.keymap.set('n', '<leader>vla', vim.lsp.buf.code_action, opts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
-            -- Vim diagnostic
+            -- diagnostics
             vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+
+            -- toggle virtual_text
+            vim.keymap.set("n", "<leader>vtv", toggle_virtual_text)
         end)
     end
 }

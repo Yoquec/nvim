@@ -3,12 +3,12 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {
         signs = {
-            add = { text = '+' },
-            change = { text = '~' },
-            delete = { text = '-' },
-            topdelete = { text = '‾' },
-            changedelete = { text = '≃' },
-            untracked = { text = '?' },
+            add          = { text = '┃' },
+            delete       = { text = '┃' },
+            topdelete    = { text = '┃' },
+            change       = { text = '┃' },
+            changedelete = { text = '┃' },
+            untracked    = { text = '┆' },
         },
         signcolumn = true,
         current_line_blame = false,
@@ -26,29 +26,19 @@ return {
             vim.keymap.set('n', '[c', [[<cmd>Gitsigns prev_hunk<CR>]], opts)
 
             -- Actions
-            vim.keymap.set('n', '<leader>hs', [[<cmd>Gitsigns stage_hunk<CR>]], opts)
-            vim.keymap.set('v', '<leader>hs', [[<cmd>Gitsigns stage_hunk<CR>]], opts)
-            vim.keymap.set('n', '<leader>hr', [[<cmd>Gitsigns reset_hunk<CR>]], opts)
-            vim.keymap.set('v', '<leader>hr', [[<cmd>Gitsigns reset_hunk<CR>]], opts)
-            vim.keymap.set('n', '<leader>hS', [[<cmd>Gitsigns stage_buffer<CR>]], opts)
-            vim.keymap.set('n', '<leader>hu', [[<cmd>Gitsigns undo_stage_hunk<CR>]], opts)
-            vim.keymap.set('n', '<leader>hR', [[<cmd>Gitsigns reset_buffer<CR>]], opts)
-            vim.keymap.set('n', '<leader>hp', [[<cmd>Gitsigns preview_hunk<CR>]], opts)
-            vim.keymap.set('n', '<leader>hB', [[<cmd>Gitsigns blame_line<CR>]], opts)
-            vim.keymap.set('n', '<leader>vb', [[<cmd>Gitsigns blame_line<CR>]], opts)
-            vim.keymap.set('n', '<leader>hc', [[<cmd>Gitsigns toggle_current_line_blame<CR>]], opts)
-            vim.keymap.set('n', '<leader>hCc', [[<cmd>G commit<CR>]], opts)
-            vim.keymap.set('n', '<leader>hCa', [[<cmd>G commit --amend<CR>]], opts)
-            vim.keymap.set('n', '<leader>hd', [[<cmd>Gitsigns diffthis<CR>]], opts)
-            vim.keymap.set('n', '<leader>hD', [[<cmd>lua require"gitsigns".diffthis("~")<CR>]], opts)
-            vim.keymap.set('n', '<leader>td', [[<cmd>Gitsigns toggle_deleted<CR>]], opts)
-
-            -- Text object
-            vim.keymap.set('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
-            vim.keymap.set('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
-
-            -- Fugitive (commands that require git to be attached to a buffer)
-            vim.keymap.set('n', '<leader>hb', [[<cmd>Git blame<CR>]], opts)
+            vim.keymap.set({ 'n', 'v' }, '<leader>gs', [[<cmd>Gitsigns stage_hunk<CR>]], opts)
+            vim.keymap.set({ 'n', 'v' }, '<leader>gr', [[<cmd>Gitsigns reset_hunk<CR>]], opts)
+            vim.keymap.set('n', '<leader>gS', [[<cmd>Gitsigns stage_buffer<CR>]], opts)
+            vim.keymap.set('n', '<leader>gR', [[<cmd>Gitsigns reset_buffer<CR>]], opts)
+            vim.keymap.set('n', '<leader>gu', [[<cmd>Gitsigns undo_stage_hunk<CR>]], opts)
+            vim.keymap.set('n', '<leader>gp', [[<cmd>Gitsigns preview_hunk<CR>]], opts)
+            vim.keymap.set('n', '<leader>gl', [[<cmd>Gitsigns blame_line<CR>]], opts)
+            vim.keymap.set('n', '<leader>gtb', [[<cmd>Gitsigns toggle_current_line_blame<CR>]], opts)
+            vim.keymap.set('n', '<leader>gd', [[<cmd>Gitsigns diffthis<CR>]], opts)
+            vim.keymap.set('n', '<leader>gD', [[<cmd>lua require"gitsigns".diffthis("~")<CR>]], opts)
+            vim.keymap.set('n', '<leader>gtd', [[<cmd>Gitsigns toggle_deleted<CR>]], opts)
+            vim.keymap.set('n', '<leader>gcc', [[<cmd>G commit<CR>]], opts)
+            vim.keymap.set('n', '<leader>gca', [[<cmd>G commit --amend<CR>]], opts)
         end
 
     }
