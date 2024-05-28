@@ -1,6 +1,6 @@
 return {
     'mhartington/formatter.nvim',
-    event = "VeryLazy",
+    event = {"BufReadPost", "BufNewFile"},
     keys = { { "<leader><leader>f", [[<cmd>Format<CR>]], { "n", "v" } } },
     config = function()
         require("formatter").setup {
