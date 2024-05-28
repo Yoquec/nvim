@@ -5,7 +5,7 @@ return {
     { "tpope/vim-repeat",         event = "InsertEnter" },
     { 'tpope/vim-surround',       event = { "BufReadPost", "BufNewFile" } },
     { 'tpope/vim-commentary',     event = { "BufReadPost", "BufNewFile" } },
-    { 'folke/todo-comments.nvim', event = { "BufReadPre", "BufNewFile" }, opts = {}, dependencies = { 'nvim-lua/plenary.nvim' }, },
+    { 'folke/todo-comments.nvim', event = { "BufReadPost", "BufNewFile" }, opts = {}, dependencies = { 'nvim-lua/plenary.nvim' }, },
     {
         'norcalli/nvim-colorizer.lua',
         event = { "BufReadPost", "BufNewFile" },

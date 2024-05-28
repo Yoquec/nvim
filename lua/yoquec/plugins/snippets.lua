@@ -1,7 +1,7 @@
 return {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
         "rafamadriz/friendly-snippets",
     },
