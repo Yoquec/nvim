@@ -8,6 +8,6 @@ return {
         { '<leader>glao', [[<cmd>Git log --all --oneline<CR>]], desc = "Open git log oneline (all branches)" },
         { '<leader>glg',  [[<cmd>Git log --graph<CR>]],         desc = "Open git log graph" },
         { '<leader>glg',  [[<cmd>Git log --all --graph<CR>]],   desc = "Open git log graph (all brances)" },
-        { '<leader>gb',   [[<cmd>Git blame<CR>]],               desc = "Open git blame of the file to the side" },
+        { '<leader>gbb',  [[<cmd>Git blame<CR>]],               desc = "Open git blame of the file to the side" },
     }
 }

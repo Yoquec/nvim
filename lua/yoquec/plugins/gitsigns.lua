@@ -32,7 +32,7 @@ return {
             vim.keymap.set('n', '<leader>gR', [[<cmd>Gitsigns reset_buffer<CR>]], opts)
             vim.keymap.set('n', '<leader>gu', [[<cmd>Gitsigns undo_stage_hunk<CR>]], opts)
             vim.keymap.set('n', '<leader>gp', [[<cmd>Gitsigns preview_hunk<CR>]], opts)
-            vim.keymap.set('n', '<leader>gl', [[<cmd>Gitsigns blame_line<CR>]], opts)
+            vim.keymap.set('n', '<leader>gbl', [[<cmd>Gitsigns blame_line<CR>]], opts)
             vim.keymap.set('n', '<leader>gtb', [[<cmd>Gitsigns toggle_current_line_blame<CR>]], opts)
             vim.keymap.set('n', '<leader>gd', [[<cmd>Gitsigns diffthis<CR>]], opts)
             vim.keymap.set('n', '<leader>gD', [[<cmd>lua require"gitsigns".diffthis("~")<CR>]], opts)
