@@ -15,7 +15,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 
 -- Remove showmode
-vim.opt.laststatus = 0
+vim.opt.laststatus = 2
 vim.opt.showmode = false
 
 -- tabs
