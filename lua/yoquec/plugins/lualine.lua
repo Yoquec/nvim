@@ -20,8 +20,9 @@ local backup_icons = {
 
 local function toggle_bar()
     local barstatus = vim.api.nvim_eval("&laststatus")
+    local bar_activated = barstatus < 2
 
-    if (barstatus < 2) then
+    if (bar_activated) then
         vim.opt.laststatus = 2
         vim.opt.showmode = false
     else
@@ -78,9 +79,8 @@ return {
     'nvim-lualine/lualine.nvim',
     event = {"BufReadPre", "BufNewFile"},
     config = function()
-        local lualine = require('lualine')
         vim.keymap.set("n", "<leader>tl", toggle_bar, { desc = "Toggle lualine" });
-        lualine.setup({
+        require('lualine').setup({
             options = {
                 component_separators = '',
                 section_separators = '',
