@@ -77,7 +77,7 @@ end
 
 return {
     'nvim-lualine/lualine.nvim',
-    event = {"BufReadPre", "BufNewFile"},
+    event = { "BufReadPre", "BufNewFile", "BufLeave" },
     config = function()
         vim.keymap.set("n", "<leader>tl", toggle_bar, { desc = "Toggle lualine" });
         require('lualine').setup({

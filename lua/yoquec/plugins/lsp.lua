@@ -13,7 +13,7 @@ end
 return {
     'vonheikemen/lsp-zero.nvim',
     branch = "v3.x",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile", "BufLeave" },
     dependencies = {
         -- lsp support
         'neovim/nvim-lspconfig',
