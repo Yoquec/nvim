@@ -1,14 +1,15 @@
 return {
     'nvim-telescope/telescope.nvim',
     version = '0.1.x',
-    dependencies = { 'nvim-telescope/telescope-file-browser.nvim', 'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope-ui-select.nvim' },
+    dependencies = {
+        'nvim-telescope/telescope-file-browser.nvim',
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-ui-select.nvim'
+    },
     config = function()
         local fb_actions = require("telescope").extensions.file_browser.actions
         local builtin = require('telescope.builtin')
         local telescope_actions = require("telescope.actions")
-
-        local apply_dropdown_theme = { theme = "dropdown" };
 
         require("telescope").setup {
             defaults = {
@@ -20,11 +21,12 @@ return {
                 },
             },
             pickers = {
-                keymaps = apply_dropdown_theme,
-                marks = apply_dropdown_theme,
-                help_tags = apply_dropdown_theme,
-                commands = apply_dropdown_theme,
-                builtin = apply_dropdown_theme,
+                keymaps = { theme = "dropdown" },
+                marks = { theme = "dropdown" },
+                help_tags = { theme = "dropdown" },
+                commands = { theme = "dropdown" },
+                builtin = { theme = "dropdown" },
+                diagnostics = { theme = "dropdown" },
             },
             extensions = {
                 file_browser = {
@@ -58,7 +60,8 @@ return {
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
         vim.keymap.set('n', '<Leader>fi', builtin.builtin, {})
+        vim.keymap.set('n', '<Leader>fd', builtin.diagnostics, {})
         vim.keymap.set('n', '<leader>fv', [[<cmd>Telescope file_browser<cr>]], {})
-        vim.keymap.set('n', "<Leader>ft", vim.cmd.TodoTelescope, {})
+        vim.keymap.set('n', "<Leader>ft", [[<cmd>TodoTelescope theme=dropdown initial_mode=normal<cr>]], {})
     end
 }
