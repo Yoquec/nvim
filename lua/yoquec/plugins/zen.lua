@@ -2,7 +2,7 @@ return {
     "folke/zen-mode.nvim",
     ft = { "markdown", "rmd", "tex" },
     keys = {
-        { "<leader>z", function()
+        { "<leader>zz", function()
             require("zen-mode").toggle({
                 window = {
                     width = function()
@@ -25,9 +25,12 @@ return {
                 },
                 on_open = function(_)
                     vim.opt.wrap = true
+                    vim.opt.nu = false
                 end,
                 on_close = function()
                     vim.opt.wrap = false
+                    vim.opt.nu = true
+                    vim.opt.relativenumber = true
                 end,
             })
         end,
