@@ -144,7 +144,7 @@ return {
         lsp_zero.on_attach(function(_, bufnr)
             local opts = { buffer = bufnr, remap = false }
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
+            vim.keymap.set('n', 'gh', vim.lsp.buf.signature_help, opts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
             vim.keymap.set( { 'n', 'v' }, '<leader>lf', vim.lsp.buf.format )
