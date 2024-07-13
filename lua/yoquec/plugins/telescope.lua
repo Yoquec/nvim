@@ -61,6 +61,8 @@ return {
         vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
         vim.keymap.set('n', '<Leader>fi', builtin.builtin, {})
         vim.keymap.set('n', '<Leader>fd', builtin.diagnostics, {})
+        vim.keymap.set('n', '<Leader>fs', builtin.spell_suggest, {})
+        vim.keymap.set('n', '<Leader>fq', builtin.current_buffer_fuzzy_find, {})
         vim.keymap.set('n', '<leader>fv', [[<cmd>Telescope file_browser<cr>]], {})
         vim.keymap.set('n', "<Leader>ft", [[<cmd>TodoTelescope theme=dropdown initial_mode=normal<cr>]], {})
     end
