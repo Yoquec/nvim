@@ -1,6 +1,4 @@
--- leaders
 vim.g.mapleader = " "
-vim.g.maplocalleader = ","
 
 --- set working directory notifying the user
 local function notify_setwd()
