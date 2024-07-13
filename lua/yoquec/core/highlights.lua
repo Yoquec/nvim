@@ -65,6 +65,7 @@ return {
         -- inline text
         ["@markup.strong.markdown_inline"] = { fg = palette.bright_blue, bold = true },
         ["@markup.italic.markdown_inline"] = { italic = true },
+        ["@markup.raw.markdown_inline"] = { fg = palette.bright_red, bg = palette.dark3 },
         ["@markup.quote.markdown"] = { fg = palette.light3, italic = true },
 
         -- dap
