@@ -1,4 +1,4 @@
 require("yoquec.core.colors")
 require("yoquec.core.mappings")
 require("yoquec.core.set")
-require("yoquec.core.autocommands")
+require("yoquec.core.docwritting")
