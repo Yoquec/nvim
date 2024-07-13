@@ -27,6 +27,11 @@ return {
                 commands = { theme = "dropdown" },
                 builtin = { theme = "dropdown" },
                 diagnostics = { theme = "dropdown" },
+                git_status = { theme = "dropdown" },
+                git_branches = { theme = "dropdown" },
+                lsp_type_definitions = {theme = "dropdown"},
+                lsp_document_symbols = {theme = "dropdown"},
+                lsp_workspace_symbols = {theme = "dropdown"},
             },
             extensions = {
                 file_browser = {
