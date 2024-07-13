@@ -33,7 +33,6 @@ return {
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero').cmp_action()
         local lspconfig = require('lspconfig')
-        local telescope = require("telescope.builtin")
 
         require('mason').setup({
             ui = {
@@ -147,7 +146,7 @@ return {
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', 'gr', telescope.lsp_references, opts)
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
             vim.keymap.set( { 'n', 'v' }, '<leader>lf', vim.lsp.buf.format )
             vim.keymap.set('n', '<leader>lw', vim.lsp.buf.workspace_symbol, opts)
             vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, opts)
