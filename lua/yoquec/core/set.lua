@@ -8,6 +8,9 @@ vim.opt.ignorecase = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- set conceal level
+vim.opt.conceallevel = 1
+
 -- fold method
 vim.opt.foldmethod = "indent"
 
