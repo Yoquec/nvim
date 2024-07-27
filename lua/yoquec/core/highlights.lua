@@ -87,8 +87,5 @@ return {
         GitSignsChange = { fg = components.vcs.modified },
         GitSignsDelete = { fg = components.vcs.removed },
         GitSignsUntracked = { fg = components.vcs.untracked },
-
-        -- Obsidian extension colors
-        ObsidianImportant = { fg = palette.bright_yellow }
     }
 }
