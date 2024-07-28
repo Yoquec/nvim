@@ -85,9 +85,10 @@ else
                 }
             }
         },
-    keys = {
-            {'<leader>wd', [[<cmd>ObsidianToday<CR>]], desc = "Opens today's wiki daily note" },
-            {'<leader>wn', [[<cmd>ObsidianNew<CR>]], desc = "Creates a new Zettlekasten note" }
+        keys = {
+            { '<leader>wd', [[<cmd>ObsidianToday<CR>]],  desc = "Opens today's wiki daily note" },
+            { '<leader>wn', [[<cmd>ObsidianNew<CR>]],    desc = "Creates a new Zettlekasten note" },
+            { '<leader>ws', [[<cmd>ObsidianSearch<CR>]], desc = "Searches for a Zettlekasten note" }
         }
     }
 end
