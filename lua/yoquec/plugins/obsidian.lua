@@ -84,6 +84,10 @@ else
                     ObsidianHighlightText = { bg = "#75662e" },
                 }
             }
+        },
+    keys = {
+            {'<leader>wd', [[<cmd>ObsidianToday<CR>]], desc = "Opens today's wiki daily note" },
+            {'<leader>wn', [[<cmd>ObsidianNew<CR>]], desc = "Creates a new Zettlekasten note" }
         }
     }
 end
