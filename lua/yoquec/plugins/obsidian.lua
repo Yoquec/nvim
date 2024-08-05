@@ -86,9 +86,15 @@ else
             }
         },
         keys = {
-            { '<leader>wd', [[<cmd>ObsidianToday<CR>]],  desc = "Opens today's wiki daily note" },
-            { '<leader>wn', [[<cmd>ObsidianNew<CR>]],    desc = "Creates a new Zettlekasten note" },
-            { '<leader>ws', [[<cmd>ObsidianSearch<CR>]], desc = "Searches for a Zettlekasten note" }
+            { '<leader>wd',  [[<cmd>ObsidianToday<CR>]],       desc = "Opens today's daily note" },
+            { '<leader>wy',  [[<cmd>ObsidianYesterday<CR>]],   desc = "Opens yesterday's daily note" },
+            { '<leader>wt',  [[<cmd>ObsidianTomorrow<CR>]],    desc = "Opens tomorrow's daily note" },
+            { '<leader>wn',  [[<cmd>ObsidianNew<CR>]],         desc = "Creates a new wiki note" },
+            { '<leader>fww', [[<cmd>ObsidianSearch<CR>]],      desc = "Searches wiki note contents" },
+            { '<leader>fwn', [[<cmd>ObsidianQuickSwitch<CR>]], desc = "Searches wiki note entries" },
+            { '<leader>fwt', [[<cmd>ObsidianTags<CR>]],        desc = "Opens a picker for note tags" },
+            { '<leader>fwd', [[<cmd>ObsidianDailies<CR>]],     desc = "Opens a picker for daily notes" },
+            { '<leader>fwb', [[<cmd>ObsidianBacklinks<CR>]],   desc = "Opens a picker for the current note's backlinks" },
         }
     }
 end
