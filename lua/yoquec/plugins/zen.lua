@@ -3,6 +3,7 @@ return {
     ft = { "markdown", "rmd", "tex" },
     keys = {
         { "<leader>zz", function()
+            local default_conceallevel = vim.opt.conceallevel
             require("zen-mode").toggle({
                 window = {
                     width = function()
@@ -26,11 +27,13 @@ return {
                 on_open = function(_)
                     vim.opt.wrap = true
                     vim.opt.nu = false
+                    vim.opt.conceallevel = 0
                 end,
                 on_close = function()
                     vim.opt.wrap = false
                     vim.opt.nu = true
                     vim.opt.relativenumber = true
+                    vim.opt.conceallevel = default_conceallevel
                 end,
             })
         end,
