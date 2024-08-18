@@ -24,7 +24,6 @@ return {
                 keymaps = { theme = "dropdown" },
                 marks = { theme = "dropdown" },
                 help_tags = { theme = "dropdown" },
-                commands = { theme = "dropdown" },
                 builtin = { theme = "dropdown" },
                 diagnostics = { theme = "dropdown" },
                 git_status = { theme = "dropdown" },
