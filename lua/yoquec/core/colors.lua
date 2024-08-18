@@ -52,7 +52,7 @@ M.palette = {
 --- colors for different editor components
 M.components = {
     ui          = {
-        accent = "#fabd2f",
+        accent = M.palette.light0,
         border = M.palette.dark3,
         panel  = {
             bg     = "#0D1016",
