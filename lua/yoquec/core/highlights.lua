@@ -87,5 +87,8 @@ return {
         GitSignsChange = { fg = components.vcs.modified },
         GitSignsDelete = { fg = components.vcs.removed },
         GitSignsUntracked = { fg = components.vcs.untracked },
+
+        -- Telescope
+        TelescopeTitle = { fg = components.ui.bg.dark, bg = components.ui.accent }
     }
 }
