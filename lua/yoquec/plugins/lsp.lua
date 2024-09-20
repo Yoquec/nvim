@@ -15,12 +15,12 @@ return {
     branch = "v3.x",
     event = { "BufReadPre", "BufNewFile", "BufLeave" },
     dependencies = {
-        -- lsp support
+        -- LSP support
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
 
-        -- autocompletion
+        -- Auto-completion
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-nvim-lua',
@@ -47,49 +47,19 @@ return {
                 end,
                 emmet_language_server = function()
                     lspconfig.emmet_language_server.setup({
-                        filetypes = {
-                            "markdown",
-                            "css",
-                            "html",
-                            "javascriptreact",
-                            "typescriptreact",
-                            "htmldjango"
-                        }
+                        -- Add to markdown filetype
+                        filetypes = { "markdown", 'css', 'eruby', 'html', 'htmldjango', 'javascriptreact',
+                            'less', 'pug', 'sass', 'scss', 'typescriptreact', 'htmlangular' }
                     })
                 end,
                 html = function()
-                    require("lspconfig").html.setup({
+                    lspconfig.html.setup({
                         filetypes = {
                             "html",
                             "htmldjango"
                         }
                     })
                 end,
-                ltex = function()
-                    lspconfig.ltex.setup({
-                        filetypes = { 'rmd', 'rmarkdown', 'bib', 'gitcommit', 'markdown', 'tex', 'pandoc' },
-                        settings = {
-                            ltex = {
-                                language = "auto"
-                            }
-                        },
-                        get_language_id = function(_, filetype)
-                            local language_id_mapping = {
-                                bib = 'bibtex',
-                                plaintex = 'tex',
-                                tex = 'latex',
-                                pandoc = 'markdown',
-                                rmd = "rmarkdown"
-                            }
-                            local language_id = language_id_mapping[filetype]
-                            if language_id then
-                                return language_id
-                            else
-                                return filetype
-                            end
-                        end,
-                    })
-                end
             }
         })
 
@@ -114,7 +84,8 @@ return {
                 ['<A-p>'] = cmp_action.luasnip_jump_backward(),
                 ['<C-Space>'] = cmp.mapping.complete(),
             }),
-            -- Don't select the first option in the menu
+
+            -- Don't select the first option in the menu by default
             -- https://stackoverflow.com/questions/74688630/make-nvim-cmp-not-autoselect-the-1st-option
             preselect = 'none',
             completion = {
@@ -134,7 +105,7 @@ return {
         })
 
         require('lspconfig.ui.windows').default_options = {
-          border = "rounded"
+            border = "rounded"
         }
 
         vim.diagnostic.config({
@@ -147,19 +118,19 @@ return {
             vim.keymap.set('n', 'gh', vim.lsp.buf.signature_help, opts)
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-            vim.keymap.set( { 'n', 'v' }, '<leader>lf', vim.lsp.buf.format )
+            vim.keymap.set({ 'n', 'v' }, '<leader>lf', vim.lsp.buf.format)
             vim.keymap.set('n', '<leader>lw', vim.lsp.buf.workspace_symbol, opts)
             vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, opts)
             vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, opts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
-            -- diagnostics
+            -- Diagnostics
             vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, opts)
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
-            -- toggle virtual_text
+            -- Toggle virtual_text
             vim.keymap.set("n", "<leader>tv", toggle_virtual_text)
         end)
     end
