@@ -82,7 +82,10 @@ else
                     ObsidianBlockID = { italic = true, fg = "#89ddff" },
                     ObsidianHighlightText = { bg = "#75662e" },
                 }
-            }
+            },
+            follow_url_func = function(url)
+                vim.ui.open(url)
+            end,
         },
         keys = {
             { '<leader>wd',  [[<cmd>ObsidianToday<CR>]],       desc = "Opens today's daily note" },
@@ -93,6 +96,7 @@ else
             { '<leader>fwn', [[<cmd>ObsidianQuickSwitch<CR>]], desc = "Searches wiki note entries" },
             { '<leader>fwt', [[<cmd>ObsidianTags<CR>]],        desc = "Opens a picker for note tags" },
             { '<leader>fwd', [[<cmd>ObsidianDailies<CR>]],     desc = "Opens a picker for daily notes" },
+            { '<leader>fwl', [[<cmd>ObsidianLinks<CR>]],       desc = "Opens a picker for the current note's backlinks" },
             { '<leader>fwb', [[<cmd>ObsidianBacklinks<CR>]],   desc = "Opens a picker for the current note's backlinks" },
         }
     }
