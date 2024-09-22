@@ -52,7 +52,6 @@ else
             "nvim-lua/plenary.nvim",
         },
         opts = {
-            notes_subdir = "zk",
             new_notes_location = "notes_subdir",
             templates = templates,
             workspaces = {
