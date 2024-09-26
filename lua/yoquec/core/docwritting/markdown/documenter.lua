@@ -5,7 +5,7 @@ local function render_html()
     local output_path = vim.fn.expand("%:p:r") .. [[.html]]
 
     vim.fn.jobstart(
-        [[bash -c 'go-documenter -t html -o "]] .. output_path .. [[" "]] .. file_path .. [["']],
+        [[bash -c 'documenter -t html -o "]] .. output_path .. [[" "]] .. file_path .. [["']],
         { on_exit = callbacks.html_render_finish }
     )
 
@@ -17,7 +17,7 @@ local function render_html_sync()
     local file_path = vim.fn.expand("%:p")
     local output_path = vim.fn.expand("%:p:r") .. [[.html]]
     vim.cmd(
-        [[!go-documenter -t html -o "]] .. output_path .. [[" "]] .. file_path .. [["]]
+        [[!documenter -t html -o "]] .. output_path .. [[" "]] .. file_path .. [["]]
     )
 end
 
@@ -26,7 +26,7 @@ local function render_pdf()
     local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
 
     vim.fn.jobstart(
-        [[bash -c 'go-documenter -t pdf -o "]] .. output_path .. [[" "]] .. file_path .. [["']],
+        [[bash -c 'documenter -t pdf -o "]] .. output_path .. [[" "]] .. file_path .. [["']],
         { on_exit = callbacks.document_render_finish }
     )
 
@@ -39,7 +39,7 @@ local function render_pdf_sync()
     local file_path = vim.fn.expand("%:p")
     local output_path = vim.fn.expand("%:p:r") .. [[.pdf]]
     vim.cmd(
-        [[!go-documenter -t pdf -o "]] .. output_path .. [[" "]] .. file_path .. [["]]
+        [[!documenter -t pdf -o "]] .. output_path .. [[" "]] .. file_path .. [["]]
     )
 end
 
