@@ -62,6 +62,9 @@ vim.api.nvim_create_autocmd("FileType", {
     group = "docwritting",
     pattern = "markdown",
     callback = function(args)
+        -- Increase conceal only in markdown files
+        vim.opt.conceallevel = 2
+
         vim.keymap.set('n', '<leader>op',
             viewers.open_pdf, { buffer = args.buf })
         vim.keymap.set('n', '<leader>oh',

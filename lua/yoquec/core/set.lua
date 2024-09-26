@@ -9,7 +9,7 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- set conceal level
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 
 -- fold method
 vim.opt.foldmethod = "indent"
