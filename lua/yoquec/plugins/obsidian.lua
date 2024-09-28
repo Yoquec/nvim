@@ -40,8 +40,7 @@ else
     local template_names = getTemplatesNames(templates)
 
     return {
-        "epwalsh/obsidian.nvim",
-        version = "*",
+        "Yoquec/obsidian.nvim",
         lazy = true,
         ft = "markdown",
         event = {
