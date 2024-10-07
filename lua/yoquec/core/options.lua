@@ -7,7 +7,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 
 vim.opt.laststatus = 2
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 vim.opt.conceallevel = 0
 vim.opt.tabstop = 4
