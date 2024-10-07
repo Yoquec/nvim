@@ -1,4 +1,4 @@
-local colors = require('yoquec.core.colors')
+local colors = require('yoquec.core.theme.colors')
 local modes = colors.gen_lualine_theme()
 local components = colors.components
 

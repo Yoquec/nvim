@@ -77,6 +77,6 @@ return {
         vim.keymap.set('n', '<Leader>fls', builtin.lsp_document_symbols, {})
         vim.keymap.set('n', '<Leader>flw', builtin.lsp_workspace_symbols, {})
         vim.keymap.set('n', '<leader>fv', [[<cmd>Telescope file_browser<cr>]], {})
-        vim.keymap.set('n', "<Leader>ft", [[<cmd>TodoTelescope theme=dropdown initial_mode=normal<cr>]], {})
+        vim.keymap.set('n', "<Leader>ft", [[<cmd>TodoTelescope theme=dropdown<cr>]], {})
     end
 }

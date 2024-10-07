@@ -1,4 +1,4 @@
-local callbacks = require("yoquec.core.docwritting.callbacks")
+local callbacks = require("yoquec.core.writting.callbacks")
 
 --- Creates pdf document with pandoc (in the foreground)
 local function render_pdf()

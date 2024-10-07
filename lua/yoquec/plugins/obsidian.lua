@@ -1,5 +1,4 @@
 local path = require("plenary.path")
-local palette = require("yoquec.core.colors").palette
 local wiki_directory = os.getenv("WIKI_HOME")
 
 local function getTemplateConfig(wiki_home)
@@ -69,7 +68,7 @@ else
             },
             ui = {
                 hl_groups = {
-                    ObsidianImportant = { fg = palette.bright_yellow },
+                    ObsidianImportant = { fg = "#fabd2f" },
                     ObsidianTodo = { bold = true, fg = "#f78c6c" },
                     ObsidianDone = { bold = true, fg = "#89ddff" },
                     ObsidianRightArrow = { bold = true, fg = "#f78c6c" },

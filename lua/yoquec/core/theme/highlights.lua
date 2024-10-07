@@ -1,4 +1,4 @@
-local colors = require("yoquec.core.colors")
+local colors = require("yoquec.core.theme.colors")
 local components = colors.components
 local palette = colors.palette
 

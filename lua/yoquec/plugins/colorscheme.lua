@@ -1,5 +1,5 @@
-local colors = require("yoquec.core.colors")
-local highlights = require("yoquec.core.highlights")
+local colors = require("yoquec.core.theme.colors")
+local highlights = require("yoquec.core.theme.highlights")
 
 return {
     'ellisonleao/gruvbox.nvim',
