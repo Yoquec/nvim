@@ -1,6 +1,5 @@
 return {
     "tpope/vim-fugitive",
-    lazy = false,
     keys = {
         { '<leader>gg',   vim.cmd.Git,                          desc = "Open fugitive menu" },
         { '<leader>gll',  [[<cmd>Git log<CR>]],                 desc = "Open git log" },
