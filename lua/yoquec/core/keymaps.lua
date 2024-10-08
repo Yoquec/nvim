@@ -1,21 +1,11 @@
-vim.g.mapleader = " "
-
---- set working directory notifying the user
-local function notify_setwd()
-    vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
-    print("Changed working directory 🗺️!")
+--- @param path string
+local function setcwd(path)
+    vim.api.nvim_set_current_dir(path)
+    print("Changed working directory to " .. path)
 end
 
---- open wiki dashboard
-local function enter_wiki()
-    vim.cmd.e("$WIKI_HOME/index.md")
-    vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
-end
-
---- toggle the tab bar
 local function toggle_tab_bar()
     local barstatus = vim.api.nvim_eval("&showtabline")
-
     if (barstatus < 2) then
         vim.opt.showtabline = 2
     else
@@ -23,67 +13,65 @@ local function toggle_tab_bar()
     end
 end
 
---- sets keymaps in the same way Lazy.nvim does
---- @param keymaps table
---- @return nil
-local function set_keymaps(keymaps)
-    for _, map in ipairs(keymaps) do
-        if map[4] == nil then
-            vim.keymap.set(map[1], map[2], map[3])
-        else
-            vim.keymap.set(map[1], map[2], map[3], { desc = map[4] })
-        end
-    end
-end
+vim.g.mapleader = " "
+vim.g.localleader = "\\"
 
-local keys = {
-    -- move selected lines
-    { "v",          "J",           ":m '>+1<CR>gv=gv" },
-    { "v",          "K",           ":m '<-2<CR>gv=gv" },
-    { "v",          "H",           "<gv" },
-    { "v",          "L",           ">gv" },
+-- Movement
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
-    { "n",          "<C-d>",       "<C-d>zz" },
-    { "n",          "<C-u>",       "<C-u>zz" },
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv",
+    { desc = "Moves the selection one line up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv",
+    { desc = "Moves the selection one line down" })
 
-    -- copy to additional registers
-    { "v",          "<leader>p",   "\"+p" },
-    { "n",          "<leader>p",   "\"+p" },
-    { "v",          "<leader>P",   "\"+P" },
-    { "n",          "<leader>P",   "\"+P" },
-    { "v",          "P",           "\"_dP" },
-    { { "n", "v" }, "<leader>d",   [["_d]] },
+vim.keymap.set("v", "H", "<gv",
+    { desc = "Dedents selection" })
+vim.keymap.set("v", "L", ">gv",
+    { desc = "Indents selection" })
 
-    -- global keyboard mapping
-    { { "n", "v" }, "<leader>y",   [["+y]] },
-    { "n",          "<leader>Y",   [["+Y]] },
+-- Copying and pasting
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]],
+    { desc = "Copy into the system register" })
+vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p",
+    { desc = "Paste from the system register" })
+vim.keymap.set({ "n", "v" }, "<leader>P", "\"+P",
+    { desc = "Prepend paste from the system register" })
+vim.keymap.set("v", "P", "\"_dP",
+    { desc = "Paste without populating the register with the selection" })
 
-    -- word replace (no lsp)
-    { "n",          "<leader>s",   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]] },
+-- Windows
+vim.keymap.set('n', '<A-C-j>', ':resize -2<CR>',
+    { desc = "Resize window down" })
+vim.keymap.set('n', '<A-C-k>', ':resize +2<CR>',
+    { desc = "Resize window up" })
+vim.keymap.set('n', '<A-C-h>', ':vertical resize -2<CR>',
+    { desc = "Resize window left" })
+vim.keymap.set('n', '<A-C-l>', ':vertical resize +2<CR>',
+    { desc = "Resize window right" })
 
-    -- Move when windows split
-    { 'n',          '<C-w>s',      '<C-w>s<C-w>j' },
-    { 'n',          '<C-w>v',      '<C-w>v<C-w>l' },
+-- Tabs
+vim.keymap.set('n', '<leader>mt', vim.cmd.tabnew,
+    { desc = "Open a new tab" })
+vim.keymap.set('n', '<leader>mn', vim.cmd.tabn,
+    { desc = "Move to the next tab" })
+vim.keymap.set('n', '<leader>mp', vim.cmd.tabp,
+    { desc = "Move to the previous tab" })
+vim.keymap.set("n", "<leader>tt", toggle_tab_bar,
+    { desc = "Toggle tab bar visibility" })
 
-    -- tab navigation
-    { 'n',          '<leader>mt',  vim.cmd.tabnew,                                        "Open a tab" },
-    { 'n',          '<leader>mn',  vim.cmd.tabn },
-    { 'n',          '<leader>mp',  vim.cmd.tabp },
-
-    -- window resizing
-    { 'n',          '<A-C-j>',     ':resize -2<CR>' },
-    { 'n',          '<A-C-k>',     ':resize +2<CR>' },
-    { 'n',          '<A-C-h>',     ':vertical resize -2<CR>' },
-    { 'n',          '<A-C-l>',     ':vertical resize +2<CR>' },
-
-    -- misc
-    { 'n',          '<leader>ot',  ':execute "tabnew" | execute "terminal" <CR>',         "Open a terminal in a separate tab" },
-    { 'n',          '<leader>cd',  notify_setwd,                                          "Change working directory" },
-    { 'n',          '<leader>vrd', vim.diagnostic.reset,                                  "Clear diagnostics" },
-    { 'n',          '<BS>',        vim.cmd.noh,                                           "Clear highlight search" },
-    { 'n',          '<leader>ww',  enter_wiki,                                            "Enter vim wiki" },
-    { "n",          "<leader>tt",  toggle_tab_bar,                                        "Toggles the tab bar" },
-    { 't',          '<esc>',       '<c-\\><c-n>',                                         "Exit normal mode form the terminal" },
-}
-
-set_keymaps(keys)
+-- Misc
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Rename word under cursor (without lsp)" })
+vim.keymap.set('n', '<leader>ot', [[<cmd>execute "tabnew" | execute "terminal" <CR>]],
+    { desc = "Open a terminal in a separate tab" })
+vim.keymap.set('n', '<BS>', vim.cmd.noh,
+    { desc = "Clear highlight search" })
+vim.keymap.set('n', '<C-BS>', vim.diagnostic.reset,
+    { desc = "Clear LSP diagnostics" })
+vim.keymap.set('t', '<esc>', '<c-\\><c-n>',
+    { desc = "Exit from terminal mode to normal mode" })
+vim.keymap.set('n', '<leader>cd', function()
+    local current_dir = vim.fn.expand("%:h")
+    setcwd(current_dir)
+end, { desc = "Change working directory" })
