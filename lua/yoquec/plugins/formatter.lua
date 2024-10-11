@@ -1,8 +1,9 @@
 return {
     'mhartington/formatter.nvim',
-    event = {"BufReadPost", "BufNewFile"},
-    keys = { { "<leader><leader>f", [[<cmd>Format<CR>]], { "n", "v" } } },
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
+        -- `config` key must be used (and not opts) to be able to
+        -- load the multiple "formatter.filetype" modules
         require("formatter").setup {
             filetype = {
                 javascript = {
@@ -58,5 +59,13 @@ return {
                 },
             }
         }
-    end
+    end,
+    keys = {
+        {
+            "<leader>F",
+            [[<cmd>Format<CR>]],
+            { "n", "v" },
+            desc = "Formatter.nvim format the current file"
+        }
+    },
 }
