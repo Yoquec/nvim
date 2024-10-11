@@ -139,24 +139,36 @@ return {
 
         lsp_zero.on_attach(function(_, bufnr)
             local opts = { buffer = bufnr, remap = false }
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', 'gh', vim.lsp.buf.signature_help, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-            vim.keymap.set({ 'n', 'v' }, '<leader>lf', vim.lsp.buf.format)
-            vim.keymap.set('n', '<leader>lw', vim.lsp.buf.workspace_symbol, opts)
-            vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, opts)
-            vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-            vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
+                { unpack(opts), desc = "LSP navigate to definition" })
+            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+                { unpack(opts), desc = "LSP navigate to implementation" })
+            vim.keymap.set('n', 'gr', vim.lsp.buf.references,
+                { unpack(opts), desc = "LSP navigate to references" })
+            vim.keymap.set({ 'n', 'v' }, '<leader>lf', vim.lsp.buf.format,
+                { unpack(opts), desc = "LSP get signature help" })
+            vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename,
+                { unpack(opts), desc = "LSP rename symbol under cursor" })
+            vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action,
+                { unpack(opts), desc = "LSP code action" })
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover,
+                { unpack(opts), desc = "LSP documentation hover" })
+            vim.keymap.set('n', 'gh', vim.lsp.buf.signature_help,
+                { unpack(opts), desc = "LSP get signature help" })
+            vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help,
+                { unpack(opts), desc = "LSP get signature help" })
 
             -- Diagnostics
-            vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, opts)
-            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-            vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+            vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float,
+                { unpack(opts), desc = "LSP open diagnostic hover" })
+            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,
+                { unpack(opts), desc = "LSP jump to previous diagnostic" })
+            vim.keymap.set('n', ']d', vim.diagnostic.goto_next,
+                { unpack(opts), desc = "LSP jump to next diagnostic" })
 
             -- Toggle virtual_text
-            vim.keymap.set("n", "<leader>tv", toggle_virtual_text)
+            vim.keymap.set("n", "<leader>tv", toggle_virtual_text,
+                { unpack(opts), desc = "Toggle LSP virtual text" })
         end)
     end
 }

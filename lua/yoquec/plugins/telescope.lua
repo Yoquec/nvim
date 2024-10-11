@@ -97,8 +97,8 @@ return {
         vim.keymap.set('n', '<Leader>flt', builtin.lsp_type_definitions,
             { desc = "Telescope LSP type definitions" })
         vim.keymap.set('n', '<Leader>fls', builtin.lsp_document_symbols,
-            { desc = "Telescope LSP document symbols" })
-        vim.keymap.set('n', '<Leader>flw', builtin.lsp_workspace_symbols,
+            { desc = "Telescope LSP buffer symbols" })
+        vim.keymap.set('n', '<Leader>flS', builtin.lsp_workspace_symbols,
             { desc = "Telescope LSP workspace symbols" })
         vim.keymap.set('n', '<Leader>fd', builtin.diagnostics,
             { desc = "Telescope LSP diagnostics" })
