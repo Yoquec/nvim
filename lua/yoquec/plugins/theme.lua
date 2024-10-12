@@ -22,8 +22,8 @@ return {
                 LineNrAbove = { fg = bg1 },
                 LineNrBelow = { fg = bg1 },
 
-                StatusLine = { fg = accent, bg = "none" },
-                StatusLineNC = { fg = accent_dim, bg = "none" },
+                StatusLine = { fg = accent, bg = accent_dim },
+                StatusLineNC = { fg = accent_dim, bg = accent },
 
                 LspInfoBorder = { fg = accent },
 
