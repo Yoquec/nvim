@@ -8,7 +8,7 @@ return {
 
         vim.keymap.set("n", "<leader>a", function()
             harpoon:list():append()
-            print("👉 File added to harpoon")
+            print("File added to harpoon")
         end, { desc = "Add current file to Harpoon menu" })
 
         vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
