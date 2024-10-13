@@ -15,6 +15,7 @@ return {
         { '<leader>grm',  [[<cmd>Git reset --mixed HEAD<CR>]],  desc = "Fugitive git mixed reset" },
         { '<leader>grus', [[<cmd>Git checkout -- .<CR>]],       desc = "Fugitive git reset unstaged files" },
         { '<leader>grut', [[<cmd>Git clean -fd<CR>]],           desc = "Fugitive git reset untracked files" },
+        { '<leader>grui', [[<cmd>Git clean -fdX<CR>]],          desc = "Fugitive git reset ignored files" },
         {
             '<leader>grn',
             function()
