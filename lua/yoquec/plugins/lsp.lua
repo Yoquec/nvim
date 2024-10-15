@@ -141,7 +141,7 @@ return {
             local opts = { buffer = bufnr, remap = false }
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
                 { unpack(opts), desc = "LSP navigate to definition" })
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+            vim.keymap.set('n', 'gI', vim.lsp.buf.implementation,
                 { unpack(opts), desc = "LSP navigate to implementation" })
             vim.keymap.set('n', 'gr', vim.lsp.buf.references,
                 { unpack(opts), desc = "LSP navigate to references" })
