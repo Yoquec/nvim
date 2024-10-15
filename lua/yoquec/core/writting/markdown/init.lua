@@ -13,8 +13,18 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo[args.buf].tabstop = 2
         vim.bo[args.buf].softtabstop = 2
 
-        vim.keymap.set('n', '<leader>vp', viewers.pdf.default, { buffer = args.buf })
-        vim.keymap.set('n', '<leader>vh', viewers.html.default, { buffer = args.buf })
+        vim.keymap.set('n', '<leader>op', viewers.pdf.zathura, {
+            buffer = args.buf,
+            desc = "Open the compiled pdf markdown file in zathura"
+        })
+        vim.keymap.set('n', '<leader>oP', viewers.pdf.default, {
+            buffer = args.buf,
+            desc = "Open the compiled pdf markdown file in the default pdf viewer"
+        })
+        vim.keymap.set('n', '<leader>oh', viewers.html.default, {
+            buffer = args.buf,
+            desc = "Open the compiled html markdown file in the default html viewer"
+        })
 
         pandoc.autocmd_callback(args)
     end

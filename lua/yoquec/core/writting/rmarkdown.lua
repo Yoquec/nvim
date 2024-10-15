@@ -29,15 +29,19 @@ vim.api.nvim_create_autocmd("FileType", {
 
         vim.keymap.set('n', '<leader>rr', render_pdf, {
             buffer = args.buf,
-            desc = "Render the Rmarkdown document into pdf"
+            desc = "Render the rmarkdown document into pdf"
         })
         vim.keymap.set('n', '<leader><leader>rr', render_pdf_sync, {
             buffer = args.buf,
             desc = "Render the Rmarkdown document into pdf (foreground)"
         })
-        vim.keymap.set('n', '<leader>vp', viewers.open_pdf, {
+        vim.keymap.set('n', '<leader>op', viewers.pdf.zathura, {
             buffer = args.buf,
-            desc = "Open the compiled Rmarkdown pdf file in a pdf viewer"
+            desc = "Open the compiled rmarkdown pdf file in zathura"
+        })
+        vim.keymap.set('n', '<leader>oP', viewers.pdf.default, {
+            buffer = args.buf,
+            desc = "Open the compiled rmarkdown pdf file in the default pdf viewer"
         })
 
         -- Override the formatting command to use prettier

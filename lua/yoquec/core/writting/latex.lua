@@ -47,9 +47,13 @@ vim.api.nvim_create_autocmd("FileType", {
             buffer = args.buf,
             desc = "Render LaTeX using the 'make' command (foreground)"
         })
-        vim.keymap.set('n', '<leader>vp', viewers.open_pdf, {
+        vim.keymap.set('n', '<leader>op', viewers.pdf.zathura, {
             buffer = args.buf,
-            desc = "Open the compiled latex pdf file in a pdf viewer"
+            desc = "Open the compiled latex pdf file in zathura"
+        })
+        vim.keymap.set('n', '<leader>oP', viewers.pdf.default, {
+            buffer = args.buf,
+            desc = "Open the compiled latex pdf file in the default pdf viewer"
         })
     end
 })
