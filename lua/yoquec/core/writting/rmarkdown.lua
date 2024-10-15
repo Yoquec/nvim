@@ -27,14 +27,23 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo[args.buf].tabstop = 2
         vim.bo[args.buf].softtabstop = 2
 
-        vim.keymap.set('n', '<leader>rr', render_pdf, { buffer = args.buf })
-        vim.keymap.set('n', '<leader><leader>rr', render_pdf_sync, { buffer = args.buf })
-        vim.keymap.set('n', '<leader>vp', viewers.open_pdf, { buffer = args.buf })
+        vim.keymap.set('n', '<leader>rr', render_pdf, {
+            buffer = args.buf,
+            desc = "Render the Rmarkdown document into pdf"
+        })
+        vim.keymap.set('n', '<leader><leader>rr', render_pdf_sync, {
+            buffer = args.buf,
+            desc = "Render the Rmarkdown document into pdf (foreground)"
+        })
+        vim.keymap.set('n', '<leader>vp', viewers.open_pdf, {
+            buffer = args.buf,
+            desc = "Open the compiled Rmarkdown pdf file in a pdf viewer"
+        })
 
-        -- override the formatting command to use prettier 
-        vim.keymap.set('n', '<Leader><leader>f', function ()
+        -- Override the formatting command to use prettier
+        vim.keymap.set('n', '<Leader>F', function()
             local filename = vim.fn.expand("%")
-            vim.api.nvim_command([[!prettier "]] .. filename .. [[" --parser markdown --write]])
-        end, { buffer = args.buf })
+            vim.cmd([[!prettier "]] .. filename .. [[" --parser markdown --write]])
+        end, { buffer = args.buf, desc = "Format the current file" })
     end
 })
