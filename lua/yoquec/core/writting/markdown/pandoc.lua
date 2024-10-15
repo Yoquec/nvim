@@ -49,13 +49,22 @@ end
 
 return {
     autocmd_callback = function(args)
-        vim.keymap.set('n', '<leader>rpp',
-            render_pdf, { buffer = args.buf })
+        vim.keymap.set('n', '<leader>rpp', render_pdf, {
+            buffer = args.buf,
+            desc = "Render markdown document into pdf"
+        })
         vim.keymap.set('n', '<leader><leader>rpp',
-            render_pdf_sync, { buffer = args.buf })
-        vim.keymap.set('n', '<leader>rps',
-            render_slides, { buffer = args.buf })
-        vim.keymap.set('n', '<leader><leader>rps',
-            render_slides_sync, { buffer = args.buf })
+            render_pdf_sync, {
+                buffer = args.buf,
+                desc = "Render markdown document into pdf (foreground)"
+            })
+        vim.keymap.set('n', '<leader>rps', render_slides, {
+            buffer = args.buf,
+            desc = "Render markdown document into pdf slides"
+        })
+        vim.keymap.set('n', '<leader><leader>rps', render_slides_sync, {
+            buffer = args.buf,
+            desc = "Render markdown document into pdf slides (foreground)"
+        })
     end
 }
