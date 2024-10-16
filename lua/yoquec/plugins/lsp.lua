@@ -146,7 +146,7 @@ return {
             vim.keymap.set('n', 'gr', vim.lsp.buf.references,
                 { unpack(opts), desc = "LSP navigate to references" })
             vim.keymap.set({ 'n', 'v' }, '<leader>lf', vim.lsp.buf.format,
-                { unpack(opts), desc = "LSP get signature help" })
+                { unpack(opts), desc = "LSP format file" })
             vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename,
                 { unpack(opts), desc = "LSP rename symbol under cursor" })
             vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action,
