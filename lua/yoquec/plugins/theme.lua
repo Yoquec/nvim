@@ -1,6 +1,6 @@
 local accent = "#ebdbb2"
 local accent_dim = "#32302f"
-local green = "#98971A"
+local green = "#B8BB26"
 local purple = "#B16286"
 local yellow = "#EEBD35"
 local red = "#FB4934"
