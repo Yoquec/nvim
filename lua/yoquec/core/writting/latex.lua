@@ -4,7 +4,7 @@ local callbacks = require("yoquec.core.writting.callbacks")
 local function render_pdf()
     local file_path = vim.fn.expand("%:p")
     vim.fn.jobstart(
-        [[bash -c 'latexmk -pdf "]] .. file_path .. [["]],
+        [[bash -c 'latexmk -pdf "]] .. file_path .. [["']],
         { on_exit = callbacks.document_render_finish }
     )
     print("Creating latex pdf document with latexmk...")
@@ -17,7 +17,7 @@ end
 
 local function render_makefile()
     vim.fn.jobstart(
-        [[bash -c 'make"]],
+        [[bash -c "make"]],
         { on_exit = callbacks.document_render_finish }
     )
     print("Creating latex document from 'make' command...")
