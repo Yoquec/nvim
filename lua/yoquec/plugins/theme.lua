@@ -1,5 +1,5 @@
-local accent = "#ebdbb2"
-local accent_dim = "#32302f"
+local accent = "#EBDBB2"
+local accent_dim = "#32302F"
 local green = "#B8BB26"
 local purple = "#B16286"
 local yellow = "#EEBD35"
@@ -7,7 +7,7 @@ local red = "#FB4934"
 local cyan = "#8EC07E"
 local orange = "#FE8019"
 local gray = "#A89984"
-local bg1 = "#3C3836"
+local bg3 = "#665C54"
 
 return {
     "ellisonleao/gruvbox.nvim",
@@ -19,8 +19,8 @@ return {
             invert_selection = true,
             overrides = {
                 LineNr = { fg = accent },
-                LineNrAbove = { fg = bg1 },
-                LineNrBelow = { fg = bg1 },
+                LineNrAbove = { fg = bg3 },
+                LineNrBelow = { fg = bg3 },
 
                 StatusLine = { fg = accent, bg = accent_dim },
                 StatusLineNC = { fg = accent_dim, bg = accent },
