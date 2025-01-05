@@ -21,6 +21,8 @@ return {
                 LineNr = { fg = accent },
                 LineNrAbove = { fg = bg3 },
                 LineNrBelow = { fg = bg3 },
+                TreesitterContextLineNumber = { fg = accent_dim, bg = accent },
+                TreesitterContextLineNumberBottom = { fg = accent_dim, bg = accent },
 
                 StatusLine = { fg = accent, bg = accent_dim },
                 StatusLineNC = { fg = accent_dim, bg = accent },
