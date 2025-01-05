@@ -1,4 +1,11 @@
 local callbacks = require("yoquec.core.writting.callbacks")
+local viewers = require("yoquec.core.writting.viewers")
+
+vim.opt_local.conceallevel = 2
+vim.opt_local.shiftwidth = 2
+vim.opt_local.tabstop = 2
+vim.opt_local.softtabstop = 2
+
 
 --- Creates pdf document with pandoc (in the foreground)
 local function render_pdf()
@@ -47,24 +54,49 @@ local function render_slides_sync()
     )
 end
 
-return {
-    autocmd_callback = function(args)
-        vim.keymap.set('n', '<leader>rpp', render_pdf, {
-            buffer = args.buf,
-            desc = "Render markdown document into pdf"
-        })
-        vim.keymap.set('n', '<leader><leader>rpp',
-            render_pdf_sync, {
-                buffer = args.buf,
-                desc = "Render markdown document into pdf (foreground)"
-            })
-        vim.keymap.set('n', '<leader>rps', render_slides, {
-            buffer = args.buf,
-            desc = "Render markdown document into pdf slides"
-        })
-        vim.keymap.set('n', '<leader><leader>rps', render_slides_sync, {
-            buffer = args.buf,
-            desc = "Render markdown document into pdf slides (foreground)"
-        })
-    end
-}
+local opts = { buffer = 0 }
+
+
+vim.keymap.set('n', '<leader>op', viewers.pdf.zathura, {
+    unpack(opts),
+    desc = "Open the compiled pdf markdown file in zathura"
+})
+vim.keymap.set('n', '<leader>oP', viewers.pdf.default, {
+    unpack(opts),
+    desc = "Open the compiled pdf markdown file in the default pdf viewer"
+})
+vim.keymap.set('n', '<leader>oh', viewers.html.default, {
+    unpack(opts),
+    desc = "Open the compiled html markdown file in the default html viewer"
+})
+vim.keymap.set('n', '<leader>rpp', render_pdf, {
+    unpack(opts),
+    desc = "Render markdown document into pdf"
+})
+vim.keymap.set('n', '<leader><leader>rpp', render_pdf_sync, {
+    unpack(opts),
+    desc = "Render markdown document into pdf (foreground)"
+})
+vim.keymap.set('n', '<leader>rps', render_slides, {
+    unpack(opts),
+    desc = "Render markdown document into pdf slides"
+})
+vim.keymap.set('n', '<leader><leader>rps', render_slides_sync, {
+    unpack(opts),
+    desc = "Render markdown document into pdf slides (foreground)"
+})
+vim.keymap.set('v', '<C-b>', "s****<Esc>hPw", {
+    unpack(opts),
+    noremap = true,
+    desc = "Make the text under the cursor bold"
+})
+vim.keymap.set('v', '<C-i>', "s__<Esc>Pw", {
+    unpack(opts),
+    noremap = true,
+    desc = "Make the text under the cursor italic"
+})
+vim.keymap.set('v', '<C-c>', "s``<Esc>Pw", {
+    unpack(opts),
+    noremap = true,
+    desc = "Make the text under the cursor italic"
+})
