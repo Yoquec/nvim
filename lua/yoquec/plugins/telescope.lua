@@ -27,6 +27,7 @@ return {
                 diagnostics = { theme = "dropdown" },
                 git_status = { theme = "dropdown" },
                 git_branches = { theme = "dropdown" },
+                command_history = { theme = "dropdown" },
                 lsp_type_definitions = { theme = "dropdown" },
                 lsp_document_symbols = { theme = "dropdown" },
                 lsp_workspace_symbols = { theme = "dropdown" },
@@ -106,6 +107,8 @@ return {
         -- Misc
         vim.keymap.set('n', '<leader>fc', builtin.commands,
             { desc = "Telescope command picker" })
+        vim.keymap.set('n', '<leader>fC', builtin.command_history,
+            { desc = "Telescope command picker" })
         vim.keymap.set('n', '<leader>fh', builtin.help_tags,
             { desc = "Telescope help picker" })
         vim.keymap.set('n', '<leader>fk', builtin.keymaps,
@@ -114,5 +117,7 @@ return {
             { desc = "Telescope picker picker (lol)" })
         vim.keymap.set('n', '<Leader>fs', builtin.spell_suggest,
             { desc = "Telescope spelling suggestions" })
+        vim.keymap.set('n', '<leader>fS', builtin.search_history,
+            { desc = "Telescope command picker" })
     end
 }
