@@ -17,6 +17,13 @@ return {
             contrast = "hard",
             transparent_mode = true,
             invert_selection = true,
+            italic = {
+                strings = false,
+                emphasis = false,
+                comments = false,
+                operators = false,
+                folds = true,
+              },
             overrides = {
                 LineNr = { fg = accent },
                 LineNrAbove = { fg = bg3 },
