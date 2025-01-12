@@ -13,13 +13,13 @@ return {
         -- Adds latex snippets to markdown files 
         ls.filetype_extend("markdown", { "tex" })
 
-        -- Adds keymaps for snippet choices
-        vim.keymap.set({"i", "n"}, "<A-j>", function ()
+        -- Snippet choices
+        vim.keymap.set({"i", "n"}, "<A-n>", function ()
             if ls.choice_active() then
                 ls.change_choice(1)
             end
         end)
-        vim.keymap.set({"i", "n"}, "<A-k>", function ()
+        vim.keymap.set({"i", "n"}, "<A-p>", function ()
             if ls.choice_active() then
                 ls.change_choice(-1)
             end

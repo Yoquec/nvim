@@ -105,8 +105,8 @@ return {
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
-                ['<A-n>'] = cmp_action.luasnip_jump_forward(),
-                ['<A-p>'] = cmp_action.luasnip_jump_backward(),
+                ['<A-l>'] = cmp_action.luasnip_jump_forward(),
+                ['<A-h>'] = cmp_action.luasnip_jump_backward(),
                 ['<C-Space>'] = cmp.mapping.complete(),
             }),
 
