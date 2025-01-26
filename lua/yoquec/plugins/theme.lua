@@ -6,11 +6,11 @@ return {
 
         local accent, accent_alt
         if vim.o.bg == "dark" then
-            accent =  palette.light0_soft
-            accent_alt = palette.dark0_soft
+            accent =  palette.light0
+            accent_alt = palette.dark0
         else
-            accent =  palette.dark0_soft
-            accent_alt = palette.light0_soft
+            accent =  palette.dark0
+            accent_alt = palette.light0
         end
 
         require("gruvbox").setup({
@@ -38,29 +38,29 @@ return {
 
                 TelescopeTitle = { fg = accent_alt, bg = accent },
 
-                DashboardHeader = { fg = palette.neutral_green },
-                DashboardDesc = { fg = palette.neutral_purple },
-                DashboardShortCut = { fg = palette.neutral_yellow },
-                DashboardKey = { fg = palette.neutral_red },
-                DashboardFooter = { fg = palette.neutral_aqua },
+                DashboardHeader = { fg = palette.bright_green },
+                DashboardDesc = { fg = palette.bright_purple },
+                DashboardShortCut = { fg = palette.bright_yellow },
+                DashboardKey = { fg = palette.bright_red },
+                DashboardFooter = { fg = palette.bright_aqua },
 
                 -- Markdown
-                ["@markup.heading.1.marker.markdown"] = { fg = palette.neutral_red, bold = true },
-                ["@markup.heading.1.markdown"] = { fg = palette.neutral_red, bold = true },
-                ["@markup.heading.2.marker.markdown"] = { fg = palette.neutral_aqua, bold = true },
-                ["@markup.heading.2.markdown"] = { fg = palette.neutral_aqua, bold = true },
-                ["@markup.heading.3.marker.markdown"] = { fg = palette.neutral_yellow, bold = true },
-                ["@markup.heading.3.markdown"] = { fg = palette.neutral_yellow, bold = true },
-                ["@markup.heading.4.marker.markdown"] = { fg = palette.neutral_green, bold = true },
-                ["@markup.heading.4.markdown"] = { fg = palette.neutral_green, bold = true },
-                ["@markup.heading.5.marker.markdown"] = { fg = palette.neutral_aqua, bold = true },
-                ["@markup.heading.5.markdown"] = { fg = palette.neutral_aqua, bold = true },
-                ["@markup.heading.6.marker.markdown"] = { fg = palette.neutral_purple, bold = true },
-                ["@markup.heading.6.markdown"] = { fg = palette.neutral_purple, bold = true },
+                ["@markup.heading.1.marker.markdown"] = { fg = palette.bright_red, bold = true },
+                ["@markup.heading.1.markdown"] = { fg = palette.bright_red, bold = true },
+                ["@markup.heading.2.marker.markdown"] = { fg = palette.bright_orange, bold = true },
+                ["@markup.heading.2.markdown"] = { fg = palette.bright_orange, bold = true },
+                ["@markup.heading.3.marker.markdown"] = { fg = palette.bright_yellow, bold = true },
+                ["@markup.heading.3.markdown"] = { fg = palette.bright_yellow, bold = true },
+                ["@markup.heading.4.marker.markdown"] = { fg = palette.bright_green, bold = true },
+                ["@markup.heading.4.markdown"] = { fg = palette.bright_green, bold = true },
+                ["@markup.heading.5.marker.markdown"] = { fg = palette.bright_aqua, bold = true },
+                ["@markup.heading.5.markdown"] = { fg = palette.bright_aqua, bold = true },
+                ["@markup.heading.6.marker.markdown"] = { fg = palette.bright_purple, bold = true },
+                ["@markup.heading.6.markdown"] = { fg = palette.bright_purple, bold = true },
 
-                ["@markup.strong.markdown_inline"] = { fg = palette.neutral_aqua, bold = true },
-                ["@markup.italic.markdown_inline"] = { fg = palette.neutral_green, italic = true },
-                ["@markup.raw.markdown_inline"] = { fg = palette.neutral_red, bg = accent_alt },
+                ["@markup.strong.markdown_inline"] = { fg = palette.bright_aqua, bold = true },
+                ["@markup.italic.markdown_inline"] = { fg = palette.bright_green, italic = true },
+                ["@markup.raw.markdown_inline"] = { fg = palette.bright_red, bg = accent_alt },
                 ["@markup.quote.markdown"] = { fg = palette.gray, italic = true },
             }
         })
