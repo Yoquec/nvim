@@ -4,7 +4,8 @@ return {
     dependencies = {
         'nvim-telescope/telescope-file-browser.nvim',
         'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope-ui-select.nvim'
+        'nvim-telescope/telescope-ui-select.nvim',
+        "nvim-tree/nvim-web-devicons"
     },
     config = function()
         local fb_actions = require("telescope").extensions.file_browser.actions
