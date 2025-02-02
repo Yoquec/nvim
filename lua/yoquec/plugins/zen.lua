@@ -1,6 +1,5 @@
 return {
     "folke/zen-mode.nvim",
-    ft = { "markdown", "rmd", "tex" },
     keys = {
         { "<leader>zz", function()
             local default_conceallevel = vim.opt.conceallevel
