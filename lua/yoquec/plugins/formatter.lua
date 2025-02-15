@@ -6,6 +6,9 @@ return {
         -- load the multiple "formatter.filetype" modules
         require("formatter").setup {
             filetype = {
+                lua = {
+                    require("formatter.filetypes.lua").stylua
+                },
                 javascript = {
                     require("formatter.filetypes.javascript").prettier
                 },
