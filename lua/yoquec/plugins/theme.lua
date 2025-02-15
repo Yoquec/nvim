@@ -1,70 +1,78 @@
+local color_overrides = {
+    light = {
+        fg     = "#000000",
+        bg     = "#ffffff",
+        red    = "#c82829",
+        green  = "#718c00",
+        yellow = "#eab700",
+        blue   = "#4271ae",
+        purple = "#8959a8",
+        cyan   = "#3e999f",
+    },
+    dark = {
+        fg     = "#eaeaea",
+        bg     = "#000000",
+        red    = "#d54e53",
+        green  = "#b9ca4a",
+        yellow = "#e7c547",
+        blue   = "#7aa6da",
+        purple = "#c397d8",
+        cyan   = "#70c0b1",
+    }
+}
+
 return {
-    "ellisonleao/gruvbox.nvim",
+    'deparr/tairiki.nvim',
+    lazy = false,
     priority = 1000,
+    branch = "v2",
+    plugins = {
+        auto = true,
+    },
     config = function()
-        local palette = require("gruvbox").palette
+        require("tairiki").setup({
+            transparent   = true,
+            end_of_buffer = true,
+            diagnostics   = {
+                darker     = true,
+                background = true,
+                undercurl  = true,
+            },
+            colors        = function(color, _)
+                for k, v in pairs(color_overrides[vim.o.bg]) do
+                    color[k] = v
+                end
+            end,
+            highlights    = function(highlight, color, _)
+                highlight["LineNr"] = { fg = color.fg, bold = true }
+                highlight["LineNrAbove"] = { fg = color.fg_dark2, bold = false }
+                highlight["LineNrBelow"] = { fg = color.fg_dark2, bold = false }
 
-        local accent, accent_alt
-        if vim.o.bg == "dark" then
-            accent =  palette.light0
-            accent_alt = palette.dark0
-        else
-            accent =  palette.dark0
-            accent_alt = palette.light0
-        end
+                highlight["NormalFloat"] = { fg = color.fg, bg = color.bg }
+                highlight["FloatBorder"] = { fg = color.fg, bg = color.bg }
 
-        require("gruvbox").setup({
-            contrast = "hard",
-            transparent_mode = true,
-            invert_selection = true,
-            italic = {
-                strings = false,
-                emphasis = false,
-                comments = false,
-                operators = false,
-                folds = true,
-              },
-            overrides = {
-                LineNr = { fg = accent },
-                LineNrAbove = { fg = palette.dark4 },
-                LineNrBelow = { fg = palette.dark4 },
-                TreesitterContextLineNumber = { fg = accent_alt, bg = accent },
-                TreesitterContextLineNumberBottom = { fg = accent_alt, bg = accent },
+                highlight["TreesitterContextLineNumber"] = { bg = color.fg, fg = color.bg }
+                highlight["TreesitterContextLineNumberBottom"] = { bg = color.fg, fg = color.bg }
+                highlight["TelescopeTitle"] = { bg = color.fg, fg = color.bg }
 
-                StatusLine = { fg = accent, bg = accent_alt },
-                StatusLineNC = { fg = accent_alt, bg = accent },
+                for i = 1, 6, 1 do
+                    highlight["@markup.heading." .. i .. ".marker.markdown"] = { fg = color.blue, bold = true }
+                    highlight["@markup.heading." .. i .. ".markdown"] = { fg = color.blue, bold = true }
+                end
 
-                LspInfoBorder = { fg = accent },
+                highlight["@markup.strong.markdown_inline"] = { fg = color.cyan, bold = true }
+                highlight["@markup.italic.markdown_inline"] = { fg = color.green, italic = true }
+                highlight["@markup.raw.markdown_inline"] = { fg = color.red, bg = color.bg_light3 }
+                highlight["@markup.quote.markdown"] = { fg = color.yellow, italic = true }
 
-                TelescopeTitle = { fg = accent_alt, bg = accent },
-
-                DashboardHeader = { fg = palette.bright_green },
-                DashboardDesc = { fg = palette.bright_purple },
-                DashboardShortCut = { fg = palette.bright_yellow },
-                DashboardKey = { fg = palette.bright_red },
-                DashboardFooter = { fg = palette.bright_aqua },
-
-                -- Markdown
-                ["@markup.heading.1.marker.markdown"] = { fg = palette.bright_red, bold = true },
-                ["@markup.heading.1.markdown"] = { fg = palette.bright_red, bold = true },
-                ["@markup.heading.2.marker.markdown"] = { fg = palette.bright_orange, bold = true },
-                ["@markup.heading.2.markdown"] = { fg = palette.bright_orange, bold = true },
-                ["@markup.heading.3.marker.markdown"] = { fg = palette.bright_yellow, bold = true },
-                ["@markup.heading.3.markdown"] = { fg = palette.bright_yellow, bold = true },
-                ["@markup.heading.4.marker.markdown"] = { fg = palette.bright_green, bold = true },
-                ["@markup.heading.4.markdown"] = { fg = palette.bright_green, bold = true },
-                ["@markup.heading.5.marker.markdown"] = { fg = palette.bright_aqua, bold = true },
-                ["@markup.heading.5.markdown"] = { fg = palette.bright_aqua, bold = true },
-                ["@markup.heading.6.marker.markdown"] = { fg = palette.bright_purple, bold = true },
-                ["@markup.heading.6.markdown"] = { fg = palette.bright_purple, bold = true },
-
-                ["@markup.strong.markdown_inline"] = { fg = palette.bright_aqua, bold = true },
-                ["@markup.italic.markdown_inline"] = { fg = palette.bright_green, italic = true },
-                ["@markup.raw.markdown_inline"] = { fg = palette.bright_red, bg = accent_alt },
-                ["@markup.quote.markdown"] = { fg = palette.gray, italic = true },
-            }
+                highlight["@tag.attribute"] = { fg = color.yellow }
+                highlight["@type.builtin"] = { fg = color.yellow }
+                highlight["Boolean"] = { fg = color.yellow }
+                highlight["Number"] = { fg = color.yellow }
+                highlight["@property.yaml"] = { fg = color.red }
+                highlight["@lsp.type.function"] = { fg = color.red }
+            end
         })
-
-        vim.cmd([[colorscheme gruvbox]])
+        vim.cmd.colorscheme("tairiki")
     end
 }
