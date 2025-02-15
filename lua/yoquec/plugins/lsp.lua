@@ -31,6 +31,7 @@ end
 
 local server_configurations = {
     jdtls = {},
+    nil_ls = {},
     ltex = get_ltex_configuration(),
     html = { filetypes = { "html", "htmldjango" } },
     emmet_language_server = {
