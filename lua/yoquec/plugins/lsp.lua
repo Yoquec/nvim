@@ -105,8 +105,8 @@ return {
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
-                ['<A-l>'] = cmp_action.luasnip_jump_forward(),
-                ['<A-h>'] = cmp_action.luasnip_jump_backward(),
+                ['<C-l>'] = cmp_action.luasnip_jump_forward(),
+                ['<C-h>'] = cmp_action.luasnip_jump_backward(),
                 ['<C-Space>'] = cmp.mapping.complete(),
             }),
 
@@ -155,7 +155,7 @@ return {
                 { unpack(opts), desc = "LSP documentation hover" })
             vim.keymap.set('n', 'gh', vim.lsp.buf.signature_help,
                 { unpack(opts), desc = "LSP get signature help" })
-            vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help,
+            vim.keymap.set('i', '<C-i>', vim.lsp.buf.signature_help,
                 { unpack(opts), desc = "LSP get signature help" })
 
             -- Diagnostics
