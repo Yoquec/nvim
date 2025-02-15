@@ -1,14 +1,43 @@
-local virtual_text_active = true
+local virtual_text = true
+vim.diagnostic.config({ virtual_text = virtual_text })
 
 local function toggle_virtual_text()
-    if virtual_text_active then
-        vim.diagnostic.config({ virtual_text = false })
-        virtual_text_active = false
-    else
-        vim.diagnostic.config({ virtual_text = true })
-        virtual_text_active = true
-    end
+    virtual_text = not virtual_text
+    vim.diagnostic.config({ virtual_text = virtual_text })
 end
+
+local function get_ltex_configuration()
+    local language_id_mapping = {
+        bib = 'bibtex',
+        plaintex = 'tex',
+        tex = 'latex',
+        pandoc = 'markdown',
+        rmd = "rmarkdown"
+    }
+
+    return {
+        filetypes = { 'rmd', 'rmarkdown', 'bib', 'gitcommit', 'markdown', 'tex', 'pandoc' },
+        settings = { ltex = { language = "auto" } },
+        get_language_id = function(_, filetype)
+            local language_id = language_id_mapping[filetype]
+            if language_id then
+                return language_id
+            else
+                return filetype
+            end
+        end,
+    }
+end
+
+local server_configurations = {
+    jdtls = {},
+    ltex = get_ltex_configuration(),
+    html = { filetypes = { "html", "htmldjango" } },
+    emmet_language_server = {
+        filetypes = { "markdown", 'css', 'eruby', 'html', 'htmldjango', 'javascriptreact',
+            'less', 'pug', 'sass', 'scss', 'typescriptreact', 'htmlangular' }
+    }
+}
 
 return {
     'vonheikemen/lsp-zero.nvim',
@@ -17,8 +46,6 @@ return {
     dependencies = {
         -- LSP support
         'neovim/nvim-lspconfig',
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
 
         -- Auto-completion
         'hrsh7th/nvim-cmp',
@@ -30,65 +57,31 @@ return {
     },
     config = function()
         local lsp_zero = require('lsp-zero')
+        local lsp_zero_cmp_action = require('lsp-zero').cmp_action()
         local cmp = require('cmp')
-        local cmp_action = require('lsp-zero').cmp_action()
         local lspconfig = require('lspconfig')
 
-        require('mason').setup({
-            ui = {
-                border = "rounded"
-            }
-        })
-        require('mason-lspconfig').setup({
-            handlers = {
-                lsp_zero.default_setup,
-                lua_ls = function()
-                    lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
-                end,
-                emmet_language_server = function()
-                    lspconfig.emmet_language_server.setup({
-                        -- Add to markdown filetype
-                        filetypes = { "markdown", 'css', 'eruby', 'html', 'htmldjango', 'javascriptreact',
-                            'less', 'pug', 'sass', 'scss', 'typescriptreact', 'htmlangular' }
-                    })
-                end,
-                html = function()
-                    lspconfig.html.setup({
-                        filetypes = {
-                            "html",
-                            "htmldjango"
-                        }
-                    })
-                end,
-                ltex = function()
-                    lspconfig.ltex.setup({
-                        filetypes = { 'rmd', 'rmarkdown', 'bib', 'gitcommit', 'markdown', 'tex', 'pandoc' },
-                        settings = {
-                            ltex = {
-                                language = "auto"
-                            }
-                        },
-                        get_language_id = function(_, filetype)
-                            local language_id_mapping = {
-                                bib = 'bibtex',
-                                plaintex = 'tex',
-                                tex = 'latex',
-                                pandoc = 'markdown',
-                                rmd = "rmarkdown"
-                            }
-                            local language_id = language_id_mapping[filetype]
-                            if language_id then
-                                return language_id
-                            else
-                                return filetype
-                            end
-                        end,
-                    })
-                end
-            }
+        -- setup servers
+        lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
+        for server, config in pairs(server_configurations) do
+            lspconfig[server].setup(config)
+        end
+
+        lsp_zero.set_sign_icons({
+            error = '●',
+            warn = '●',
+            hint = '●',
+            info = '●',
         })
 
-        local cmp_select = { behavior = cmp.SelectBehavior.Replace }
+        require('lspconfig.ui.windows').default_options = {
+            border = "rounded"
+        }
+
+        local cmp_select = {
+            behavior = cmp.SelectBehavior.Replace
+        }
+
         cmp.setup({
             sources = {
                 { name = 'nvim_lsp', priority = 8 },
@@ -105,8 +98,8 @@ return {
                 ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-d>'] = cmp.mapping.scroll_docs(4),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
-                ['<C-l>'] = cmp_action.luasnip_jump_forward(),
-                ['<C-h>'] = cmp_action.luasnip_jump_backward(),
+                ['<C-l>'] = lsp_zero_cmp_action.luasnip_jump_forward(),
+                ['<C-h>'] = lsp_zero_cmp_action.luasnip_jump_backward(),
                 ['<C-Space>'] = cmp.mapping.complete(),
             }),
 
@@ -120,21 +113,6 @@ return {
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             }
-        })
-
-        lsp_zero.set_sign_icons({
-            error = '●',
-            warn = '●',
-            hint = '●',
-            info = '●',
-        })
-
-        require('lspconfig.ui.windows').default_options = {
-            border = "rounded"
-        }
-
-        vim.diagnostic.config({
-            virtual_text = true
         })
 
         lsp_zero.on_attach(function(_, bufnr)
