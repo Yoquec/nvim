@@ -1,55 +1,21 @@
-local virtual_text = true
-vim.diagnostic.config({ virtual_text = virtual_text })
+local config = require("yoquec.plugins.lsp.config")
+local utils = require("yoquec.plugins.lsp.utils")
 
-local function toggle_virtual_text()
-	virtual_text = not virtual_text
-	vim.diagnostic.config({ virtual_text = virtual_text })
-end
-
-local function get_ltex_configuration()
-	local language_id_mapping = {
-		bib = "bibtex",
-		plaintex = "tex",
-		tex = "latex",
-		pandoc = "markdown",
-		rmd = "rmarkdown",
-	}
-
-	return {
-		filetypes = { "rmd", "rmarkdown", "bib", "gitcommit", "markdown", "tex", "pandoc" },
-		settings = { ltex = { language = "auto" } },
-		get_language_id = function(_, filetype)
-			local language_id = language_id_mapping[filetype]
-			if language_id then
-				return language_id
-			else
-				return filetype
-			end
-		end,
-	}
-end
-
-local server_configurations = {
-	jdtls = {},
-	nil_ls = {},
-	ltex = get_ltex_configuration(),
-	html = { filetypes = { "html", "htmldjango" } },
-	emmet_language_server = {
-		filetypes = {
-			"markdown",
-			"css",
-			"eruby",
-			"html",
-			"htmldjango",
-			"javascriptreact",
-			"less",
-			"pug",
-			"sass",
-			"scss",
-			"typescriptreact",
-			"htmlangular",
-		},
-	},
+-- Servers that don't require configuration
+local servers = {
+	"harper_ls",
+	"lemminx",
+	"taplo",
+	"yamlls",
+	"jsonnet_ls",
+	"texlab",
+	"jdtls",
+	"nil_ls",
+	"sourcekit",
+	"basedpyright",
+	"gopls",
+	"rust_analyzer",
+	"ts_ls",
 }
 
 return {
@@ -74,10 +40,15 @@ return {
 		local cmp = require("cmp")
 		local lspconfig = require("lspconfig")
 
-		-- setup servers
+		-- Setup servers
 		lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
-		for server, config in pairs(server_configurations) do
-			lspconfig[server].setup(config)
+
+		for server, cfg in pairs(config.servers) do
+			lspconfig[server].setup(cfg)
+		end
+
+		for _, server in ipairs(servers) do
+			lspconfig[server].setup(config.empty)
 		end
 
 		lsp_zero.set_sign_icons({
@@ -166,7 +137,12 @@ return {
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { unpack(opts), desc = "LSP jump to next diagnostic" })
 
 			-- Toggle virtual_text
-			vim.keymap.set("n", "<leader>tv", toggle_virtual_text, { unpack(opts), desc = "Toggle LSP virtual text" })
+			vim.keymap.set(
+				"n",
+				"<leader>tv",
+				utils.toggle_virtual_text,
+				{ unpack(opts), desc = "Toggle LSP virtual text" }
+			)
 		end)
 	end,
 }
