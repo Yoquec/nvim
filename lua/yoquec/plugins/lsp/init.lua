@@ -119,7 +119,8 @@ return {
 			vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { unpack(opts), desc = "LSP code action" })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "LSP documentation hover" })
 			vim.keymap.set("n", "gh", vim.lsp.buf.signature_help, { unpack(opts), desc = "LSP get signature help" })
-			vim.keymap.set("i", "<C-i>", vim.lsp.buf.signature_help, { unpack(opts), desc = "LSP get signature help" })
+            -- WARNING: In reality, this is mapping to <C-/>: https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
+			vim.keymap.set("i", "<C-_>", vim.lsp.buf.signature_help, { unpack(opts), desc = "LSP get signature help" })
 
 			-- Diagnostics
 			vim.keymap.set(
