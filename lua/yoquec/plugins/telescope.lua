@@ -21,6 +21,7 @@ return {
 				},
 			},
 			pickers = {
+				buffers = { theme = "dropdown" },
 				keymaps = { theme = "dropdown" },
 				marks = { theme = "dropdown" },
 				help_tags = { theme = "dropdown" },
