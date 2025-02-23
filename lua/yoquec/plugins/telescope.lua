@@ -7,12 +7,47 @@ return {
 		"nvim-telescope/telescope-ui-select.nvim",
 		"nvim-tree/nvim-web-devicons",
 	},
-	config = function()
-		local fb_actions = require("telescope").extensions.file_browser.actions
-		local builtin = require("telescope.builtin")
-		local telescope_actions = require("telescope.actions")
+	keys = {
+        -- stylua: ignore start
+		{ "<leader>fv", [[<cmd>Telescope file_browser theme=ivy<cr>]], desc = "Telescope file browser" },
+		{ "<Leader>ft", [[<cmd>TodoTelescope theme=dropdown<cr>]], desc = "Telescope to-do picker" },
+		{ "<Leader>ff", [[<cmd>Telescope find_files theme=dropdown<cr>]], desc = "Telescope find files" },
+		{ "<leader>fo", [[<cmd>Telescope oldfiles theme=dropdown<cr>]], desc = "Telescope old files" },
+		{ "<leader>fgf", [[<cmd>Telescope git_files theme=dropdown<cr>]], desc = "Telescope git files" },
+		{ "<leader>fb", [[<cmd>Telescope buffers theme=dropdown<cr>]], desc = "Telescope buffers" },
+		{ "<leader>fM", [[<cmd>Telescope marks theme=dropdown<cr>]], desc = "Telescope marks" },
+		{ "<leader>fp", [[<cmd>Telescope live_grep theme=dropdown<cr>]], desc = "Telescope live grep" },
+		{ "<Leader>fq", [[<cmd>Telescope current_buffer_fuzzy_find theme=dropdown<cr>]], desc = "Telescope buffer fuzzy finder" },
 
-		require("telescope").setup({
+		{ "<leader>fgc", [[<cmd>Telescope git_commits theme=dropdown<cr>]], desc = "Telescope git commits" },
+		{ "<leader>fgb", [[<cmd>Telescope git_branches theme=dropdown<cr>]], desc = "Telescope git branches" },
+		{ "<leader>fgs", [[<cmd>Telescope git_status theme=dropdown<cr>]], desc = "Telescope git status" },
+		{ "<leader>fgS", [[<cmd>Telescope git_stash theme=dropdown<cr>]], desc = "Telescope git stash" },
+
+		{ "<Leader>flr", [[<cmd>Telescope lsp_references theme=dropdown<cr>]], desc = "Telescope LSP references" },
+		{ "<Leader>fld", [[<cmd>Telescope lsp_definitions theme=dropdown<cr>]], desc = "Telescope LSP definitions" },
+		{ "<Leader>fli", [[<cmd>Telescope lsp_implementations theme=dropdown<cr>]], desc = "Telescope LSP implementations" },
+		{ "<Leader>flt", [[<cmd>Telescope lsp_type_definitions theme=dropdown<cr>]], desc = "Telescope LSP type definitions" },
+		{ "<Leader>fls", [[<cmd>Telescope lsp_document_symbols theme=dropdown<cr>]], desc = "Telescope LSP buffer symbols" },
+		{ "<Leader>flS", [[<cmd>Telescope lsp_workspace_symbols theme=dropdown<cr>]], desc = "Telescope LSP workspace symbols" },
+		{ "<Leader>fd", [[<cmd>Telescope diagnostics theme=dropdown<cr>]], desc = "Telescope LSP diagnostics" },
+
+		{ "<leader>fc", [[<cmd>Telescope commands theme=dropdown<cr>]], desc = "Telescope command picker" },
+		{ "<leader>fC", [[<cmd>Telescope command_history theme=dropdown<cr>]], desc = "Telescope command picker" },
+		{ "<leader>fh", [[<cmd>Telescope help_tags theme=dropdown<cr>]], desc = "Telescope help picker" },
+		{ "<leader>fk", [[<cmd>Telescope keymaps theme=dropdown<cr>]], desc = "Telescope keymap picker" },
+		{ "<Leader>fi", [[<cmd>Telescope builtin theme=dropdown<cr>]], desc = "Telescope picker picker (lol)" },
+		{ "<Leader>fs", [[<cmd>Telescope spell_suggest theme=dropdown<cr>]], desc = "Telescope spelling suggestions" },
+		{ "<leader>fS", [[<cmd>Telescope search_history theme=dropdown<cr>]], desc = "Telescope command picker" },
+		-- stylua: ignore end
+	},
+	config = function()
+		local telescope = require("telescope")
+		local actions = require("telescope.actions")
+		local themes = require("telescope.themes")
+		local file_browser_actions = require("telescope").extensions.file_browser.actions
+
+		telescope.setup({
 			defaults = {
 				layout_config = {
 					horizontal = {
@@ -20,84 +55,25 @@ return {
 					},
 				},
 			},
-			pickers = {
-				buffers = { theme = "dropdown" },
-				keymaps = { theme = "dropdown" },
-				marks = { theme = "dropdown" },
-				help_tags = { theme = "dropdown" },
-				builtin = { theme = "dropdown" },
-				diagnostics = { theme = "dropdown" },
-				git_status = { theme = "dropdown" },
-				git_branches = { theme = "dropdown" },
-				command_history = { theme = "dropdown" },
-				lsp_type_definitions = { theme = "dropdown" },
-				lsp_document_symbols = { theme = "dropdown" },
-				lsp_workspace_symbols = { theme = "dropdown" },
-			},
 			extensions = {
 				file_browser = {
-					theme = "ivy",
 					path = "%:p:h",
 					mappings = {
 						["n"] = {
-							["%"] = fb_actions.create,
-							D = fb_actions.remove,
-							["<C-n>"] = telescope_actions.move_selection_next,
-							["<C-p>"] = telescope_actions.move_selection_previous,
+							["%"] = file_browser_actions.create,
+							D = file_browser_actions.remove,
+							["<C-n>"] = actions.move_selection_next,
+							["<C-p>"] = actions.move_selection_previous,
 						},
 					},
 				},
 				["ui-select"] = {
-					require("telescope.themes").get_dropdown({}),
+					themes.get_dropdown({}),
 				},
 			},
 		})
 
-		require("telescope").load_extension("file_browser")
-		require("telescope").load_extension("ui-select")
-
-		-- Extensions
-		vim.keymap.set("n", "<leader>fv", [[<cmd>Telescope file_browser<cr>]], { desc = "Telescope file browser" })
-		vim.keymap.set("n", "<Leader>ft", [[<cmd>TodoTelescope theme=dropdown<cr>]], { desc = "Telescope ToDo picker" })
-
-		-- File search
-		vim.keymap.set("n", "<Leader>ff", builtin.find_files, { desc = "Telescope find files" })
-		vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Telescope find old files" })
-		vim.keymap.set("n", "<leader>fgf", builtin.git_files, { desc = "Telescope git files picker" })
-
-		-- Content searching
-		vim.keymap.set("n", "<leader>fp", builtin.live_grep, { desc = "Telescope live grep" })
-		vim.keymap.set(
-			"n",
-			"<Leader>fq",
-			builtin.current_buffer_fuzzy_find,
-			{ desc = "Telescope current buffer fuzzy find" }
-		)
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope open buffer picker" })
-		vim.keymap.set("n", "<leader>fM", builtin.marks, { desc = "Telescope marks picker" })
-
-		-- Git operations
-		vim.keymap.set("n", "<leader>fgc", builtin.git_commits, { desc = "Telescope git commit picker" })
-		vim.keymap.set("n", "<leader>fgb", builtin.git_branches, { desc = "Telescope git branches picker" })
-		vim.keymap.set("n", "<leader>fgs", builtin.git_status, { desc = "Telescope git status" })
-		vim.keymap.set("n", "<leader>fgS", builtin.git_stash, { desc = "Telescope git stash picker" })
-
-		-- LSP operations
-		vim.keymap.set("n", "<Leader>flr", builtin.lsp_references, { desc = "Telescope LSP references" })
-		vim.keymap.set("n", "<Leader>fld", builtin.lsp_definitions, { desc = "Telescope LSP definitions" })
-		vim.keymap.set("n", "<Leader>fli", builtin.lsp_implementations, { desc = "Telescope LSP implementations" })
-		vim.keymap.set("n", "<Leader>flt", builtin.lsp_type_definitions, { desc = "Telescope LSP type definitions" })
-		vim.keymap.set("n", "<Leader>fls", builtin.lsp_document_symbols, { desc = "Telescope LSP buffer symbols" })
-		vim.keymap.set("n", "<Leader>flS", builtin.lsp_workspace_symbols, { desc = "Telescope LSP workspace symbols" })
-		vim.keymap.set("n", "<Leader>fd", builtin.diagnostics, { desc = "Telescope LSP diagnostics" })
-
-		-- Misc
-		vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "Telescope command picker" })
-		vim.keymap.set("n", "<leader>fC", builtin.command_history, { desc = "Telescope command picker" })
-		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help picker" })
-		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescope keymap picker" })
-		vim.keymap.set("n", "<Leader>fi", builtin.builtin, { desc = "Telescope picker picker (lol)" })
-		vim.keymap.set("n", "<Leader>fs", builtin.spell_suggest, { desc = "Telescope spelling suggestions" })
-		vim.keymap.set("n", "<leader>fS", builtin.search_history, { desc = "Telescope command picker" })
+		telescope.load_extension("file_browser")
+		telescope.load_extension("ui-select")
 	end,
 }
