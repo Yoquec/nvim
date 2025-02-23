@@ -47,15 +47,16 @@ else
 			end,
 		},
 		keys = {
-			{ "<leader>ww", [[<cmd>ObsidianWorkspace<CR>]], desc = "List obidian workspaces" },
+            -- stylua: ignore start
 			{ "<leader>wn", [[<cmd>ObsidianNew<CR>]], desc = "Creates a new wiki note" },
 			{ "<leader>wN", [[<cmd>ObsidianNewFromTemplate<CR>]], desc = "Creates a new wiki note from templates" },
-			{ "<leader>we", [[<cmd>ObsidianNewFromTemplate<CR>]], desc = "Creates a new wiki note from templates" },
+			{ "<leader>ww", [[<cmd>ObsidianWorkspace<CR>]], desc = "List obidian workspaces" },
 			{ "<leader>fww", [[<cmd>ObsidianSearch<CR>]], desc = "Searches wiki note contents" },
 			{ "<leader>fwn", [[<cmd>ObsidianQuickSwitch<CR>]], desc = "Open quick note switcher" },
 			{ "<leader>fwt", [[<cmd>ObsidianTags<CR>]], desc = "Open picker with vault tags" },
 			{ "<leader>fwl", [[<cmd>ObsidianLinks<CR>]], desc = "Open picker with outgoing links" },
 			{ "<leader>fwb", [[<cmd>ObsidianBacklinks<CR>]], desc = "Opens picker with note's backlinks" },
+			-- stylua: ignore end
 		},
 	}
 end

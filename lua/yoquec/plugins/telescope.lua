@@ -55,6 +55,17 @@ return {
 					},
 				},
 			},
+			pickers = {
+				find_files = {
+					theme = "dropdown",
+				},
+				grep_string = {
+					theme = "dropdown",
+				},
+				live_grep = {
+					theme = "dropdown",
+				},
+			},
 			extensions = {
 				file_browser = {
 					path = "%:p:h",
