@@ -1,42 +1,27 @@
 local path = require("plenary.path")
 local wiki_directory = os.getenv("WIKI_HOME")
 
-local function getTemplateConfig(wiki_home)
-	local template_dir = "templates"
+local function get_template_config(wiki_home)
+	local template_dirname = "templates"
 
 	local config = {
-		folder = template_dir,
+		folder = template_dirname,
 		date_format = "%Y-%m-%d",
 		time_format = "%H:%M",
 		-- A map for custom variables, the key should be the variable and the value a function
 		substitutions = {},
 	}
 
-	if not vim.loop.fs_stat(path.new(wiki_home, template_dir).filename) then
+	if not vim.loop.fs_stat(path.new(wiki_home, template_dirname).filename) then
 		config = nil
 	end
 
 	return config
 end
 
-local function getTemplatesNames(config)
-	local daily_notes = "daily_notes"
-
-	if config == nil then
-		daily_notes = nil
-	end
-
-	return {
-		daily_notes = daily_notes,
-	}
-end
-
 if wiki_directory == nil then
 	vim.api.nvim_err_writeln("Could not read the WIKI_HOME environment variable")
 else
-	local templates = getTemplateConfig(wiki_directory)
-	local template_names = getTemplatesNames(templates)
-
 	return {
 		"Yoquec/obsidian.nvim",
 		lazy = true,
@@ -50,34 +35,11 @@ else
 		},
 		opts = {
 			new_notes_location = "notes_subdir",
-			templates = templates,
+			templates = get_template_config(wiki_directory),
 			workspaces = {
 				{
-					-- TODO: Refine in the future to more workspaces
 					name = "main",
 					path = wiki_directory,
-				},
-			},
-			daily_notes = {
-				folder = "dailies",
-				date_format = "%Y-%m-%d",
-				alias_format = "%B %-d, %Y",
-				default_tags = { "daily-notes" },
-				template = template_names.daily_notes,
-			},
-			ui = {
-				hl_groups = {
-					ObsidianImportant = { fg = "#fabd2f" },
-					ObsidianTodo = { bold = true, fg = "#f78c6c" },
-					ObsidianDone = { bold = true, fg = "#89ddff" },
-					ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
-					ObsidianTilde = { bold = true, fg = "#ff5370" },
-					ObsidianBullet = { bold = true, fg = "#89ddff" },
-					ObsidianRefText = { underline = true, fg = "#c792ea" },
-					ObsidianExtLinkIcon = { fg = "#c792ea" },
-					ObsidianTag = { italic = true, fg = "#89ddff" },
-					ObsidianBlockID = { italic = true, fg = "#89ddff" },
-					ObsidianHighlightText = { bg = "#75662e" },
 				},
 			},
 			follow_url_func = function(url)
@@ -85,24 +47,15 @@ else
 			end,
 		},
 		keys = {
-			{ "<leader>wd", [[<cmd>ObsidianToday<CR>]], desc = "Opens today's daily note" },
-			{ "<leader>wy", [[<cmd>ObsidianYesterday<CR>]], desc = "Opens yesterday's daily note" },
-			{ "<leader>wt", [[<cmd>ObsidianTomorrow<CR>]], desc = "Opens tomorrow's daily note" },
+			{ "<leader>ww", [[<cmd>ObsidianWorkspace<CR>]], desc = "List obidian workspaces" },
 			{ "<leader>wn", [[<cmd>ObsidianNew<CR>]], desc = "Creates a new wiki note" },
+			{ "<leader>wN", [[<cmd>ObsidianNewFromTemplate<CR>]], desc = "Creates a new wiki note from templates" },
+			{ "<leader>we", [[<cmd>ObsidianNewFromTemplate<CR>]], desc = "Creates a new wiki note from templates" },
 			{ "<leader>fww", [[<cmd>ObsidianSearch<CR>]], desc = "Searches wiki note contents" },
-			{ "<leader>fwn", [[<cmd>ObsidianQuickSwitch<CR>]], desc = "Searches wiki note entries" },
-			{ "<leader>fwt", [[<cmd>ObsidianTags<CR>]], desc = "Opens a picker for note tags" },
-			{ "<leader>fwd", [[<cmd>ObsidianDailies<CR>]], desc = "Opens a picker for daily notes" },
-			{
-				"<leader>fwl",
-				[[<cmd>ObsidianLinks<CR>]],
-				desc = "Opens a picker for the current note's backlinks",
-			},
-			{
-				"<leader>fwb",
-				[[<cmd>ObsidianBacklinks<CR>]],
-				desc = "Opens a picker for the current note's backlinks",
-			},
+			{ "<leader>fwn", [[<cmd>ObsidianQuickSwitch<CR>]], desc = "Open quick note switcher" },
+			{ "<leader>fwt", [[<cmd>ObsidianTags<CR>]], desc = "Open picker with vault tags" },
+			{ "<leader>fwl", [[<cmd>ObsidianLinks<CR>]], desc = "Open picker with outgoing links" },
+			{ "<leader>fwb", [[<cmd>ObsidianBacklinks<CR>]], desc = "Opens picker with note's backlinks" },
 		},
 	}
 end
