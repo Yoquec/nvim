@@ -7,6 +7,6 @@ return {
 		require("telescope").load_extension("bibtex")
 	end,
 	keys = {
-		{ "<leader>fB", [[<cmd>Telescope bibtex<CR>]], desc = "Telescope open bibtex" },
+		{ "<leader>fB", [[<cmd>Telescope bibtex theme=dropdown<cr>]], desc = "Telescope open bibtex" },
 	},
 }
