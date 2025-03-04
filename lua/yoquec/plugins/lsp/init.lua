@@ -101,49 +101,38 @@ return {
 
 		lsp_zero.on_attach(function(_, bufnr)
 			local opts = { buffer = bufnr, remap = false }
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { unpack(opts), desc = "LSP navigate to definition" })
+			vim.keymap.set(
+				"n",
+				"gd",
+				[[<cmd>Telescope lsp_definitions theme=dropdown<cr>]],
+				{ unpack(opts), desc = "LSP navigate to definition" }
+			)
 			vim.keymap.set(
 				"n",
 				"gI",
-				vim.lsp.buf.implementation,
+				[[<cmd>Telescope lsp_implementations theme=dropdown<cr>]],
 				{ unpack(opts), desc = "LSP navigate to implementation" }
 			)
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, { unpack(opts), desc = "LSP navigate to references" })
-			vim.keymap.set({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, { unpack(opts), desc = "LSP format file" })
 			vim.keymap.set(
 				"n",
-				"<leader>lr",
-				vim.lsp.buf.rename,
-				{ unpack(opts), desc = "LSP rename symbol under cursor" }
+				"gr",
+				[[<cmd>Telescope lsp_references theme=dropdown<cr>]],
+				{ unpack(opts), desc = "LSP navigate to references" }
 			)
+
+            -- stylua: ignore start
+			vim.keymap.set({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, { unpack(opts), desc = "LSP format file" })
+			vim.keymap.set( "n", "<leader>lr", vim.lsp.buf.rename, { unpack(opts), desc = "LSP rename symbol under cursor" })
 			vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { unpack(opts), desc = "LSP code action" })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { unpack(opts), desc = "LSP documentation hover" })
 			vim.keymap.set("n", "gh", vim.lsp.buf.signature_help, { unpack(opts), desc = "LSP get signature help" })
-            -- WARNING: In reality, this is mapping to <C-/>: https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
+			-- WARNING: In reality, this is mapping to <C-/>: https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
 			vim.keymap.set("i", "<C-_>", vim.lsp.buf.signature_help, { unpack(opts), desc = "LSP get signature help" })
-
-			-- Diagnostics
-			vim.keymap.set(
-				"n",
-				"<leader>ld",
-				vim.diagnostic.open_float,
-				{ unpack(opts), desc = "LSP open diagnostic hover" }
-			)
-			vim.keymap.set(
-				"n",
-				"[d",
-				vim.diagnostic.goto_prev,
-				{ unpack(opts), desc = "LSP jump to previous diagnostic" }
-			)
+			vim.keymap.set( "n", "<leader>ld", vim.diagnostic.open_float, { unpack(opts), desc = "LSP open diagnostic hover" })
+			vim.keymap.set( "n", "[d", vim.diagnostic.goto_prev, { unpack(opts), desc = "LSP jump to previous diagnostic" })
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { unpack(opts), desc = "LSP jump to next diagnostic" })
-
-			-- Toggle virtual_text
-			vim.keymap.set(
-				"n",
-				"<leader>tv",
-				utils.toggle_virtual_text,
-				{ unpack(opts), desc = "Toggle LSP virtual text" }
-			)
+			vim.keymap.set( "n", "<leader>tv", utils.toggle_virtual_text, { unpack(opts), desc = "Toggle LSP virtual text" })
+			-- stylua: ignore start
 		end)
 	end,
 }
