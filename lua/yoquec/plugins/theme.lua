@@ -70,7 +70,6 @@ return {
 				highlight["Boolean"] = { fg = color.yellow }
 				highlight["Number"] = { fg = color.yellow }
 				highlight["@property.yaml"] = { fg = color.red }
-				highlight["@lsp.type.function"] = { fg = color.red }
 			end,
 		})
 		vim.cmd.colorscheme("tairiki")
