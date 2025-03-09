@@ -41,7 +41,6 @@ else
 	return {
 		"Yoquec/obsidian.nvim",
 		lazy = true,
-		ft = "markdown",
 		event = {
 			"BufReadPre " .. wiki_directory .. "**.md",
 			"BufNewFile " .. wiki_directory .. "**.md",
