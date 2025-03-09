@@ -19,6 +19,12 @@ local function get_template_config(wiki_home)
 	return config
 end
 
+local function get_workspace_config(wiki_home)
+	return {
+		{ name = "main", path = wiki_directory },
+	}
+end
+
 local function no_tags_frontmatter(note)
 	if note.title then
 		note:add_alias(note.title)
@@ -51,17 +57,9 @@ else
 		opts = {
 			new_notes_location = "notes_subdir",
 			templates = get_template_config(wiki_directory),
-			workspaces = {
-				{
-					name = "main",
-					path = wiki_directory,
-				},
-			},
-			follow_url_func = function(url)
-				vim.ui.open(url)
-			end,
-
+			workspaces = get_workspace_config(wiki_directory),
 			note_frontmatter_func = no_tags_frontmatter,
+			follow_url_func = vim.ui.open,
 		},
 		keys = {
             -- stylua: ignore start
