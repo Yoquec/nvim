@@ -60,6 +60,9 @@ else
 			workspaces = get_workspace_config(wiki_directory),
 			note_frontmatter_func = no_tags_frontmatter,
 			follow_url_func = vim.ui.open,
+			ui = {
+				tags = { hl_group = "@obsidian.tag" },
+			},
 		},
 		keys = {
             -- stylua: ignore start
