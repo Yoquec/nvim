@@ -19,6 +19,22 @@ local function get_template_config(wiki_home)
 	return config
 end
 
+local function no_tags_frontmatter(note)
+	if note.title then
+		note:add_alias(note.title)
+	end
+
+	local out = { id = note.id, aliases = note.aliases }
+
+	if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+		for k, v in pairs(note.metadata) do
+			out[k] = v
+		end
+	end
+
+	return out
+end
+
 if wiki_directory == nil then
 	vim.api.nvim_err_writeln("Could not read the WIKI_HOME environment variable")
 else
@@ -45,6 +61,8 @@ else
 			follow_url_func = function(url)
 				vim.ui.open(url)
 			end,
+
+			note_frontmatter_func = no_tags_frontmatter,
 		},
 		keys = {
             -- stylua: ignore start
