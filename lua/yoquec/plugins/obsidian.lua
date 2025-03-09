@@ -25,6 +25,13 @@ local function get_workspace_config(wiki_home)
 	}
 end
 
+--- Time-based id generation function
+--- @param _ string note title (unused)
+--- @return string|osdate
+local function generate_note_id(_)
+    return os.date("%Y%m%d%H%M%S")
+end
+
 local function no_tags_frontmatter(note)
 	if note.title then
 		note:add_alias(note.title)
@@ -58,6 +65,7 @@ else
 			new_notes_location = "notes_subdir",
 			templates = get_template_config(wiki_directory),
 			workspaces = get_workspace_config(wiki_directory),
+            note_id_func = generate_note_id,
 			note_frontmatter_func = no_tags_frontmatter,
 			follow_url_func = vim.ui.open,
 			ui = {
