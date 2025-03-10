@@ -32,22 +32,6 @@ local function generate_note_id(_)
     return os.date("%Y%m%d%H%M%S")
 end
 
-local function no_tags_frontmatter(note)
-	if note.title then
-		note:add_alias(note.title)
-	end
-
-	local out = { id = note.id, aliases = note.aliases }
-
-	if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-		for k, v in pairs(note.metadata) do
-			out[k] = v
-		end
-	end
-
-	return out
-end
-
 if wiki_directory == nil then
 	vim.api.nvim_err_writeln("Could not read the WIKI_HOME environment variable")
 else
@@ -66,7 +50,6 @@ else
 			templates = get_template_config(wiki_directory),
 			workspaces = get_workspace_config(wiki_directory),
             note_id_func = generate_note_id,
-			note_frontmatter_func = no_tags_frontmatter,
 			follow_url_func = vim.ui.open,
 			ui = {
 				tags = { hl_group = "@obsidian.tag" },
