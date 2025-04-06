@@ -11,7 +11,6 @@ local servers = {
     "cssls",
     "html",
     "eslint",
-	"jsonnet_ls",
 	"texlab",
 	"jdtls",
 	"nil_ls",
