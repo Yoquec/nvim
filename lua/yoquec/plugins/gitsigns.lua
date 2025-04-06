@@ -67,6 +67,12 @@ return {
 			)
 			vim.keymap.set(
 				"n",
+				"<leader>gbb",
+				[[<cmd>Gitsigns blame<CR>]],
+				{ unpack(opts), desc = "Gitsigns current buffer blame" }
+			)
+			vim.keymap.set(
+				"n",
 				"<leader>gbl",
 				[[<cmd>Gitsigns blame_line<CR>]],
 				{ unpack(opts), desc = "Gitsigns current line blame hover" }
