@@ -39,6 +39,18 @@ return {
 			local lspconfig = require("lspconfig")
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+			vim.diagnostic.config({
+				virtual_lines = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = "●",
+						[vim.diagnostic.severity.WARN] = "●",
+						[vim.diagnostic.severity.HINT] = "●",
+						[vim.diagnostic.severity.INFO] = "●",
+					},
+				},
+			})
+
 			for _, server in ipairs(custom_servers) do
 				vim.lsp.config(server, { capabilities = capabilities })
 			end
