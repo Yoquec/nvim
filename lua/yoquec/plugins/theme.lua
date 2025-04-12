@@ -27,7 +27,16 @@ return {
 	priority = 1000,
 	branch = "v2",
 	plugins = {
-		auto = true,
+		blink = true,
+		diffview = true,
+		gitsigns = true,
+		neovim = true,
+		nvim_tree = true,
+		semantic_tokens = true,
+		telescope = true,
+		treesitter = true,
+		treesitter_context = true,
+		which_key = true,
 	},
 	config = function()
 		require("tairiki").setup({
