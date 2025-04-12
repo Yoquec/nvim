@@ -17,6 +17,13 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
+		"mbbill/undotree",
+		event = { "BufReadPost", "BufNewFile" },
+		keys = {
+			{ "<leader>ut", vim.cmd.UndotreeToggle, desc = "Toggle undotree" },
+		},
+	},
+	{
 		"norcalli/nvim-colorizer.lua",
 		event = { "BufReadPost", "BufNewFile" },
 		keys = {
