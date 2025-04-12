@@ -13,16 +13,30 @@ return {
 		-- Adds latex snippets to markdown files
 		ls.filetype_extend("markdown", { "tex" })
 
-		-- Snippet choices
+		vim.keymap.set({ "n", "i" }, "<C-h>", function()
+			if vim.snippet.active({ direction = -1 }) then
+				vim.snippet.jump(-1)
+			end
+		end)
+
+		vim.keymap.set({ "n", "i" }, "<C-l>", function()
+			if vim.snippet.active({ direction = 1 }) then
+				vim.snippet.jump(1)
+			end
+		end)
+
 		vim.keymap.set({ "i", "n" }, "<C-j>", function()
 			if ls.choice_active() then
 				ls.change_choice(1)
 			end
 		end)
+
 		vim.keymap.set({ "i", "n" }, "<C-k>", function()
 			if ls.choice_active() then
 				ls.change_choice(-1)
 			end
 		end)
+
+		vim.keymap.set("n", "<leader><C-l>", vim.snippet.stop)
 	end,
 }
