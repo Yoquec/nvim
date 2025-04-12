@@ -1,9 +1,3 @@
---- @param path string
-local function setcwd(path)
-	vim.api.nvim_set_current_dir(path)
-	print("Changed working directory to " .. path)
-end
-
 local function toggle_tab_bar()
 	local barstatus = vim.api.nvim_eval("&showtabline")
 	if barstatus < 2 then
@@ -60,7 +54,3 @@ vim.keymap.set(
 vim.keymap.set("n", "<BS>", vim.cmd.noh, { desc = "Clear highlight search" })
 vim.keymap.set("n", "<C-BS>", vim.diagnostic.reset, { desc = "Clear LSP diagnostics" })
 vim.keymap.set("t", "<esc>", "<c-\\><c-n>", { desc = "Exit from terminal mode to normal mode" })
-vim.keymap.set("n", "<leader>cd", function()
-	local current_dir = vim.fn.expand("%:h")
-	setcwd(current_dir)
-end, { desc = "Change working directory" })

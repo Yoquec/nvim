@@ -30,6 +30,33 @@ return {
 			for _, server in ipairs(servers) do
 				lspconfig[server].setup({ capabilities = capabilities })
 			end
+
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					local opts = { bufnr = args.buf, id = client.id }
+
+					vim.keymap.set({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, {
+						unpack(opts),
+						desc = "[L]sp [F]ormat file",
+					})
+
+					vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, {
+						unpack(opts),
+						desc = "[L]sp open [D]iagnostic hover",
+					})
+
+					vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
+						unpack(opts),
+						desc = "LSP go to previous [D]iagnostic",
+					})
+
+					vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, {
+						unpack(opts),
+						desc = "LSP go to next [D]iagnostic",
+					})
+				end,
+			})
 		end,
 	},
 }
