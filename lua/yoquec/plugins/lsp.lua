@@ -42,6 +42,11 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
 					local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+					if not client then
+						return
+					end
+
 					local opts = { bufnr = args.buf, id = client.id }
 
 					vim.keymap.set({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, {
@@ -54,12 +59,16 @@ return {
 						desc = "[L]sp open [D]iagnostic hover",
 					})
 
-					vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {
+					vim.keymap.set("n", "[d", function()
+						vim.diagnostic.jump({ count = -1, float = true })
+					end, {
 						unpack(opts),
 						desc = "LSP go to previous [D]iagnostic",
 					})
 
-					vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, {
+					vim.keymap.set("n", "]d", function()
+						vim.diagnostic.jump({ count = 1, float = true })
+					end, {
 						unpack(opts),
 						desc = "LSP go to next [D]iagnostic",
 					})
