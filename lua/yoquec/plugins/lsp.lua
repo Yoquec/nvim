@@ -1,4 +1,8 @@
-local servers = {
+local custom_servers = {
+	"emmet",
+}
+
+local lspconfig_servers = {
 	"lua_ls",
 	"lemminx",
 	"taplo",
@@ -35,7 +39,13 @@ return {
 			local lspconfig = require("lspconfig")
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			for _, server in ipairs(servers) do
+			for _, server in ipairs(custom_servers) do
+				vim.lsp.config(server, { capabilities = capabilities })
+			end
+
+			vim.lsp.enable(custom_servers)
+
+			for _, server in ipairs(lspconfig_servers) do
 				lspconfig[server].setup({ capabilities = capabilities })
 			end
 
