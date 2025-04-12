@@ -33,16 +33,19 @@ return {
 		require("tairiki").setup({
 			transparent = true,
 			end_of_buffer = true,
+
 			diagnostics = {
 				darker = true,
 				background = true,
 				undercurl = true,
 			},
+
 			colors = function(color, _)
 				for k, v in pairs(color_overrides[vim.o.bg]) do
 					color[k] = v
 				end
 			end,
+
 			highlights = function(highlight, color, _)
 				highlight["LineNr"] = { fg = color.fg, bold = true }
 				highlight["LineNrAbove"] = { fg = color.fg_dark2, bold = false }
@@ -71,9 +74,10 @@ return {
 				highlight["Number"] = { fg = color.yellow }
 				highlight["@property.yaml"] = { fg = color.red }
 
-				highlight["@obsidian.tag"] = { fg = color.yellow, underdotted = true }
+				highlight["ObsidianCustomTag"] = { fg = color.yellow, underdotted = true }
 			end,
 		})
+
 		vim.cmd.colorscheme("tairiki")
 	end,
 }
