@@ -56,34 +56,57 @@ return {
 			end,
 
 			highlights = function(highlight, color, _)
-				highlight["LineNr"] = { fg = color.fg, bold = true }
-				highlight["LineNrAbove"] = { fg = color.fg_dark2, bold = false }
-				highlight["LineNrBelow"] = { fg = color.fg_dark2, bold = false }
+				local groups = {
+					["LineNr"] = { fg = color.fg, bold = true },
+					["LineNrAbove"] = { fg = color.fg_dark2, bold = false },
+					["LineNrBelow"] = { fg = color.fg_dark2, bold = false },
+					["NormalFloat"] = { fg = color.fg, bg = color.bg },
+					["FloatBorder"] = { fg = color.fg, bg = color.bg },
+					["Pmenu"] = { fg = color.fg, bg = color.bg },
+					["PmenuKind"] = { fg = color.fg, bg = color.bg },
 
-				highlight["NormalFloat"] = { fg = color.fg, bg = color.bg }
-				highlight["FloatBorder"] = { fg = color.fg, bg = color.bg }
+					["TreesitterContextLineNumber"] = { bg = color.fg, fg = color.bg },
+					["TreesitterContextLineNumberBottom"] = { bg = color.fg, fg = color.bg },
 
-				highlight["TreesitterContextLineNumber"] = { bg = color.fg, fg = color.bg }
-				highlight["TreesitterContextLineNumberBottom"] = { bg = color.fg, fg = color.bg }
-				highlight["TelescopeTitle"] = { bg = color.fg, fg = color.bg }
+					["TelescopeTitle"] = { bg = color.fg, fg = color.bg },
+					["ObsidianCustomTag"] = { fg = color.yellow, underdotted = true },
+
+                    -- TODO: Push fix to tairiki.nvim
+					["BlinkCmpKindFolder"] = { fg = color.yellow },
+					["BlinkCmpKindSnippet"] = { fg = color.red },
+					["BlinkCmpKindField"] = { fg = color.blue },
+					["BlinkCmpKindModule"] = { fg = color.green },
+					["BlinkCmpKindVariable"] = { fg = color.red },
+					["BlinkCmpKindKeyword"] = { link = "@lsp.type.keyword" },
+					["BlinkCmpKindText"] = { link = "@lsp.type.string" },
+					["BlinkCmpKindEvent"] = { link = "@lsp.type.event" },
+					["BlinkCmpKindConstant"] = { link = "Constant" },
+					["BlinkCmpKindFunction"] = { link = "@lsp.type.function" },
+					["BlinkCmpKindMethod"] = { link = "@lsp.type.method" },
+					["BlinkCmpKindClass"] = { link = "@lsp.type.class" },
+					["BlinkCmpKindStruct"] = { link = "@lsp.type.struct" },
+					["BlinkCmpKindEnum"] = { link = "@lsp.type.enum" },
+					["BlinkCmpKindEnumMember"] = { link = "@lsp.type.enumMember" },
+
+					["@markup.strong.markdown_inline"] = { fg = color.cyan, bold = true },
+					["@markup.italic.markdown_inline"] = { fg = color.green, italic = true },
+					["@markup.raw.markdown_inline"] = { fg = color.red, bg = color.bg_light3 },
+					["@markup.quote.markdown"] = { fg = color.yellow, italic = true },
+					["@tag.attribute"] = { fg = color.yellow },
+					["@type.builtin"] = { fg = color.yellow },
+					["Boolean"] = { fg = color.yellow },
+					["Number"] = { fg = color.yellow },
+					["@property.yaml"] = { fg = color.red },
+				}
+
+				for group, config in pairs(groups) do
+					highlight[group] = config
+				end
 
 				for i = 1, 6, 1 do
 					highlight["@markup.heading." .. i .. ".marker.markdown"] = { fg = color.blue, bold = true }
 					highlight["@markup.heading." .. i .. ".markdown"] = { fg = color.blue, bold = true }
 				end
-
-				highlight["@markup.strong.markdown_inline"] = { fg = color.cyan, bold = true }
-				highlight["@markup.italic.markdown_inline"] = { fg = color.green, italic = true }
-				highlight["@markup.raw.markdown_inline"] = { fg = color.red, bg = color.bg_light3 }
-				highlight["@markup.quote.markdown"] = { fg = color.yellow, italic = true }
-
-				highlight["@tag.attribute"] = { fg = color.yellow }
-				highlight["@type.builtin"] = { fg = color.yellow }
-				highlight["Boolean"] = { fg = color.yellow }
-				highlight["Number"] = { fg = color.yellow }
-				highlight["@property.yaml"] = { fg = color.red }
-
-				highlight["ObsidianCustomTag"] = { fg = color.yellow, underdotted = true }
 			end,
 		})
 
