@@ -1,12 +1,10 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	lazy = false,
 	version = "0.1.x",
 	dependencies = {
-		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-ui-select.nvim",
 		"nvim-tree/nvim-web-devicons",
+		"nvim-telescope/telescope-file-browser.nvim",
 	},
 	keys = {
         -- stylua: ignore start
@@ -47,8 +45,7 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		local themes = require("telescope.themes")
-		local file_browser_actions = require("telescope").extensions.file_browser.actions
+		local fb_actions = require("telescope").extensions.file_browser.actions
 
 		telescope.setup({
 			defaults = {
@@ -58,36 +55,36 @@ return {
 					},
 				},
 			},
-			pickers = {
-				find_files = {
-					theme = "dropdown",
-				},
-				grep_string = {
-					theme = "dropdown",
-				},
-				live_grep = {
-					theme = "dropdown",
-				},
-			},
+			pickers = {},
 			extensions = {
 				file_browser = {
 					path = "%:p:h",
 					mappings = {
 						["n"] = {
-							["%"] = file_browser_actions.create,
-							D = file_browser_actions.remove,
+							["%"] = fb_actions.create,
 							["<C-n>"] = actions.move_selection_next,
 							["<C-p>"] = actions.move_selection_previous,
 						},
 					},
 				},
-				["ui-select"] = {
-					themes.get_dropdown({}),
-				},
 			},
 		})
 
 		telescope.load_extension("file_browser")
-		telescope.load_extension("ui-select")
+
+		-- HACK: Fix telescope borders until the fix for plenary 0.11 gets merged
+		-- See: https://github.com/nvim-lua/plenary.nvim/pull/649
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "TelescopeFindPre",
+			callback = function()
+				vim.opt_local.winborder = "none"
+				vim.api.nvim_create_autocmd("WinLeave", {
+					once = true,
+					callback = function()
+						vim.opt_local.winborder = "rounded"
+					end,
+				})
+			end,
+		})
 	end,
 }
