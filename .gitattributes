@@ -1,0 +1,2 @@
+spell/*.spl filter=lfs diff=lfs merge=lfs -text
+spell/*.sug filter=lfs diff=lfs merge=lfs -text

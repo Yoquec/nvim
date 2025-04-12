@@ -68,6 +68,11 @@ return {
 					["TreesitterContextLineNumber"] = { bg = color.fg, fg = color.bg },
 					["TreesitterContextLineNumberBottom"] = { bg = color.fg, fg = color.bg },
 
+					["SpellBad"] = { sp = color.red, underdotted = true },
+					["SpellCap"] = { sp = color.yellow, underdotted = true },
+					["SpellRare"] = { sp = color.purple, underdotted = true },
+					["SpellLocal"] = { sp = color.fg, underdotted = true },
+
 					["TelescopeTitle"] = { bg = color.fg, fg = color.bg },
 					["ObsidianCustomTag"] = { fg = color.yellow, underdotted = true },
 
