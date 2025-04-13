@@ -10,6 +10,7 @@ return {
 
 		completion = {
 			documentation = { auto_show = true },
+			list = { selection = { preselect = false, auto_insert = true } },
 		},
 
 		signature = {
