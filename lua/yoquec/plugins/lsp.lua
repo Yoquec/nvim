@@ -71,6 +71,11 @@ return {
 
 					local opts = { bufnr = args.buf, id = client.id }
 
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+						unpack(opts),
+						desc = "LSP jump to definition",
+					})
+
 					vim.keymap.set({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, {
 						unpack(opts),
 						desc = "[L]sp [F]ormat file",
