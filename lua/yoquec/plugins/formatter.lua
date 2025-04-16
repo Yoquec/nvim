@@ -9,6 +9,9 @@ return {
 				lua = {
 					require("formatter.filetypes.lua").stylua,
 				},
+				nix = {
+					require("formatter.filetypes.nix").alejandra,
+				},
 				javascript = {
 					require("formatter.filetypes.javascript").prettier,
 				},
