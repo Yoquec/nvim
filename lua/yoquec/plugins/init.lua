@@ -11,14 +11,6 @@ return {
 		event = { "VeryLazy" },
 	},
 	{
-		"folke/snacks.nvim",
-		opts = {
-			notifier = {},
-			input = {},
-			picker = {},
-		},
-	},
-	{
 		"folke/todo-comments.nvim",
 		opts = {},
 		event = { "BufReadPost", "BufNewFile" },
