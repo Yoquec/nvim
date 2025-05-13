@@ -64,6 +64,7 @@ else
 			daily_notes = get_daily_notes_config(template_config),
 			ui = {
 				tags = { hl_group = "@obsidian.tag" },
+                reference_text = { hl_group = "@obsidian.link" }
 			},
 		},
 		keys = {

@@ -68,15 +68,14 @@ return {
 					["TreesitterContextLineNumber"] = { bg = color.fg, fg = color.bg },
 					["TreesitterContextLineNumberBottom"] = { bg = color.fg, fg = color.bg },
 
-					["SpellBad"] = { sp = color.red, underdotted = true },
-					["SpellCap"] = { sp = color.yellow, underdotted = true },
-					["SpellRare"] = { sp = color.purple, underdotted = true },
-					["SpellLocal"] = { sp = color.fg, underdotted = true },
+					["SpellBad"] = { sp = color.red, undercurl = true },
+					["SpellCap"] = { sp = color.yellow, undercurl = true },
+					["SpellRare"] = { sp = color.purple, undercurl = true },
+					["SpellLocal"] = { sp = color.fg, undercurl = true },
 
 					["TelescopeTitle"] = { bg = color.fg, fg = color.bg },
-					["ObsidianCustomTag"] = { fg = color.yellow, underdotted = true },
 
-                    -- TODO: Push fix to tairiki.nvim
+					-- TODO: Push fix to tairiki.nvim
 					["BlinkCmpKindFolder"] = { fg = color.yellow },
 					["BlinkCmpKindSnippet"] = { fg = color.red },
 					["BlinkCmpKindField"] = { fg = color.blue },
@@ -93,8 +92,13 @@ return {
 					["BlinkCmpKindEnum"] = { link = "@lsp.type.enum" },
 					["BlinkCmpKindEnumMember"] = { link = "@lsp.type.enumMember" },
 
-					["@markup.strong.markdown_inline"] = { fg = color.cyan, bold = true },
-					["@markup.italic.markdown_inline"] = { fg = color.green, italic = true },
+					["@obsidian.tag"] = { fg = color.yellow, underdotted = true },
+					["@obsidian.link"] = { fg = color.blue, underline = true },
+
+					["@markup.link.label"] = { fg = color.yellow },
+					["@markup.link.label.markdown_inline"] = { fg = color.blue },
+					["@markup.strong.markdown_inline"] = { fg = color.yellow, bold = true },
+					["@markup.italic.markdown_inline"] = { fg = color.purple, italic = true },
 					["@markup.raw.markdown_inline"] = { fg = color.red, bg = color.bg_light3 },
 					["@markup.quote.markdown"] = { fg = color.yellow, italic = true },
 					["@tag.attribute"] = { fg = color.yellow },
