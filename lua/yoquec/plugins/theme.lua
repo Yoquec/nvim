@@ -40,7 +40,6 @@ return {
 	},
 	config = function()
 		require("tairiki").setup({
-			transparent = true,
 			end_of_buffer = true,
 
 			diagnostics = {
