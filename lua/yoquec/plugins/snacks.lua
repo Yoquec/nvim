@@ -35,6 +35,7 @@ return {
 	keys = {
         -- stylua: ignore start
         { "<leader>zz", function() Snacks.zen.zen() end, desc = "Toggle [Z]en mode" },
+        { "<leader>flS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "[L]SP workspace [S]ymbols picker" },
 		-- stylua: ignore end
 	},
 }

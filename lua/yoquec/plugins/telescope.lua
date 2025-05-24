@@ -30,7 +30,6 @@ return {
 		{ "<Leader>flI", [[<cmd>Telescope lsp_implementations theme=dropdown<cr>]], desc = "Telescope LSP implementations" },
 		{ "<Leader>flt", [[<cmd>Telescope lsp_type_definitions theme=dropdown<cr>]], desc = "Telescope LSP type definitions" },
 		{ "<Leader>fls", [[<cmd>Telescope lsp_document_symbols theme=dropdown<cr>]], desc = "Telescope LSP buffer symbols" },
-		{ "<Leader>flS", [[<cmd>Telescope lsp_workspace_symbols theme=dropdown<cr>]], desc = "Telescope LSP workspace symbols" },
 		{ "<Leader>fd", [[<cmd>Telescope diagnostics theme=dropdown<cr>]], desc = "Telescope LSP diagnostics" },
 
 		{ "<leader>fc", [[<cmd>Telescope commands theme=dropdown<cr>]], desc = "Telescope command picker" },
