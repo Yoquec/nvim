@@ -71,33 +71,43 @@ return {
 
 					local opts = { bufnr = args.buf, id = client.id }
 
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+					vim.keymap.set("n", "gd", Snacks.picker.lsp_definitions, {
 						unpack(opts),
-						desc = "LSP jump to definition",
+						desc = "LSP jump to Definition",
+					})
+
+					vim.keymap.set("n", "grr", Snacks.picker.lsp_references, {
+						unpack(opts),
+						desc = "LSP References",
+					})
+
+					vim.keymap.set("n", "gI", Snacks.picker.lsp_references, {
+						unpack(opts),
+						desc = "LSP Implementations",
 					})
 
 					vim.keymap.set({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, {
 						unpack(opts),
-						desc = "[L]sp [F]ormat file",
+						desc = "LSP Format",
 					})
 
 					vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, {
 						unpack(opts),
-						desc = "[L]sp open [D]iagnostic hover",
+						desc = "LSP open Diagnostic hover",
 					})
 
 					vim.keymap.set("n", "[d", function()
 						vim.diagnostic.jump({ count = -1, float = true })
 					end, {
 						unpack(opts),
-						desc = "LSP go to previous [D]iagnostic",
+						desc = "LSP go to previous Diagnostic",
 					})
 
 					vim.keymap.set("n", "]d", function()
 						vim.diagnostic.jump({ count = 1, float = true })
 					end, {
 						unpack(opts),
-						desc = "LSP go to next [D]iagnostic",
+						desc = "LSP go to next Diagnostic",
 					})
 				end,
 			})
