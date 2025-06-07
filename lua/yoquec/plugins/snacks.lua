@@ -1,4 +1,5 @@
-local conceal = vim.opt.conceallevel
+local conceal = vim.opt_local.conceallevel
+local wrap = vim.opt_local.wrap
 
 local function zen_on_open(_)
     vim.opt.wrap = true
@@ -8,7 +9,7 @@ local function zen_on_open(_)
 end
 
 local function zen_on_close(_)
-    vim.opt.wrap = false
+    vim.opt.wrap = wrap
     vim.opt.nu = true
     vim.opt.relativenumber = true
     vim.opt.conceallevel = conceal
