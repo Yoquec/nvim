@@ -24,7 +24,7 @@ return {
         explorer = {},
         picker = {
             sources = {
-                spelling = { layout = { preset = "vertical", preview = false } },
+                spelling = { layout = { preset = "select", preview = false } },
                 explorer = {
                     layout = { preset = "ivy", preview = "file" },
                     win = { list = { keys = { ["%"] = "explorer_add" } } },
