@@ -26,6 +26,7 @@ return {
             sources = {
                 spelling = { layout = { preset = "select", preview = false } },
                 explorer = {
+                    auto_close = true,
                     layout = { preset = "ivy", preview = "file" },
                     win = { list = { keys = { ["%"] = "explorer_add" } } },
                 },
