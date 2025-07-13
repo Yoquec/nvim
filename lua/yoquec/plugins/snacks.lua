@@ -1,20 +1,3 @@
-local conceal = vim.opt_local.conceallevel
-local wrap = vim.opt_local.wrap
-
-local function zen_on_open(_)
-    vim.opt.wrap = true
-    vim.opt.nu = false
-    vim.opt.rnu = false
-    vim.opt.conceallevel = 0
-end
-
-local function zen_on_close(_)
-    vim.opt.wrap = wrap
-    vim.opt.nu = true
-    vim.opt.relativenumber = true
-    vim.opt.conceallevel = conceal
-end
-
 return {
     "folke/snacks.nvim",
     lazy = false,
@@ -32,21 +15,9 @@ return {
                 },
             },
         },
-        zen = {
-            toggles = {
-                dim = false,
-            },
-            win = {
-                width = 90,
-            },
-            on_open = zen_on_open,
-            on_close = zen_on_close,
-        },
     },
     keys = {
         -- stylua: ignore start
-        { "<leader>zz",   function() Snacks.zen.zen() end,                      desc = "Toggle Zen mode" },
-
         { "<leader>.",    function() Snacks.scratch() end,                      desc = "Toggle Scratch Buffer" },
         { "<leader>S",    function() Snacks.scratch.select() end,               desc = "Select Scratch Buffer" },
 
