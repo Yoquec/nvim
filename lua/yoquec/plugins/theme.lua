@@ -25,7 +25,6 @@ return {
 	"deparr/tairiki.nvim",
 	lazy = false,
 	priority = 1000,
-	branch = "v2",
 	plugins = {
 		blink = true,
 		diffview = true,
