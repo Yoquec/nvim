@@ -7,14 +7,14 @@ return {
 		local dap_ui = require("dap.ui.widgets")
 
 		-- Keymaps
-		vim.keymap.set("n", "<leader>dc", dap.continue)
-		vim.keymap.set("n", "<leader>dq", dap.close)
-		vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
-		vim.keymap.set("n", "<leader>do", dap.step_over)
-		vim.keymap.set("n", "<leader>di", dap.step_into)
-		vim.keymap.set("n", "<leader>dr", dap.repl.open)
-		vim.keymap.set("n", "<leader>dh", dap_ui.hover)
-		vim.keymap.set("n", "<leader>dp", dap_ui.preview)
+		vim.keymap.set("n", "<leader>Dc", dap.continue)
+		vim.keymap.set("n", "<leader>Dq", dap.close)
+		vim.keymap.set("n", "<leader>Db", dap.toggle_breakpoint)
+		vim.keymap.set("n", "<leader>Do", dap.step_over)
+		vim.keymap.set("n", "<leader>Di", dap.step_into)
+		vim.keymap.set("n", "<leader>Dr", dap.repl.open)
+		vim.keymap.set("n", "<leader>Dh", dap_ui.hover)
+		vim.keymap.set("n", "<leader>Dp", dap_ui.preview)
 
 		-- Signs
 		vim.fn.sign_define(
