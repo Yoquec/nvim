@@ -10,7 +10,7 @@ return {
 					require("formatter.filetypes.lua").stylua,
 				},
 				nix = {
-					require("formatter.filetypes.nix").alejandra,
+					require("formatter.filetypes.nix").nixfmt,
 				},
 				javascript = {
 					require("formatter.filetypes.javascript").prettier,
