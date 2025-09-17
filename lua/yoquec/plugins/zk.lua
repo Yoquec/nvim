@@ -1,10 +1,15 @@
 local wiki_directory = os.getenv("WIKI_HOME")
 
+local template = {
+	daily = "daily_note.md",
+	note = "note.md",
+}
+
 -- Returns a function to create a daily note for the specified day
 local function get_daily_note(date)
 	return function()
 		local new = require("zk.commands").get("ZkNew")
-		new({ date = date, dir = "dailies", template = "daily_note.md", group = "daily" })
+		new({ date = date, dir = "dailies", template = template.daily, group = "daily" })
 	end
 end
 
@@ -42,7 +47,7 @@ if wiki_directory ~= nil then
 				function()
 					local title = vim.fn.input("Title: ")
 					local new = require("zk.commands").get("ZkNew")
-					new({ title = title })
+					new({ title = title, template = template.note })
 				end,
 				desc = "Create a new zettlekasten note",
 			},
