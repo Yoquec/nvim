@@ -46,6 +46,12 @@ if wiki_directory ~= nil then
 				"<leader>zn",
 				function()
 					local title = vim.fn.input("Title: ")
+
+					if title == "" then
+						print("Operation cancelled")
+						return
+					end
+
 					local new = require("zk.commands").get("ZkNew")
 					new({ title = title, template = template.note })
 				end,
