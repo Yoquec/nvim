@@ -1,8 +1,15 @@
-local custom_servers = {
-	"emmet",
+--- Configuration overrides
+-- Configurations must be provided as functions, as language servers
+-- aren't loaded until the plugin table is evaluated
+local overrides = {
+	emmet_language_server = function()
+		return {
+			filetypes = vim.list_extend({ "markdown", "rmarkdown" }, vim.lsp.config.emmet_language_server.filetypes),
+		}
+	end,
 }
 
-local lspconfig_servers = {
+local servers = {
 	"lua_ls",
 	"lemminx",
 	"taplo",
@@ -19,6 +26,7 @@ local lspconfig_servers = {
 	"gopls",
 	"rust_analyzer",
 	"ts_ls",
+	"emmet_language_server",
 }
 
 return {
@@ -30,14 +38,18 @@ return {
 				"folke/lazydev.nvim",
 				opts = {
 					library = {
+						--- @see https://github.com/folke/lazydev.nvim#-installation
 						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 					},
 				},
 			},
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			for name, get_config in pairs(overrides) do
+				vim.lsp.config(name, get_config())
+			end
+
+			vim.lsp.enable(servers)
 
 			vim.diagnostic.config({
 				virtual_text = true,
@@ -50,16 +62,6 @@ return {
 					},
 				},
 			})
-
-			for _, server in ipairs(custom_servers) do
-				vim.lsp.config(server, { capabilities = capabilities })
-			end
-
-			vim.lsp.enable(custom_servers)
-
-			for _, server in ipairs(lspconfig_servers) do
-				lspconfig[server].setup({ capabilities = capabilities })
-			end
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
