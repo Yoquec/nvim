@@ -26,21 +26,46 @@ if wiki_directory ~= nil then
 			picker = "snacks_picker",
 		},
 		keys = {
-			{ "<leader>zf", vim.cmd.ZkNotes, desc = "Open notes" },
+			{ "<leader>zz", vim.cmd.ZkNotes, desc = "Open notes" },
 			{ "<leader>zo", [[<Cmd>ZkNotes { sort = { 'modified' } }<cr>]], desc = "Open recent notes" },
 			{ "<leader>zd", get_daily_note("today"), desc = "Create a daily note (today)" },
 			{ "<leader>zy", get_daily_note("yesterday"), desc = "Create a daily note (yesterday)" },
 			{ "<leader>zT", get_daily_note("tomorrow"), desc = "Create a daily note (tomorrow)" },
-			-- TODO: Insert tags directly from the picker?
 			{ "<leader>zt", vim.cmd.ZkTags, desc = "Open tags" },
-			{ "<leader>zb", vim.cmd.ZkBuffers, desc = "Open picker with open note buffers" },
 			{ "<leader>zB", vim.cmd.ZkBacklinks, desc = "Backlinks for current note" },
 			{ "<leader>zl", vim.cmd.ZkLinks, desc = "Links for current note" },
-			{ "<leader>zNc", vim.cmd.ZkNewFromContentSelection, desc = "Create new note with the selected content" },
+			{ "<leader>zL", vim.cmd.ZkInsertLink, desc = "Insert a link under the cursor" },
 			{
-				"<leader>zNt",
-				vim.cmd.ZkNewFromTitleSelection,
+				"<leader>zb",
+				vim.cmd.ZkBuffers,
+				desc = "Open picker with open note buffers",
+			},
+			{
+				"<leader>zL",
+				[[<cmd>'<,'>ZkInsertLinkAtSelection { sort = {'modified' } }<cr>]],
+				mode = { "v" },
+				desc = "Insert a link over the current selection",
+			},
+			{
+				"<leader>zft",
+				[[<cmd>'<,'>ZkNewFromTitleSelection<cr>]],
+				mode = { "v" },
 				desc = "Create new note using the selected content as title",
+			},
+			{
+				"<leader>zfc",
+				function()
+					local title = vim.fn.input("Title: ")
+
+					if title == "" then
+						print("Operation cancelled")
+						return
+					end
+
+					vim.cmd([['<,'>ZkNewFromContentSelection { title = ']] .. title .. [[' }]])
+				end,
+				mode = { "v" },
+				desc = "Create new note with the selected content",
 			},
 			{
 				"<leader>zn",
@@ -53,7 +78,7 @@ if wiki_directory ~= nil then
 					end
 
 					local new = require("zk.commands").get("ZkNew")
-					new({ title = title, template = template.note })
+					new({ title = title })
 				end,
 				desc = "Create a new zettlekasten note",
 			},
