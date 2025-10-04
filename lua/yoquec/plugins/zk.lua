@@ -8,7 +8,7 @@ local function get_daily_note(date)
 	end
 end
 
--- If wiki not set up, don't set up the extension
+-- If wiki isn't set up, don't set up the extension
 if wiki_directory == nil then
 	return {}
 end
