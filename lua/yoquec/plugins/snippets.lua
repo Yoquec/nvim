@@ -10,8 +10,8 @@ return {
 		require("luasnip.loaders.from_snipmate").lazy_load()
 		require("luasnip.loaders.from_vscode").lazy_load()
 
-		-- Adds latex snippets to markdown files
 		ls.filetype_extend("markdown", { "tex" })
+		ls.filetype_extend("typescript", { "javascript" })
 
 		vim.keymap.set({ "n", "i", "s" }, "<C-h>", function()
 			if vim.snippet.active({ direction = -1 }) then
