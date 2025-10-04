@@ -1,5 +1,4 @@
---- Configuration overrides
--- Configurations must be provided as functions, as language servers
+-- Configuration overrides must be provided as functions, as language servers
 -- aren't loaded until the plugin table is evaluated
 local overrides = {
 	emmet_language_server = function()
@@ -38,8 +37,10 @@ return {
 				"folke/lazydev.nvim",
 				opts = {
 					library = {
-						--- @see https://github.com/folke/lazydev.nvim#-installation
+						--- See: https://github.com/folke/lazydev.nvim#-installation
 						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+						-- See: https://github.com/folke/snacks.nvim/discussions/242#discussioncomment-11897603
+						{ path = "snacks.nvim", words = { "Snacks" } },
 					},
 				},
 			},
