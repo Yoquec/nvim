@@ -13,34 +13,36 @@ return {
 		ls.filetype_extend("markdown", { "tex" })
 		ls.filetype_extend("typescript", { "javascript" })
 
-		vim.keymap.set({ "n", "i", "s" }, "<C-h>", function()
-			if vim.snippet.active({ direction = -1 }) then
-				vim.snippet.jump(-1)
-			elseif ls.jumpable(-1) then
-				ls.jump(-1)
+		local function jump(direction)
+			if vim.snippet.active({ direction = direction }) then
+				vim.snippet.jump(direction)
+			elseif ls.jumpable(direction) then
+				ls.jump(direction)
 			end
-		end)
+		end
+
+		local function choice(direction)
+			if ls.choice_active() then
+				ls.change_choice(direction)
+			end
+		end
+
+		vim.keymap.set({ "n", "i", "s" }, "<C-h>", function()
+			jump(-1)
+		end, { desc = "Jump to the previous snippet" })
 
 		vim.keymap.set({ "n", "i", "s" }, "<C-l>", function()
-			if vim.snippet.active({ direction = 1 }) then
-				vim.snippet.jump(1)
-			elseif ls.jumpable(1) then
-				ls.jump(1)
-			end
+			jump(1)
+		end, { desc = "Jump to the next snippet" })
+
+		vim.keymap.set({ "i", "n", "s" }, "<C-k>", function()
+			choice(-1)
 		end)
 
 		vim.keymap.set({ "i", "n", "s" }, "<C-j>", function()
-			if ls.choice_active() then
-				ls.change_choice(1)
-			end
+			choice(1)
 		end)
 
-		vim.keymap.set({ "i", "n", "s" }, "<C-k>", function()
-			if ls.choice_active() then
-				ls.change_choice(-1)
-			end
-		end)
-
-		vim.keymap.set({ "n", "s" }, "<leader><C-l>", vim.snippet.stop)
+		vim.keymap.set({ "n", "s" }, "<leader>;", vim.snippet.stop)
 	end,
 }
