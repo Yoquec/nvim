@@ -10,7 +10,8 @@ The neovim config I daily drive. The aim of this repo is to be able to take my c
 
 ## Showcase 🤩
 
-![Showcase of my config](https://yoquec.com/data/images/nvim.png "My nvim config showcase")
+<img width="1859" height="1194" alt="image" src="https://github.com/user-attachments/assets/ecae11de-47ec-4e17-b1fb-ecf0c1cb1af9" />
+
 
 ## Installation 🧰
 >It is important to note that the config <mark>only works on UNIX-base systems</mark> and on <mark>neovim</mark> because of the folder structure.
