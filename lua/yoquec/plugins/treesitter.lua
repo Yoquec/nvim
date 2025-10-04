@@ -7,7 +7,6 @@ return {
 		configs.setup({
 			ensure_installed = {
 				"vimdoc",
-				"javascript",
 				"python",
 				"c",
 				"cpp",
@@ -27,6 +26,7 @@ return {
 				"typescript",
 				"yaml",
 				"toml",
+				"zig",
 			},
 			modules = {},
 			ignore_install = {},
