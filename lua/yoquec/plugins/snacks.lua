@@ -7,8 +7,9 @@ return {
         explorer = {},
         picker = {
             sources = {
-                spelling = { layout = { preset = "select", preview = false } },
-                explorer = {
+                spelling       = { layout = { preset = "select", preview = false } },
+                search_history = { layout = { preset = "select", preview = false } },
+                explorer       = {
                     auto_close = true,
                     layout = { preset = "ivy", preview = "file" },
                     win = { list = { keys = { ["%"] = "explorer_add" } } },
