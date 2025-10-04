@@ -26,7 +26,6 @@ return {
         { "<leader>fp",   function() Snacks.picker.grep() end,                  desc = "Find grep Pattern" },
         { "<leader>fP",   function() Snacks.picker.grep_buffers() end,          desc = "Find grep Pattern in currently open buffers" },
         { "<leader>fq",   function() Snacks.picker.qflist() end,                desc = "Find elements in the Quickfix list" },
-        { "<leader>ft",   function() Snacks.picker.todo_comments() end,         desc = "Find Todo comments" },
         { "<leader>fS",   function() Snacks.picker.search_history() end,        desc = "Find Search history" },
         { "<leader>fk",   function() Snacks.picker.keymaps() end,               desc = "Find Keymaps" },
         { "<leader>fh",   function() Snacks.picker.help() end,                  desc = "Find Help tags" },

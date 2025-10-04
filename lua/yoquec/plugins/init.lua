@@ -11,12 +11,6 @@ return {
 		event = { "VeryLazy" },
 	},
 	{
-		"folke/todo-comments.nvim",
-		opts = {},
-		event = { "BufReadPost", "BufNewFile" },
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{
 		"mbbill/undotree",
 		event = { "BufReadPost", "BufNewFile" },
 		keys = {
