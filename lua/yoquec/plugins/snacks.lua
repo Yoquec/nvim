@@ -17,7 +17,6 @@ return {
         },
     },
     keys = {
-        -- stylua: ignore start
         { "<leader>.",    function() Snacks.scratch() end,                      desc = "Toggle Scratch Buffer" },
         { "<leader>S",    function() Snacks.scratch.select() end,               desc = "Select Scratch Buffer" },
 
@@ -38,12 +37,12 @@ return {
         { "<leader>fs",   function() Snacks.picker.spelling() end,              desc = "Find Spelling suggestions" },
         { "<leader>fv",   function() Snacks.picker.explorer() end,              desc = "Find files in explorer" },
 
+        { "<leader>fgs",  function() Snacks.picker.git_status() end,            desc = "Find Git Status" },
         { "<leader>fgf",  function() Snacks.picker.git_files() end,             desc = "Find Git Files" },
-        { "<leader>fgc",  function() Snacks.picker.git_commits() end,           desc = "Find Git Commits" },
-        { "<leader>fgb",  function() Snacks.picker.git_branches() end,          desc = "Find Git Commits" },
+        { "<leader>fgb",  function() Snacks.picker.git_branches() end,          desc = "Find Git Branches" },
+        { "<leader>fgll", function() Snacks.picker.git_log() end,               desc = "Find Git Commits" },
         { "<leader>fglf", function() Snacks.picker.git_log_file() end,          desc = "Find Git Log for current File" },
-        { "<leader>fgll", function() Snacks.picker.git_log_line() end,          desc = "Find Git Log for current Line" },
-        { "<leader>fgL",  function() Snacks.picker.git_log() end,               desc = "Find Git Log" },
+        { "<leader>fglL", function() Snacks.picker.git_log_line() end,          desc = "Find Git Log for current Line" },
 
         { "<leader>fd",   function() Snacks.picker.diagnostics_buffer() end,    desc = "Find buffer Diagnostics" },
         { "<leader>fD",   function() Snacks.picker.diagnostics() end,           desc = "Find Diagnostics" },
@@ -55,6 +54,5 @@ return {
         { "<leader>flS",  function() Snacks.picker.lsp_workspace_symbols() end, desc = "Find LSP workspace Symbols" },
 
         { "<leader>fgf",  function() Snacks.picker.git_files() end,             desc = "Find Git Files" },
-        -- stylua: ignore end
     },
 }
