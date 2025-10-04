@@ -2,9 +2,6 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	event = "VeryLazy",
 	build = ":TSUpdate",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-context",
-	},
 	config = function()
 		local configs = require("nvim-treesitter.configs")
 		configs.setup({
@@ -42,5 +39,4 @@ return {
 			indent = { enable = true },
 		})
 	end,
-	keys = { { "<leader>tc", function() vim.cmd.TSContext("toggle") end, desc = "Toggles treesitter context" } },
 }
