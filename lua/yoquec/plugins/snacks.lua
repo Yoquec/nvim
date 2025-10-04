@@ -32,7 +32,7 @@ return {
         { "<leader>f.",   function() Snacks.picker.pickers() end,               desc = "Find pickers" },
         { "<leader>fc",   function() Snacks.picker.commands() end,              desc = "Find Commands" },
         { "<leader>fC",   function() Snacks.picker.command_history() end,       desc = "Find Command history" },
-        { "<leader>fM",   function() Snacks.picker.marks() end,                 desc = "Find Marks" },
+        { "<leader>fm",   function() Snacks.picker.marks() end,                 desc = "Find Marks" },
         { "<leader>fs",   function() Snacks.picker.spelling() end,              desc = "Find Spelling suggestions" },
         { "<leader>fv",   function() Snacks.picker.explorer() end,              desc = "Find files in explorer" },
 
