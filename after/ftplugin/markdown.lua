@@ -53,7 +53,7 @@ local function render_slides_sync()
 	vim.cmd([[!pandoc --pdf-engine=xelatex "]] .. file_path .. [[" -t beamer -o "]] .. output_path .. [["]])
 end
 
-local opts = { buffer = 0 }
+local opts = { buffer = vim.api.nvim_get_current_buf() }
 
 vim.keymap.set("n", "<leader>op", viewers.pdf.zathura, {
 	unpack(opts),
