@@ -19,7 +19,7 @@ return {
 	},
 	{
 		"norcalli/nvim-colorizer.lua",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "VeryLazy" },
 		keys = {
 			{
 				"<leader>ca",
