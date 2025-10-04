@@ -51,7 +51,5 @@ return {
         { "<leader>flt",  function() Snacks.picker.lsp_type_definitions() end,  desc = "Find LSP Type definitions" },
         { "<leader>fls",  function() Snacks.picker.lsp_symbols() end,           desc = "Find LSP document Symbols" },
         { "<leader>flS",  function() Snacks.picker.lsp_workspace_symbols() end, desc = "Find LSP workspace Symbols" },
-
-        { "<leader>fgf",  function() Snacks.picker.git_files() end,             desc = "Find Git Files" },
     },
 }
