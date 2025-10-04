@@ -4,14 +4,15 @@
   <img alt="neovim version" src="https://img.shields.io/badge/neovim-> v0.11.3-e5c07b?style=for-the-badge&logo=neovim">
 </p>
 
-# Neovim config 🚀
+# Neovim config 📝
 
-The neovim config I daily drive. Feel free to take or get inspired by it.
-
-<img width="1859" height="1194" alt="image" src="https://github.com/user-attachments/assets/ecae11de-47ec-4e17-b1fb-ecf0c1cb1af9" />
-
-## Installation
+A [Neovim] configuration heavily inspired by the [Helix] editor's defaults and looks.
 
 ```bash
 git clone https://github.com/Yoquec/nvim.git $XDG_CONFIG_DIR/nvim
 ```
+
+<img width="1859" height="1194" alt="image" src="https://github.com/user-attachments/assets/ecae11de-47ec-4e17-b1fb-ecf0c1cb1af9" />
+
+[Neovim]: https://neovim.io/
+[Helix]: https://helix-editor.com/
