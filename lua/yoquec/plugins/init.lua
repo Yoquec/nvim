@@ -23,8 +23,18 @@ return {
 		keys = {
 			{
 				"<leader>ca",
-				"<cmd>ColorizerAttachToBuffer<cr>",
+				vim.cmd.ColorizerAttachToBuffer,
 				desc = "Attach colorizer to the currect buffer",
+			},
+			{
+				"<leader>ct",
+				vim.cmd.ColorizerToggle,
+				desc = "Toggle colorizer in the current buffer",
+			},
+			{
+				"<leader>cr",
+				vim.cmd.ColorizerReloadAllBuffers,
+				desc = "Reload colorizer in all buffers",
 			},
 		},
 	},
