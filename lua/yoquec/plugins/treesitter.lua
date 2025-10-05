@@ -24,6 +24,7 @@ return {
 				"markdown_inline",
 				"javascript",
 				"typescript",
+				"haskell",
 				"yaml",
 				"toml",
 				"zig",
