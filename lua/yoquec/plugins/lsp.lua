@@ -26,6 +26,7 @@ local servers = {
 	"rust_analyzer",
 	"ts_ls",
 	"emmet_language_server",
+	"hls",
 	"zls",
 }
 
