@@ -27,6 +27,18 @@ return {
 			end
 		end
 
+		--- Stops the current snippet session
+		--- See: https://github.com/L3MON4D3/LuaSnip/issues/258
+		local function stop()
+			local bufnr = vim.api.nvim_get_current_buf()
+
+			if ls.session.current_nodes[bufnr] and not ls.session.jump_active then
+				ls.unlink_current()
+			else
+				vim.snippet.stop()
+			end
+		end
+
 		vim.keymap.set({ "n", "i", "s" }, "<C-h>", function()
 			jump(-1)
 		end, { desc = "Jump to the previous snippet" })
@@ -37,12 +49,12 @@ return {
 
 		vim.keymap.set({ "i", "n", "s" }, "<C-k>", function()
 			choice(-1)
-		end)
+		end, { desc = "Cycle to the previous snippet option" })
 
 		vim.keymap.set({ "i", "n", "s" }, "<C-j>", function()
 			choice(1)
-		end)
+		end, { desc = "Cycle to the next snippet option" })
 
-		vim.keymap.set({ "n", "s" }, "<leader>;", vim.snippet.stop)
+		vim.keymap.set({ "i", "n", "s" }, "<C-q>", stop, { desc = "Cancel the current active snippet" })
 	end,
 }
