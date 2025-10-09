@@ -7,7 +7,9 @@ return {
 	},
 	{
 		"folke/which-key.nvim",
-		opts = {},
+		opts = {
+			win = { border = vim.api.nvim_get_option_value("winborder", { scope = "global" }) },
+		},
 		event = { "VeryLazy" },
 	},
 	{
