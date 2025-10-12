@@ -26,7 +26,23 @@ return {
 			base0F = "#e7c547",
 		})
 
+		local colors = require("base16-colorscheme").colors
+
 		-- Enable color inversion for selection
 		vim.api.nvim_set_hl(0, "Visual", { reverse = true })
+
+		-- TS tweaks
+		vim.api.nvim_set_hl(0, "TSStrong", { fg = colors.base0F, bold = true })
+		vim.api.nvim_set_hl(0, "Italic", { fg = colors.base0E, italic = true })
+
+		-- markdown tweaks
+		vim.api.nvim_set_hl(0, "@markup.list.markdown", { fg = colors.base08 })
+
+		-- Fix markdown strikethrough
+		vim.api.nvim_set_hl(0, "@markup.strikethrough.markdown_inline", { link = "markdownStrikeDelimiter" })
+
+		-- Fix markdown inline code
+		vim.api.nvim_set_hl(0, "Raw", { fg = colors.base08, bg = colors.base06 })
+		vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", { link = "Raw" })
 	end,
 }
