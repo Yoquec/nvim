@@ -28,6 +28,7 @@ local servers = {
 	"emmet_language_server",
 	"hls",
 	"zls",
+	"bashls",
 }
 
 return {
