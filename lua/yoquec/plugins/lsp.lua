@@ -29,6 +29,7 @@ local servers = {
 	"hls",
 	"zls",
 	"bashls",
+    "coq_lsp",
 }
 
 return {
