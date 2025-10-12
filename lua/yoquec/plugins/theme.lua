@@ -27,6 +27,6 @@ return {
 		})
 
 		-- Enable color inversion for selection
-		vim.api.nvim_set_hl(0, "Visual", { nil, nil, reverse = true })
+		vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 	end,
 }
