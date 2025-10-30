@@ -1,6 +1,20 @@
 return {
 	{ "tpope/vim-surround", event = { "BufReadPost", "BufNewFile" } },
 	{
+		"uga-rosa/utf8.nvim",
+		keys = {
+			{
+				"<leader>gs",
+				function()
+					local utf8 = require("yoquec.core.writting.utf8")
+					local replace = require("yoquec.core.writting.replace")
+					replace.with(utf8.superscript)()
+				end,
+				mode = { "v" },
+			},
+		},
+	},
+	{
 		"windwp/nvim-autopairs",
 		opts = {},
 		event = { "InsertEnter" },
