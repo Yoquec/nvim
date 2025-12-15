@@ -30,6 +30,7 @@ local servers = {
 	"zls",
 	"bashls",
     "coq_lsp",
+    "gleam",
 }
 
 return {
