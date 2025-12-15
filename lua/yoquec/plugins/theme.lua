@@ -44,5 +44,11 @@ return {
 		-- Fix markdown inline code
 		vim.api.nvim_set_hl(0, "Raw", { fg = colors.base08, bg = colors.base06 })
 		vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", { link = "Raw" })
+
+		-- Fix spelling highlights
+		vim.api.nvim_set_hl(0, "SpellBad", { sp = colors.base08, underdotted = true })
+		vim.api.nvim_set_hl(0, "SpellCap", { sp = colors.base09, underdotted = true })
+		vim.api.nvim_set_hl(0, "SpellRare", { sp = colors.base0E, underdotted = true })
+		vim.api.nvim_set_hl(0, "SpellLocal", { sp = colors.base0C, underdotted = true })
 	end,
 }
