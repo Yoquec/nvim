@@ -6,9 +6,9 @@ local theme_var = os.getenv("THEME")
 local themes = { dark = {} }
 
 themes.dark.colors = {
-	base00 = "none",
-	base01 = "none",
-	base02 = "none",
+	base00 = "#000000",
+	base01 = "#000000",
+	base02 = "#000000",
 	base03 = "#757d8a",
 	base04 = "#8b95a7",
 	base05 = "#eaeaea",
