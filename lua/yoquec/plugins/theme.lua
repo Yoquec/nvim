@@ -28,6 +28,10 @@ themes.dark.group_overrides = {
 	-- Enable color inversion for selection
 	["Visual"] = { reverse = true },
 
+	-- Better search help guides
+	["Search"] = { fg = themes.dark.colors.base00, bg = themes.dark.colors.base04 },
+	["CurSearch"] = { fg = themes.dark.colors.base00, bg = themes.dark.colors.base0A },
+
 	-- Highlight current line number
 	["LineNr"] = { fg = themes.dark.colors.base05, bold = true },
 	["LineNrAbove"] = { fg = themes.dark.colors.base04 },
