@@ -31,6 +31,7 @@ local servers = {
 	"bashls",
     "coq_lsp",
     "gleam",
+    "clangd",
 }
 
 return {
