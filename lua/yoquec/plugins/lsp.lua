@@ -29,9 +29,10 @@ local servers = {
 	"hls",
 	"zls",
 	"bashls",
-    "coq_lsp",
-    "gleam",
-    "clangd",
+	"coq_lsp",
+	"gleam",
+	"clangd",
+	"tsp_server",
 }
 
 return {
