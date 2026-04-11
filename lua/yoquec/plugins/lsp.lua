@@ -33,6 +33,7 @@ local servers = {
 	"gleam",
 	"clangd",
 	"tsp_server",
+	"smithy",
 }
 
 return {
