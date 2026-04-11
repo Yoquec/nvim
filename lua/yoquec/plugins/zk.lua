@@ -8,6 +8,16 @@ local function get_daily_note(date)
 	end
 end
 
+local function with_title(cb)
+	vim.ui.input({ prompt = "Title" }, function(title)
+		if title == nil or title == "" then
+			print("Operation canceled")
+		else
+			cb(title)
+		end
+	end)
+end
+
 -- If wiki isn't set up, don't set up the extension
 if wiki_directory == nil then
 	return {}
@@ -54,14 +64,9 @@ return {
 		{
 			"<leader>zfc",
 			function()
-				local title = vim.fn.input("Title: ")
-
-				if title == "" then
-					print("Operation cancelled")
-					return
-				end
-
-				vim.cmd([['<,'>ZkNewFromContentSelection { title = ']] .. title .. [[' }]])
+				with_title(function(title)
+					vim.cmd([['<,'>ZkNewFromContentSelection { title = ']] .. title .. [[' }]])
+				end)
 			end,
 			mode = { "v" },
 			desc = "Create new note with the selected content",
@@ -69,15 +74,10 @@ return {
 		{
 			"<leader>zn",
 			function()
-				local title = vim.fn.input("Title: ")
-
-				if title == "" then
-					print("Operation cancelled")
-					return
-				end
-
-				local new = require("zk.commands").get("ZkNew")
-				new({ title = title })
+				with_title(function(title)
+					local new = require("zk.commands").get("ZkNew")
+					new({ title = title })
+				end)
 			end,
 			desc = "Create a new zettlekasten note",
 		},
