@@ -97,7 +97,7 @@ return {
 						desc = "LSP Implementations",
 					})
 
-					vim.keynap.set("n", "gO", Snacks.picker.lsp_symbols, {
+					vim.keymap.set("n", "gO", Snacks.picker.lsp_symbols, {
 						unpack(opts),
 						desc = "LSP buffer symbols",
 					})
