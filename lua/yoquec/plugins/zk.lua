@@ -1,13 +1,5 @@
 local wiki_directory = os.getenv("WIKI_HOME")
 
--- Returns a function to create a daily note for the specified day
-local function get_daily_note(date)
-	return function()
-		local new = require("zk.commands").get("ZkNew")
-		new({ date = date, dir = "dailies", group = "daily" })
-	end
-end
-
 local function with_title(cb)
 	vim.ui.input({ prompt = "Title" }, function(title)
 		if title == nil or title == "" then
@@ -37,9 +29,6 @@ return {
 	keys = {
 		{ "<leader>zz", vim.cmd.ZkNotes, desc = "Open notes" },
 		{ "<leader>zo", [[<Cmd>ZkNotes { sort = { 'modified' } }<cr>]], desc = "Open recent notes" },
-		{ "<leader>zd", get_daily_note("today"), desc = "Create a daily note (today)" },
-		{ "<leader>zy", get_daily_note("yesterday"), desc = "Create a daily note (yesterday)" },
-		{ "<leader>zT", get_daily_note("tomorrow"), desc = "Create a daily note (tomorrow)" },
 		{ "<leader>zt", vim.cmd.ZkTags, desc = "Open tags" },
 		{ "<leader>zB", vim.cmd.ZkBacklinks, desc = "Backlinks for current note" },
 		{ "<leader>zl", vim.cmd.ZkLinks, desc = "Links for current note" },
